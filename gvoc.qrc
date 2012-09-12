@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>wordlists/hints.zh-CN.txt</file>
+        <file>wordlists/words.en.zh-CN.txt</file>
+    </qresource>
+</RCC>
