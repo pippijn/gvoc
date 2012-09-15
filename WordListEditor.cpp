@@ -26,25 +26,37 @@ QList<Translation> WordListEditor::wordList() const
 
 void WordListEditor::initialiseList()
 {
-    ui->wordList->clear();
+    while (ui->wordList->rowCount() >= 1)
+        ui->wordList->removeRow(0);
 
-    int i = 0;
     foreach (Translation const &translation, translations)
     {
-        Translation::Primary const &primary = translation.primary.at(0);
-        QListWidgetItem *item = new QListWidgetItem(QString("%0 (%1)").arg(primary.sourceText).arg(primary.translated), ui->wordList);
-        item->setData(Qt::UserRole, i);
-        i++;
+        int i = ui->wordList->rowCount();
+        PrimaryTranslation const &primary = translation.primary;
+        ui->wordList->insertRow(i);
+        {
+            QTableWidgetItem *item = new QTableWidgetItem(primary.sourceText);
+            item->setData(Qt::UserRole, i);
+            ui->wordList->setItem(i, 0, item);
+        }
+        ui->wordList->setItem(i, 1, new QTableWidgetItem(primary.translated));
+        ui->wordList->setItem(i, 2, new QTableWidgetItem(primary.translatedPhonetic));
     }
+
+    ui->total->setText(QString("%0 words").arg(translations.size()));
 }
 
 
 void WordListEditor::on_deleteItem_clicked()
 {
     int deleted = 0;
-    foreach (QListWidgetItem *item, ui->wordList->selectedItems())
+    foreach (QTableWidgetItem *item, ui->wordList->selectedItems())
     {
-        int index = item->data(Qt::UserRole).value<int>();
+        QVariant data = item->data(Qt::UserRole);
+        if (!data.isValid())
+            continue;
+
+        int index = data.value<int>();
         translations.removeAt(index - deleted);
         deleted++;
     }

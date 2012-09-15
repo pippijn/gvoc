@@ -11,14 +11,36 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Text-to-Speech files</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QListWidget" name="wordList">
+    <widget class="QTableWidget" name="wordList">
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
      <property name="selectionMode">
       <enum>QAbstractItemView::ExtendedSelection</enum>
      </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <attribute name="horizontalHeaderStretchLastSection">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string>Word</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Size (bytes)</string>
+      </property>
+     </column>
     </widget>
    </item>
    <item>
@@ -27,6 +49,20 @@
       <widget class="QPushButton" name="deleteItem">
        <property name="text">
         <string>&amp;Delete</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Total</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="total">
+       <property name="text">
+        <string>0</string>
        </property>
       </widget>
      </item>

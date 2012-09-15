@@ -35,16 +35,28 @@ static QString languageName(QString code)
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-    , translationModel(settings.value("sourceLanguage", "en").toString(),
+
+    , translationDownloader(networkManager)
+    , translationManager(translationDownloader, QDir::current())
+
+    , phoneticsDownloader(networkManager)
+    , phoneticsManager(phoneticsDownloader, QDir::current())
+
+    , audioDownloader(networkManager)
+    , audioManager(audioDownloader, QDir::current())
+
+    , translationModel(translationManager, phoneticsManager,
+                       settings.value("sourceLanguage", "en").toString(),
                        settings.value("targetLanguage", "zh-CN").toString())
+    , tts(audioManager)
 {
     ui->setupUi(this);
 
     ui->detailed->setModel(&translationModel);
     ui->input->setFocus();
 
-    connect(&translationModel, SIGNAL(updated(Translation)), SLOT(translateSuccess(Translation)));
-    connect(&translationModel, SIGNAL(translateError(QString)), SLOT(translateError(QString)));
+    connect(&translationModel, SIGNAL(translateSuccess(Translation)), SLOT(translateSuccess(Translation)));
+    connect(&translationModel, SIGNAL(translateFailure(QString)), SLOT(translateFailure(QString)));
 
     connect(&tts, SIGNAL(synthesisFinished()), SLOT(ttsFinished()));
     connect(&tts, SIGNAL(synthesisError(QString)), SLOT(ttsError(QString)));
@@ -74,49 +86,53 @@ void MainWindow::updateLanguageLabels()
     ui->targetLanguage->setText(languageName(translationModel.targetLanguage()));
 }
 
+void MainWindow::on_input_editingFinished()
+{
+    QString text = ui->input->text();
+    if (text.isEmpty() || text == ui->sourceText->text())
+        return;
+    ui->sourceText->setText(text);
+
+    ui->input->setEnabled(false);
+    translationModel.translate(text);
+}
+
 void MainWindow::on_input_returnPressed()
 {
-    ui->input->setEnabled(false);
-    translationModel.translate(ui->input->text());
+    on_input_editingFinished();
 }
 
 void MainWindow::translateSuccess(Translation translation)
 {
-    foreach (Translation::Primary const &primary, translation.primary)
-    {
-        ui->sourceText->setText(primary.sourceText);
-        ui->sourcePhonetic->setText(primary.sourcePhonetic);
-        ui->translatedText->setText(primary.translated);
-        ui->translatedPhonetic->setText(primary.translatedPhonetic);
-    }
+    PrimaryTranslation const &primary = translation.primary;
+    ui->sourceText->setText(primary.sourceText);
+    ui->sourcePhonetic->setText(primary.sourcePhonetic);
+    ui->translatedText->setText(primary.translated);
+    ui->translatedPhonetic->setText(primary.translatedPhonetic);
 
     ui->input->setEnabled(true);
     ui->input->setFocus();
 
-    QString translated = ui->translatedText->text();
-    ui->listen->setEnabled(!translated.isEmpty());
+    ui->listen->setEnabled(!primary.translated.isEmpty());
     if (!translation.dictionary.isEmpty())
         tts.prepare(translationModel.targetLanguage(), ui->translatedText->text());
 }
 
-void MainWindow::translateError(QString message)
+void MainWindow::translateFailure(QString message)
 {
+    ui->statusBar->showMessage(message, 10000);
     ui->input->setEnabled(true);
     ui->input->setFocus();
-}
-
-void MainWindow::on_detailed_activated(const QModelIndex &index)
-{
-    if (index.parent().isValid())
-        translationModel.updatePhonetic(index);
 }
 
 
 void MainWindow::on_action_Tools_Trainer_triggered()
 {
-    Trainer trainer(translationModel.sourceLanguage(),
+    Trainer trainer(settings.value("level", 0).value<int>(),
+                    translationModel.sourceLanguage(),
                     translationModel.targetLanguage(),
-                    translationModel.wordList());
+                    translationModel.wordList(),
+                    tts);
 
     this->setVisible(false);
     trainer.exec();
@@ -125,10 +141,15 @@ void MainWindow::on_action_Tools_Trainer_triggered()
 
 void MainWindow::on_action_Tools_Options_triggered()
 {
-    OptionsDialog options(translationModel.sourceLanguage(), translationModel.targetLanguage());
+    OptionsDialog options(settings.value("level", 0).value<int>(),
+                          translationModel.sourceLanguage(),
+                          translationModel.targetLanguage());
     if (options.exec() == QDialog::Accepted)
+    {
         setLanguages(options.sourceLanguage(),
                      options.targetLanguage());
+        settings.setValue("level", options.level());
+    }
 }
 
 void MainWindow::on_listen_clicked()
@@ -144,6 +165,7 @@ void MainWindow::ttsFinished()
 
 void MainWindow::ttsError(QString message)
 {
+    ui->statusBar->showMessage(message, 10000);
     ui->listen->setEnabled(true);
 }
 
@@ -170,13 +192,19 @@ void MainWindow::on_action_Edit_TextToSpeech_triggered()
 {
     QString language = translationModel.targetLanguage();
 
-    QMap<QString, QByteArray> cache = tts.soundFiles(language);
+    QMap<QString, QByteArray> cache = audioManager.audio(language);
     TextToSpeechEditor editor(cache);
     if (editor.exec() == QDialog::Accepted)
-        tts.setSoundFiles(language, editor.soundFiles());
+        audioManager.setAudio(language, editor.soundFiles());
 }
 
 void MainWindow::on_action_Help_About_triggered()
 {
-    QMessageBox::information(this, "About GVoc", QString::fromUtf8("Copyright © 2012 Pippijn van Steenhoven & 周丽娜"));
+    QMessageBox::information(this, "About GVoc", QString::fromUtf8("Copyright © 2012 Pippijn van Steenhoven"));
+}
+
+void MainWindow::on_detailed_activated(const QModelIndex &index)
+{
+    if (index.parent().isValid())
+        tts.synthesise(translationModel.targetLanguage(), index.sibling(index.row(), 0).data().value<QString>());
 }

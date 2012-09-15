@@ -20,67 +20,12 @@ struct TranslatorPrivate
     QString sourceLanguage;
     QString targetLanguage;
 
-    QString translationsFileName() const
-    {
-        return QDir::current().absolutePath()
-                + QString("/translations/%0.%1.dat").arg(sourceLanguage, targetLanguage);
-    }
-
     QString phoneticsFileName() const
     {
         return QDir::current().absolutePath()
                 + QString("/phonetics/%1.dat").arg(targetLanguage);
     }
 
-
-    QMap<QString, Translation> translations() const
-    {
-        QMap<QString, Translation> translations;
-        QFile file(translationsFileName());
-        if (file.open(QFile::ReadOnly))
-        {
-            QByteArray uncompressed = qUncompress(file.readAll());
-            QDataStream data(&uncompressed, QIODevice::ReadOnly);
-            data >> translations;
-        }
-
-        return translations;
-    }
-
-    void setTranslations(QMap<QString, Translation> translations)
-    {
-        QFile file(translationsFileName());
-        if (!file.open(QFile::WriteOnly))
-            qWarning() << "unable to open file for writing:" << file.fileName();
-        else
-        {
-            QByteArray uncompressed;
-            QDataStream data(&uncompressed, QIODevice::WriteOnly);
-            data << translations;
-            file.write(qCompress(uncompressed));
-        }
-    }
-
-    void addTranslation(Translation const &translation)
-    {
-        QMap<QString, Translation> translations = this->translations();
-        translations.insert(translation.primary.at(0).sourceText, translation);
-        setTranslations(translations);
-    }
-
-    QList<Translation> wordList() const
-    {
-        QMap<QString, Translation> translations = this->translations();
-        return translations.values();
-    }
-
-    void setWordList(QList<Translation> wordList)
-    {
-        QMap<QString, Translation> translations;
-        foreach (Translation const &word, wordList)
-            translations.insert(word.primary.at(0).sourceText, word);
-        setTranslations(translations);
-    }
 
 
     QMap<QString, QString> phonetics() const
@@ -140,19 +85,6 @@ Translator::~Translator()
 }
 
 
-QList<Translation> Translator::wordList() const
-{
-    Q_D(const Translator);
-    return d->wordList();
-}
-
-void Translator::setWordList(QList<Translation> wordList)
-{
-    Q_D(Translator);
-    d->setWordList(wordList);
-}
-
-
 QMap<QString, QString> Translator::phonetics() const
 {
     Q_D(const Translator);
@@ -191,109 +123,12 @@ void Translator::setTargetLanguage(QString targetLanguage)
 }
 
 
-void Translator::translate(QString text)
-{
-    Q_D(Translator);
-
-    QMap<QString, Translation> translations = d->translations();
-    QMap<QString, Translation>::const_iterator found = translations.find(text);
-    if (found != translations.end())
-    {
-        emit translateSuccess(found.value());
-        return;
-    }
-
-    typedef QPair<QByteArray, QByteArray> QueryItem;
-
-    QUrl url;
-    url.setScheme("http");
-    url.setHost("translate.google.com");
-    url.setPath("/translate_a/t");
-    url.setEncodedQueryItems(
-        QList<QueryItem>()
-            << QueryItem("client", "t")
-            << QueryItem("text", QUrl::toPercentEncoding(text))
-            << QueryItem("sl", QUrl::toPercentEncoding(d->sourceLanguage))
-            << QueryItem("tl", QUrl::toPercentEncoding(d->targetLanguage))
-            << QueryItem("hl", "en")
-    );
-
-    QNetworkRequest request(url);
-    request.setRawHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1");
-
-    QNetworkReply *reply = d->http.get(request);
-    reply->setProperty(xlatSourceText, text);
-    reply->setProperty(xlatSourceLanguage, d->sourceLanguage);
-    reply->setProperty(xlatTargetLanguage, d->targetLanguage);
-    connect(reply, SIGNAL(finished()), SLOT(translateSuccess()));
-    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), SLOT(translateError(QNetworkReply::NetworkError)));
-}
-
-void Translator::translateError(QNetworkReply::NetworkError error)
-{
-    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    Q_ASSERT(reply != NULL);
-
-    QString sourceText = reply->property(xlatSourceText).value<QString>();
-
-    qWarning() << "error" << error << "while fetching translations for" << sourceText;
-    emit phoneticError("error while fetching translations for " + sourceText);
-}
-
-void Translator::translateSuccess()
-{
-    Q_D(Translator);
-
-    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    Q_ASSERT(reply != NULL);
-
-    QString sourceLanguage = reply->property(xlatSourceLanguage).value<QString>();
-    QString targetLanguage = reply->property(xlatTargetLanguage).value<QString>();
-
-    QByteArray body = QString::fromUtf8(reply->readAll())
-            .replace(",,", ",null,")
-            .replace(",,", ",null,")
-            .toUtf8();
-
-    QJson::Parser parser;
-    bool ok;
-    QVariant parsed = parser.parse(body, &ok);
-    if (!ok)
-    {
-        qWarning("json error: %s", parser.errorString().toUtf8().constData());
-        return;
-    }
-
-#if 0
-    QJson::Serializer serializer;
-    serializer.setIndentMode(QJson::IndentCompact);
-    qDebug("%s", serializer.serialize(parsed).constData());
-#endif
-
-    if (targetLanguage != d->targetLanguage || sourceLanguage != d->sourceLanguage)
-    {
-        emit translateError("language switched while fetching translations");
-        return;
-    }
-
-    Translation translation(qvariant_cast<QVariantList>(parsed));
-    d->addTranslation(translation);
-
-    emit translateSuccess(translation);
-}
-
-
-QString Translator::phoneticNoFetch(QString text) const
-{
-    Q_D(const Translator);
-    return d->phonetics()[text];
-}
 
 void Translator::phonetic(QString text, QVariant userData)
 {
     Q_D(Translator);
 
-    QString phonetic = phoneticNoFetch(text);
+    QString phonetic = d->phonetics()[text];
     if (!phonetic.isEmpty())
     {
         emit phoneticSuccess(phonetic, userData);

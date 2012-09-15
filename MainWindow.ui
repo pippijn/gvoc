@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>GVoc Translator</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -101,7 +101,7 @@
        </sizepolicy>
       </property>
       <property name="title">
-       <string>Input</string>
+       <string>&amp;Input</string>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
@@ -240,7 +240,7 @@
       <item>
        <widget class="QGroupBox" name="groupBox_2">
         <property name="title">
-         <string>Dictionary</string>
+         <string>&amp;Dictionary</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>

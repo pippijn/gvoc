@@ -1496,7 +1496,7 @@ static int huffman_decode(
         g->sb_hybrid[s_index+2]=
         g->sb_hybrid[s_index+3]= 0;
         while(code){
-            const static int idxtab[16]={3,3,2,2,1,1,1,1,0,0,0,0,0,0,0,0};
+            static const int idxtab[16]={3,3,2,2,1,1,1,1,0,0,0,0,0,0,0,0};
             int v;
             int pos= s_index+idxtab[code];
             code ^= 8>>idxtab[code];
@@ -2425,7 +2425,7 @@ static int mp3_decode_main(
 
 ////////////////////////////////////////////////////////////////////////////////
 
-static int mp3_decode_init(mp3_context_t *s) {
+static int mp3_decode_init(void) {
     static int init=0;
     int i, j, k;
 
@@ -2591,7 +2591,7 @@ static int mp3_decode_init(mp3_context_t *s) {
 static int mp3_decode_frame(
     mp3_context_t *s,
     int16_t *out_samples, int *data_size,
-    uint8_t *buf, int buf_size
+    uint8_t const *buf, int buf_size
 ) {
     uint32_t header;
     int out_size;
@@ -2633,7 +2633,7 @@ retry:
 
 mp3_context_t *mp3_create(void) {
     void *dec = libc_calloc(sizeof(mp3_context_t), 1);
-    if (dec) mp3_decode_init((mp3_context_t*) dec);
+    if (dec) mp3_decode_init();
     return dec;
 }
 
@@ -2645,7 +2645,7 @@ int mp3_decode(mp3_context_t *dec, void const *buf, int bytes, signed short *out
     int res, size = -1;
     mp3_context_t *s = dec;
     if (!s) return 0;
-    res = mp3_decode_frame(s, (int16_t*) out, &size, buf, bytes);
+    res = mp3_decode_frame(s, out, &size, buf, bytes);
     if (res < 0) return 0;
     if (info) {
         info->sample_rate = s->sample_rate;

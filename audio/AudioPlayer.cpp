@@ -95,6 +95,7 @@ void AudioPlayer::playMP3(QByteArray const &body)
     if (frameSize == 0)
     {
         qWarning("invalid MP3 file");
+        qDebug() << body.left(512).constData();
         emit finished();
         return;
     }

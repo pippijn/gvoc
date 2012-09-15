@@ -24,23 +24,33 @@ QMap<QString, QString> PhoneticsEditor::phonetics() const
 
 void PhoneticsEditor::initialiseList()
 {
-    ui->wordList->clear();
+    while (ui->wordList->rowCount() >= 1)
+        ui->wordList->removeRow(0);
 
-    int i = 0;
     foreach (QString const &phonetic, phoneticMap.keys())
     {
-        QListWidgetItem *item = new QListWidgetItem(QString("%0 (%1)").arg(phonetic).arg(phoneticMap[phonetic]), ui->wordList);
+        int i = ui->wordList->rowCount();
+        ui->wordList->insertRow(i);
+
+        QTableWidgetItem *item = new QTableWidgetItem(phonetic);
         item->setData(Qt::UserRole, phonetic);
-        i++;
+        ui->wordList->setItem(i, 0, item);
+        ui->wordList->setItem(i, 1, new QTableWidgetItem(phoneticMap[phonetic]));
     }
+
+    ui->total->setText(QString("%0 phonetics").arg(phoneticMap.size()));
 }
 
 
 void PhoneticsEditor::on_deleteItem_clicked()
 {
-    foreach (QListWidgetItem *item, ui->wordList->selectedItems())
+    foreach (QTableWidgetItem *item, ui->wordList->selectedItems())
     {
-        QString phonetic = item->data(Qt::UserRole).value<QString>();
+        QVariant data = item->data(Qt::UserRole);
+        if (!data.isValid())
+            continue;
+
+        QString phonetic = data.value<QString>();
         phoneticMap.remove(phonetic);
     }
 

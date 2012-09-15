@@ -40,6 +40,11 @@ int TreeItem::childNumber() const
 
 TreeItem const *TreeItem::child(int index) const
 {
+    if (childItems.size() <= index)
+    {
+        qWarning("index %d is greater than size %d", index, childItems.size());
+        return NULL;
+    }
     return &childItems.at(index);
 }
 

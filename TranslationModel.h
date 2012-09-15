@@ -5,12 +5,14 @@
 
 #include "TreeItem.h"
 #include "Translator.h"
+class TranslationManager;
+class PhoneticsManager;
 
 class TranslationModel : public QAbstractItemModel
 {
     Q_OBJECT
 public:
-    explicit TranslationModel(QString sourceLanguage, QString targetLanguage, QObject *parent = 0);
+    explicit TranslationModel(TranslationManager &translationManager, PhoneticsManager &phoneticsManager, QString sourceLanguage, QString targetLanguage, QObject *parent = 0);
     ~TranslationModel();
 
     QModelIndex index(int row, int column, const QModelIndex &parent) const;
@@ -21,7 +23,6 @@ public:
     QVariant headerData(int section, Qt::Orientation orientation, int role) const;
 
     void translate(QString text);
-    void updatePhonetic(QModelIndex const &index);
 
     QList<Translation> wordList() const;
     void setWordList(QList<Translation> wordList);
@@ -39,17 +40,28 @@ private:
     TreeItem *getItem(const QModelIndex &index);
 
 signals:
-    void updated(Translation translation);
-    void translateError(QString message);
+    void translateSuccess(Translation translation);
+    void translateFailure(QString errorMessage);
     void phoneticError(QString message);
 
-public slots:
-    void setTranslation(Translation translations);
-    void updatedPhonetic(QString phonetic, QVariant index);
+private slots:
+    void updatePhonetics();
+
+    void translateFailure(QString sourceLanguage, QString targetLanguage, QString sourceText, QVariant userData, QString errorMessage);
+    void translateSuccess(QString sourceLanguage, QString targetLanguage, QString sourceText, QVariant userData, Translation entry);
+
+    void phoneticFailure(QString targetLanguage, QString targetText, QVariant userData, QString errorMessage);
+    void phoneticSuccess(QString targetLanguage, QString targetText, QVariant userData, QString phonetic);
 
 private:
-    Translator translator;
+    TranslationManager &translationManager;
+    PhoneticsManager &phoneticsManager;
+
+    QString sourceLanguageCode;
+    QString targetLanguageCode;
+
     TreeItem root;
+    mutable QList<QModelIndex> phoneticsQueue;
 };
 
 #endif // TRANSLATIONMODEL_H

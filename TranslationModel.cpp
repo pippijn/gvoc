@@ -1,16 +1,25 @@
 #include "TranslationModel.h"
+#include "TranslationManager.h"
+#include "PhoneticsManager.h"
 
 #include <QDebug>
+#include <QTimer>
 
-TranslationModel::TranslationModel(QString sourceLanguage, QString targetLanguage, QObject *parent)
+TranslationModel::TranslationModel(TranslationManager &translationManager, PhoneticsManager &phoneticsManager, QString sourceLanguage, QString targetLanguage, QObject *parent)
     : QAbstractItemModel(parent)
-    , translator(sourceLanguage, targetLanguage, this)
+    , translationManager(translationManager)
+    , phoneticsManager(phoneticsManager)
+
+    , sourceLanguageCode(sourceLanguage)
+    , targetLanguageCode(targetLanguage)
+
     , root(QStringList() << "Word" << "Phonetic" << "Translations")
 {
-    connect(&translator, SIGNAL(translateSuccess(Translation)), SLOT(setTranslation(Translation)));
-    connect(&translator, SIGNAL(phoneticSuccess(QString,QVariant)), SLOT(updatedPhonetic(QString,QVariant)));
-    connect(&translator, SIGNAL(translateError(QString)), SIGNAL(translateError(QString)));
-    connect(&translator, SIGNAL(phoneticError(QString)), SIGNAL(phoneticError(QString)));
+    connect(&translationManager, SIGNAL(success(QString,QString,QString,QVariant,Translation)), SLOT(translateSuccess(QString,QString,QString,QVariant,Translation)));
+    connect(&translationManager, SIGNAL(failure(QString,QString,QString,QVariant,QString)), SLOT(translateFailure(QString,QString,QString,QVariant,QString)));
+
+    connect(&phoneticsManager, SIGNAL(success(QString,QString,QVariant,QString)), SLOT(phoneticSuccess(QString,QString,QVariant,QString)));
+    connect(&phoneticsManager, SIGNAL(failure(QString,QString,QVariant,QString)), SLOT(phoneticFailure(QString,QString,QVariant,QString)));
 }
 
 TranslationModel::~TranslationModel()
@@ -66,6 +75,13 @@ QVariant TranslationModel::data(const QModelIndex &index, int role) const
 
     TreeItem const *item = getItem(index);
 
+    if (index.column() == 0 && item->parent() && item->parent()->parent())
+    {
+        if (phoneticsQueue.isEmpty())
+            QTimer::singleShot(0, const_cast<TranslationModel *>(this), SLOT(updatePhonetics()));
+        phoneticsQueue.append(index);
+    }
+
     return item->data(index.column());
 }
 
@@ -80,42 +96,42 @@ QVariant TranslationModel::headerData(int section, Qt::Orientation orientation, 
 
 QList<Translation> TranslationModel::wordList() const
 {
-    return translator.wordList();
+    return translationManager.translations(sourceLanguage(), targetLanguage());
 }
 
 void TranslationModel::setWordList(QList<Translation> wordList)
 {
-    translator.setWordList(wordList);
+    translationManager.setTranslations(sourceLanguage(), targetLanguage(), wordList);
 }
 
 QMap<QString, QString> TranslationModel::phonetics() const
 {
-    return translator.phonetics();
+    return phoneticsManager.phonetics(targetLanguage());
 }
 
 void TranslationModel::setPhonetics(QMap<QString, QString> phonetics)
 {
-    translator.setPhonetics(phonetics);
+    phoneticsManager.setPhonetics(targetLanguage(), phonetics);
 }
 
 QString TranslationModel::sourceLanguage() const
 {
-    return translator.sourceLanguage();
+    return sourceLanguageCode;
 }
 
 void TranslationModel::setSourceLanguage(QString sourceLanguage)
 {
-    translator.setSourceLanguage(sourceLanguage);
+    this->sourceLanguageCode = sourceLanguage;
 }
 
 QString TranslationModel::targetLanguage() const
 {
-    return translator.targetLanguage();
+    return targetLanguageCode;
 }
 
 void TranslationModel::setTargetLanguage(QString targetLanguage)
 {
-    translator.setTargetLanguage(targetLanguage);
+    this->targetLanguageCode = targetLanguage;
 }
 
 
@@ -138,45 +154,59 @@ TreeItem *TranslationModel::getItem(const QModelIndex &index)
 
 void TranslationModel::translate(QString text)
 {
-    translator.translate(text);
+    translationManager.translation(sourceLanguage(), targetLanguage(), text);
 }
 
 
-Q_DECLARE_METATYPE(QModelIndex)
+void TranslationModel::translateFailure(QString sourceLanguage, QString targetLanguage, QString sourceText, QVariant userData, QString errorMessage)
+{
+    emit translateFailure(errorMessage);
+}
 
-void TranslationModel::setTranslation(Translation translations)
+void TranslationModel::translateSuccess(QString sourceLanguage, QString targetLanguage, QString sourceText, QVariant userData, Translation entry)
 {
     root.clear();
 
-    foreach (Translation::Dictionary const &translation, translations.dictionary)
+    foreach (Dictionary::WordType wordType, entry.dictionary.sections.keys())
     {
-        TreeItem &wordTypeItem = root.addChild(QStringList() << translation.wordTypeName());
-        foreach (QString const &alternative, translation.alternatives)
+        TreeItem &wordTypeItem = root.addChild(QStringList() << Dictionary::wordTypeName(wordType));
+        DictionarySection const &section = entry.dictionary.sections[wordType];
+        foreach (QString const &alternative, section.translations.keys())
         {
             wordTypeItem.addChild(
                 QStringList()
                 << alternative
-                << translator.phoneticNoFetch(alternative)
-                << translation.alternativeTranslations[alternative].join(", "));
-            translator.phonetic(alternative, QVariant::fromValue(QModelIndex()));
+                << ""
+                << section.translations[alternative].join(", "));
         }
     }
 
     reset();
 
-    emit updated(translations);
+    emit translateSuccess(entry);
 }
 
 
-void TranslationModel::updatePhonetic(const QModelIndex &index)
+Q_DECLARE_METATYPE(QModelIndex)
+
+void TranslationModel::updatePhonetics()
 {
-    TreeItem *item = getItem(index);
-    translator.phonetic(item->data(0), QVariant::fromValue(index));
+    std::reverse(phoneticsQueue.begin(), phoneticsQueue.end());
+    foreach (QModelIndex index, phoneticsQueue)
+    {
+        TreeItem *item = getItem(index);
+        phoneticsManager.phonetic(targetLanguage(), item->data(0), QVariant::fromValue(index));
+    }
+    phoneticsQueue.clear();
 }
 
-void TranslationModel::updatedPhonetic(QString phonetic, QVariant index)
+void TranslationModel::phoneticFailure(QString targetLanguage, QString targetText, QVariant userData, QString errorMessage)
 {
-    QModelIndex translationIndex = qvariant_cast<QModelIndex>(index);
+}
+
+void TranslationModel::phoneticSuccess(QString targetLanguage, QString targetText, QVariant userData, QString phonetic)
+{
+    QModelIndex translationIndex = userData.value<QModelIndex>();
     if (!translationIndex.isValid())
         return;
 

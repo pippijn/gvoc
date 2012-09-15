@@ -12,9 +12,10 @@ class OptionsDialog : public QDialog
     Q_OBJECT
     
 public:
-    explicit OptionsDialog(QString sourceLanguage, QString targetLanguage, QWidget *parent = 0);
+    explicit OptionsDialog(int level, QString sourceLanguage, QString targetLanguage, QWidget *parent = 0);
     ~OptionsDialog();
     
+    int level() const;
     QString sourceLanguage() const;
     QString targetLanguage() const;
 

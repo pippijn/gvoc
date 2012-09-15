@@ -3,6 +3,7 @@
 #include <cstdio>
 #include "MainWindow.h"
 
+#include "TranslationDownloader.h"
 
 static void msgHandler(QtMsgType type, char const *message)
 {

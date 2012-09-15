@@ -5,7 +5,9 @@
 #include <QStringList>
 #include <QMap>
 
+#include "TrainingController.h"
 class Translation;
+class TextToSpeech;
 
 namespace Ui {
     class Trainer;
@@ -15,79 +17,29 @@ class Trainer : public QDialog {
     Q_OBJECT
 
 public:
-    Trainer(QString sourceLanguage, QString targetLanguage, QList<Translation> wordList, QWidget *parent = 0);
+    Trainer(int level, QString sourceLanguage, QString targetLanguage, QList<Translation> wordList, TextToSpeech &tts, QWidget *parent = 0);
     ~Trainer();
 
-private:
-    void readWordList(QString list);
-
 private slots:
-    void giveAnswer();
-    void giveHint();
-    void answerGiven();
-    void reverseModeActivated(bool checked);
+    void updateStatus(TrainingStatus status);
+    void madeMistake();
+    void trainingFinished(TrainingStatus status);
+    void gotNextQuestion();
+    void enableListen();
+
+    void on_reverseMode_toggled(bool checked);
+
+    void on_btnListen_clicked();
+    void on_btnHint_clicked();
+    void on_btnAnswer_clicked();
+    void on_btnOK_clicked();
 
 private: // data
     Ui::Trainer *ui;
-
-    struct Vocable
-    {
-        QString word;
-        QString phonetic;
-        QStringList translations;
-        int retries;
-
-        Vocable()
-            : retries(1)
-        {
-        }
-    };
-
-    typedef QList<Vocable> WordList;
-
-    WordList words;
-    WordList::const_iterator current;
-
-    void addWord(Vocable voc);
-
-
-    struct Hint
-    {
-        QString word;
-        QString phonetic;
-    };
-
-    typedef QMap<QString, QList<Hint> > HintMap;
-
-    HintMap hints;
-
-
-    bool reverseMode;
-
-
-    struct Status
-    {
-        int correct;
-        int mistakes;
-        int skipped;
-
-        Status()
-            : correct(0)
-            , mistakes(0)
-            , skipped(0)
-        {
-        }
-    };
-
-    Status status;
-
-private: // functions
-    void updateStatus();
-    bool correct(QString answer, Vocable const &voc);
-    void reset();
-    bool hasNextWord() const;
-    void nextWord();
-    QString question();
+    TextToSpeech &tts;
+    QString sourceLanguage;
+    QString targetLanguage;
+    TrainingController manager;
 };
 
 #endif // TRAINER_H

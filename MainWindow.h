@@ -8,6 +8,15 @@
 #include "Translator.h"
 #include "TranslationModel.h"
 
+#include "PhoneticsDownloader.h"
+#include "PhoneticsManager.h"
+
+#include "TranslationDownloader.h"
+#include "TranslationManager.h"
+
+#include "AudioDownloader.h"
+#include "AudioManager.h"
+
 namespace Ui {
 class MainWindow;
 }
@@ -25,11 +34,10 @@ private:
     void updateLanguageLabels();
 
 private slots:
+    void on_input_editingFinished();
     void on_input_returnPressed();
     void translateSuccess(Translation translation);
-    void translateError(QString message);
-
-    void on_detailed_activated(QModelIndex const &index);
+    void translateFailure(QString message);
 
     void on_action_Tools_Trainer_triggered();
     void on_action_Tools_Options_triggered();
@@ -41,16 +49,27 @@ private slots:
     void on_swapLanguages_clicked();
 
     void on_action_Edit_WordList_triggered();
-
     void on_action_Edit_Phonetics_triggered();
-
     void on_action_Edit_TextToSpeech_triggered();
 
     void on_action_Help_About_triggered();
 
+    void on_detailed_activated(const QModelIndex &index);
+
 private:
     Ui::MainWindow *ui;
     QSettings settings;
+    QNetworkAccessManager networkManager;
+
+    TranslationDownloader translationDownloader;
+    TranslationManager translationManager;
+
+    PhoneticsDownloader phoneticsDownloader;
+    PhoneticsManager phoneticsManager;
+
+    AudioDownloader audioDownloader;
+    AudioManager audioManager;
+
     TranslationModel translationModel;
     TextToSpeech tts;
 };
