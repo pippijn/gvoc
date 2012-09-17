@@ -68,12 +68,7 @@ Vocabulary_en_zh::Vocabulary_en_zh()
 }
 
 
-QString Vocabulary_en_zh::processTargetText(QString targetText) const
-{
-    return targetText;
-}
-
-QString Vocabulary_en_zh::processTargetPhonetic(QString targetPhonetic) const
+QString Vocabulary_en_zh::normalisePhonetic(QString targetPhonetic) const
 {
     QStringList list = targetPhonetic.split(' ');
     bool changed = false;
@@ -126,14 +121,41 @@ QString Vocabulary_en_zh::processTargetPhonetic(QString targetPhonetic) const
     return list.join("");
 }
 
-QString Vocabulary_en_zh::processTranslation(QString translation) const
-{
-    return translation;
-}
-
-QString Vocabulary_en_zh::latinPhonetic(QString targetPhonetic) const
+QString Vocabulary_en_zh::phoneticToLatin(QString targetPhonetic) const
 {
     for (size_t i = 0; i < arraySize(accentMap); i++)
         targetPhonetic.replace(accentMap[i].accented, accentMap[i].normal);
     return targetPhonetic;
+}
+
+bool Vocabulary_en_zh::matchTranslation(QString actual, QString expected) const
+{
+    if (Base::matchTranslation(actual, expected))
+        return true;
+
+    QRegExp nonLatin("[^a-zA-Z0-9]");
+    if (expected.contains(nonLatin))
+    {
+        QString withoutNonLatin = expected;
+        // Remove all non-latin characters
+        if (Base::matchTranslation(actual, withoutNonLatin.remove(nonLatin).simplified()))
+            return true;
+    }
+
+    if (expected.startsWith("to ") || expected.startsWith("a ") || expected.startsWith("an ") || expected.startsWith("the "))
+    {
+        // Word is a verb, compare without "to"
+        if (Base::matchTranslation(actual, expected.right(expected.size() - (expected.indexOf(' ') + 1))))
+            return true;
+    }
+
+    if (expected.contains('('))
+    {
+        QString withoutBracketedTerms = expected;
+        // Remove all brackets
+        if (Base::matchTranslation(actual, withoutBracketedTerms.remove(QRegExp("\\([^)]+\\)")).simplified()))
+            return true;
+    }
+
+    return false;
 }

@@ -89,12 +89,12 @@ void Vocabulary::loadWordlist(QString fileName)
         std::istringstream in(wordsFile.readAll().constData());
 
         int line = 0;
-        std::string item;
 
         while (in)
         {
             line++;
 
+            std::string item;
             if (in.peek() == '#' || in.peek() == '\n')
             {
                 std::getline(in, item);
@@ -113,15 +113,15 @@ void Vocabulary::loadWordlist(QString fileName)
             }
 
             std::getline(in, item, ',');
-            QString targetText = processTargetText(QString::fromUtf8(item.data(), item.length()).simplified());
+            QString targetText = QString::fromUtf8(item.data(), item.length()).simplified();
 
             std::getline(in, item, ',');
-            QString targetPhonetic = processTargetPhonetic(QString::fromUtf8(item.data(), item.length()).simplified());
+            QString targetPhonetic = normalisePhonetic(QString::fromUtf8(item.data(), item.length()).simplified());
 
             std::getline(in, item, '\n');
             QStringList translations = QString::fromUtf8(item.data(), item.length()).split(';', QString::SkipEmptyParts);
             for (int i = 0; i < translations.size(); i++)
-                translations[i] = processTranslation(translations[i].trimmed());
+                translations[i] = translations[i].trimmed();
 
             if (targetText.isEmpty() || translations.empty())
                 continue;
@@ -156,12 +156,12 @@ void Vocabulary::loadHintList(QString fileName)
         std::istringstream in(hintsFile.readAll().constData());
 
         int line = 0;
-        std::string item;
 
         while (in)
         {
             line++;
 
+            std::string item;
             if (in.peek() == '#' || in.peek() == '\n')
             {
                 std::getline(in, item);
@@ -196,20 +196,32 @@ void Vocabulary::addWord(Vocable const &voc)
         existing.translations.append(voc.translations);
     else
         existing = voc;
+
+    existing.translations.removeDuplicates();
 }
 
 
-QStringList Vocabulary::wordList(int maxLevel) const
+QStringList Vocabulary::wordList(int minLevel, int maxLevel) const
 {
     QStringList words;
 
     foreach (Vocable const &voc, vocabulary)
-        if (voc.level <= maxLevel)
+        if (voc.level >= minLevel && voc.level <= maxLevel)
             words.append(voc.targetText);
 
     return words;
 }
 
+
+QStringList Vocabulary::targetOptions(QString word) const
+{
+    VocableMap::const_iterator found = vocabulary.find(word);
+    if (found == vocabulary.end())
+        return QStringList();
+    Vocable const &vocable = found.value();
+
+    return QStringList(vocable.targetText);
+}
 
 QString Vocabulary::targetText(QString word) const
 {
@@ -229,6 +241,16 @@ QString Vocabulary::targetPhonetics(QString word) const
     Vocable const &vocable = found.value();
 
     return vocable.targetPhonetic;
+}
+
+QStringList Vocabulary::sourceOptions(QString word) const
+{
+    VocableMap::const_iterator found = vocabulary.find(word);
+    if (found == vocabulary.end())
+        return QStringList();
+    Vocable const &vocable = found.value();
+
+    return vocable.translations;
 }
 
 QString Vocabulary::sourceText(QString word) const
@@ -261,7 +283,7 @@ bool Vocabulary::matchesSourceText(QString word, QString text) const
     Vocable const &vocable = found.value();
 
     foreach (QString candidate, vocable.translations)
-        if (candidate.compare(text, Qt::CaseInsensitive) == 0)
+        if (matchTranslation(text, candidate))
             return true;
 
     return false;
@@ -275,7 +297,7 @@ bool Vocabulary::matchesTargetText(QString word, QString text) const
     Vocable const &vocable = found.value();
 
     QString targetText = vocable.targetText;
-    QString targetPhonetic = latinPhonetic(vocable.targetPhonetic);
+    QString targetPhonetic = phoneticToLatin(vocable.targetPhonetic);
 
 #if 0
     qDebug() << text << "<matches?>" << targetText << "<or>" << targetPhonetic;
@@ -319,22 +341,17 @@ void Vocabulary::rotateSourceHints(QString word)
 }
 
 
-QString Vocabulary::processTargetText(QString targetText) const
+QString Vocabulary::normalisePhonetic(QString phonetic) const
 {
-    return targetText;
+    return phonetic;
 }
 
-QString Vocabulary::processTargetPhonetic(QString targetPhonetic) const
+QString Vocabulary::phoneticToLatin(QString phonetic) const
 {
-    return targetPhonetic;
+    return phonetic;
 }
 
-QString Vocabulary::processTranslation(QString translation) const
+bool Vocabulary::matchTranslation(QString actual, QString expected) const
 {
-    return translation;
-}
-
-QString Vocabulary::latinPhonetic(QString targetPhonetic) const
-{
-    return targetPhonetic;
+    return actual.compare(expected, Qt::CaseInsensitive) == 0;
 }

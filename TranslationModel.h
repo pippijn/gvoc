@@ -1,26 +1,19 @@
 #ifndef TRANSLATIONMODEL_H
 #define TRANSLATIONMODEL_H
 
-#include <QAbstractItemModel>
-
-#include "TreeItem.h"
+#include "AbstractTreeModel.h"
 #include "Translator.h"
 class TranslationManager;
 class PhoneticsManager;
 
-class TranslationModel : public QAbstractItemModel
+class TranslationModel : public AbstractTreeModel
 {
     Q_OBJECT
 public:
     explicit TranslationModel(TranslationManager &translationManager, PhoneticsManager &phoneticsManager, QString sourceLanguage, QString targetLanguage, QObject *parent = 0);
     ~TranslationModel();
 
-    QModelIndex index(int row, int column, const QModelIndex &parent) const;
-    QModelIndex parent(const QModelIndex &child) const;
-    int rowCount(const QModelIndex &parent) const;
-    int columnCount(const QModelIndex &parent) const;
     QVariant data(const QModelIndex &index, int role) const;
-    QVariant headerData(int section, Qt::Orientation orientation, int role) const;
 
     void translate(QString text);
 
@@ -34,10 +27,6 @@ public:
     void setSourceLanguage(QString sourceLanguage);
     QString targetLanguage() const;
     void setTargetLanguage(QString targetLanguage);
-
-private:
-    TreeItem const *getItem(const QModelIndex &index) const;
-    TreeItem *getItem(const QModelIndex &index);
 
 signals:
     void translateSuccess(Translation translation);
@@ -60,7 +49,6 @@ private:
     QString sourceLanguageCode;
     QString targetLanguageCode;
 
-    TreeItem root;
     mutable QList<QModelIndex> phoneticsQueue;
 };
 

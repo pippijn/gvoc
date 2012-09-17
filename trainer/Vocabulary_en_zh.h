@@ -5,6 +5,8 @@
 
 class Vocabulary_en_zh : public Vocabulary::Derived<Vocabulary_en_zh>
 {
+    typedef Vocabulary::Derived<Vocabulary_en_zh> Base;
+
 public:
     static QString const className;
 
@@ -12,10 +14,9 @@ public:
     Vocabulary_en_zh();
 
 private:
-    QString processTargetText(QString targetText) const;
-    QString processTargetPhonetic(QString targetPhonetic) const;
-    QString processTranslation(QString translation) const;
-    QString latinPhonetic(QString targetPhonetic) const;
+    QString normalisePhonetic(QString targetPhonetic) const;
+    QString phoneticToLatin(QString targetPhonetic) const;
+    bool matchTranslation(QString actual, QString expected) const;
 };
 
 #endif // VOCABULARY_ZH_H

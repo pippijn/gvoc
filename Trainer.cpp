@@ -8,13 +8,13 @@
 #include <QDebug>
 #include <QSettings>
 
-Trainer::Trainer(int level, QString sourceLanguage, QString targetLanguage, QList<Translation> wordList, TextToSpeech &tts, QWidget *parent)
+Trainer::Trainer(int minLevel, int maxLevel, QString sourceLanguage, QString targetLanguage, QList<Translation> wordList, TextToSpeech &tts, QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::Trainer)
     , tts(tts)
     , sourceLanguage(sourceLanguage)
     , targetLanguage(targetLanguage)
-    , manager(level, sourceLanguage, targetLanguage)
+    , manager(minLevel, maxLevel, sourceLanguage, targetLanguage)
 {
     ui->setupUi(this);
 
@@ -23,17 +23,26 @@ Trainer::Trainer(int level, QString sourceLanguage, QString targetLanguage, QLis
     connect(&manager, SIGNAL(finished(TrainingStatus)), SLOT(trainingFinished(TrainingStatus)));
     connect(&manager, SIGNAL(nextQuestion()), SLOT(gotNextQuestion()));
 
-    connect(&tts, SIGNAL(synthesisReady()), SLOT(enableListen()));
+    connect(&tts, SIGNAL(synthesisReady(QString,QString)), SLOT(enableListen()));
+    connect(&tts, SIGNAL(synthesisSuccess()), SLOT(enableListen()));
 
     QSettings settings;
     ui->reverseMode->setChecked(settings.value("reverseMode").value<bool>());
 
     manager.loadWords(wordList);
-    manager.loadWords(QDir(":/wordlists"));
 
-    QDir dir = QDir::current();
-    if (dir.cd("wordlists"))
+    QDir dir(":/wordlists");
+    {
         manager.loadWords(dir);
+        manager.loadHints(dir);
+    }
+
+    dir = QDir::current();
+    if (dir.cd("wordlists"))
+    {
+        manager.loadWords(dir);
+        manager.loadHints(dir);
+    }
 
     manager.start();
 }
@@ -81,6 +90,7 @@ void Trainer::gotNextQuestion()
 
     ui->reverseMode->setEnabled(true);
 
+    ui->btnTranslations->setEnabled(false);
     ui->btnAnswer->setEnabled(true);
     ui->btnHint->setEnabled(manager.hasHint());
     ui->btnListen->setEnabled(false);
@@ -103,7 +113,13 @@ void Trainer::on_reverseMode_toggled(bool checked)
 
 void Trainer::on_btnListen_clicked()
 {
-    tts.synthesise(manager.questionLanguage(), manager.questionText());
+    ui->btnListen->setEnabled(false);
+    tts.queue(manager.questionLanguage(), manager.questionText());
+
+    if (!ui->btnAnswer->isEnabled())
+        tts.queue(manager.answerLanguage(), manager.answerText());
+
+    tts.runQueue();
 }
 
 void Trainer::on_btnHint_clicked()
@@ -114,8 +130,9 @@ void Trainer::on_btnHint_clicked()
 
 void Trainer::on_btnAnswer_clicked()
 {
-    ui->answer->setText(manager.answer());
+    ui->answer->setText(manager.answerText());
     ui->answer->setEnabled(false);
+    ui->btnTranslations->setEnabled(true);
     ui->btnAnswer->setEnabled(false);
 }
 
@@ -133,4 +150,9 @@ void Trainer::on_btnOK_clicked()
         manager.giveAnswer(answer);
     else
         manager.skip();
+}
+
+void Trainer::on_btnTranslations_clicked()
+{
+    QMessageBox::information(this, "Other translations", manager.answerOptions().join("<br/>"));
 }

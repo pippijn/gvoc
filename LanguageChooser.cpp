@@ -1,9 +1,9 @@
 #include "LanguageChooser.h"
 #include "ui_LanguageChooser.h"
 
-LanguageChooser::LanguageChooser(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::LanguageChooser)
+LanguageChooser::LanguageChooser(QWidget *parent)
+    : QWidget(parent)
+    , ui(new Ui::LanguageChooser)
 {
     ui->setupUi(this);
 }

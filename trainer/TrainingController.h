@@ -21,7 +21,19 @@ class TrainingController : public QObject
     };
 
 public:
-    TrainingController(int level, QString sourceLanguage, QString targetLanguage, QObject *parent = 0);
+    struct LanguageSelector;
+    friend struct TargetLanguageSelector;
+    friend struct SourceLanguageSelector;
+
+private:
+    LanguageSelector &questionSelector();
+    LanguageSelector const &questionSelector() const;
+
+    LanguageSelector &answerSelector();
+    LanguageSelector const &answerSelector() const;
+
+public:
+    TrainingController(int minLevel, int maxLevel, QString sourceLanguage, QString targetLanguage, QObject *parent = 0);
     ~TrainingController();
 
     void loadWords(QDir location);
@@ -37,15 +49,19 @@ public:
     QString questionText() const;
     QString questionPhonetic() const;
     QString question() const;
+    QString answerLanguage() const;
+    QString answerText() const;
+    QString answerPhonetic() const;
+    QStringList answerOptions() const;
     QString answer() const;
     bool hasHint() const;
     QString hint() const;
     void rotateHints();
-    bool correct(QString answer) const;
+    bool hasRetries() const;
 
     void nextWord();
     void skip();
-    void giveAnswer(QString answer);
+    void giveAnswer(QString answerText);
 
     int totalWords() const;
     int remainingWords() const;
@@ -58,10 +74,11 @@ signals:
 
 private:
     TrainingStatus status;
-    LanguageMode languageMode;
+    LanguageSelector *languageMode[2];
     bool started;
 
-    int level;
+    int minLevel;
+    int maxLevel;
     QString sourceLanguage;
     QString targetLanguage;
 

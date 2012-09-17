@@ -1,20 +1,144 @@
 #include "TrainingController.h"
 #include "Vocabulary.h"
 
-TrainingController::TrainingController(int level, QString sourceLanguage, QString targetLanguage, QObject *parent)
+
+struct TrainingController::LanguageSelector
+{
+    virtual QString language() const = 0;
+    virtual QString text() const = 0;
+    virtual QString phonetic() const = 0;
+    virtual QStringList options() const = 0;
+    virtual QString hint() const = 0;
+    virtual void rotateHints() = 0;
+    virtual bool matches(QString answer) const = 0;
+
+    LanguageSelector(TrainingController &self)
+        : self(self)
+    {
+    }
+
+    virtual ~LanguageSelector()
+    {
+    }
+
+    TrainingController &self;
+};
+
+
+struct TargetLanguageSelector : TrainingController::LanguageSelector
+{
+    TargetLanguageSelector(TrainingController &self)
+        : LanguageSelector(self)
+    {
+    }
+
+    QString language() const
+    {
+        return self.targetLanguage;
+    }
+    QString text() const
+    {
+        return self.vocabulary->targetText(*self.currentWord);
+    }
+    QString phonetic() const
+    {
+        return self.vocabulary->targetPhonetics(*self.currentWord);
+    }
+    QStringList options() const
+    {
+        return self.vocabulary->targetOptions(*self.currentWord);
+    }
+    QString hint() const
+    {
+        return self.vocabulary->targetHint(*self.currentWord);
+    }
+    void rotateHints()
+    {
+        return self.vocabulary->rotateTargetHints(*self.currentWord);
+    }
+    bool matches(QString answer) const
+    {
+        return self.vocabulary->matchesTargetText(*self.currentWord, answer);
+    }
+};
+
+struct SourceLanguageSelector : TrainingController::LanguageSelector
+{
+    SourceLanguageSelector(TrainingController &self)
+        : LanguageSelector(self)
+    {
+    }
+
+    QString language() const
+    {
+        return self.sourceLanguage;
+    }
+    QString text() const
+    {
+        return self.vocabulary->sourceText(*self.currentWord);
+    }
+    QString phonetic() const
+    {
+        return self.vocabulary->sourcePhonetics(*self.currentWord);
+    }
+    QStringList options() const
+    {
+        return self.vocabulary->sourceOptions(*self.currentWord);
+    }
+    QString hint() const
+    {
+        return self.vocabulary->sourceHint(*self.currentWord);
+    }
+    void rotateHints()
+    {
+        return self.vocabulary->rotateSourceHints(*self.currentWord);
+    }
+    bool matches(QString answer) const
+    {
+        return self.vocabulary->matchesSourceText(*self.currentWord, answer);
+    }
+};
+
+
+TrainingController::TrainingController(int minLevel, int maxLevel, QString sourceLanguage, QString targetLanguage, QObject *parent)
     : QObject(parent)
-    , languageMode(TargetLanguage)
     , started(false)
-    , level(level)
+    , minLevel(minLevel)
+    , maxLevel(maxLevel)
     , sourceLanguage(sourceLanguage)
     , targetLanguage(targetLanguage)
     , vocabulary(Vocabulary::create(sourceLanguage, targetLanguage))
 {
+    srand(time(NULL));
+
+    languageMode[0] = new SourceLanguageSelector(*this);
+    languageMode[1] = new TargetLanguageSelector(*this);
 }
 
 TrainingController::~TrainingController()
 {
+    delete languageMode[1];
+    delete languageMode[0];
     delete vocabulary;
+}
+
+
+TrainingController::LanguageSelector &TrainingController::answerSelector()
+{
+    return *languageMode[0];
+}
+TrainingController::LanguageSelector const &TrainingController::answerSelector() const
+{
+    return *languageMode[0];
+}
+
+TrainingController::LanguageSelector &TrainingController::questionSelector()
+{
+    return *languageMode[1];
+}
+TrainingController::LanguageSelector const &TrainingController::questionSelector() const
+{
+    return *languageMode[1];
 }
 
 
@@ -50,15 +174,19 @@ QStringList const &TrainingController::words() const
 void TrainingController::start()
 {
     Q_ASSERT(!started);
-    wordList = vocabulary->wordList(level);
+    wordList = vocabulary->wordList(minLevel, maxLevel);
+    std::random_shuffle(wordList.begin(), wordList.end());
     currentWord = wordList.begin();
 
     if (currentWord == wordList.end())
         return;
 
-    retries.clear();
-    foreach (QString const &word, wordList)
-        retries.insert(word, 1);
+    if (!hasRetries())
+    {
+        retries.clear();
+        foreach (QString const &word, wordList)
+            retries.insert(word, 1);
+    }
 
     status = TrainingStatus();
     statusChanged(status);
@@ -70,63 +198,14 @@ void TrainingController::start()
 void TrainingController::toggleLanguageMode()
 {
     Q_ASSERT(started);
-    switch (languageMode)
-    {
-    case TargetLanguage:
-        languageMode = SourceLanguage;
-        break;
-    case SourceLanguage:
-        languageMode = TargetLanguage;
-        break;
-    }
+    qSwap(languageMode[0], languageMode[1]);
 
     nextWord();
 }
 
-QString TrainingController::questionLanguage() const
-{
-    Q_ASSERT(started);
-    switch (languageMode)
-    {
-    case TargetLanguage:
-        return targetLanguage;
-    case SourceLanguage:
-        return sourceLanguage;
-    }
-
-    qFatal("invalid language mode: %d", languageMode);
-    return QString();
-}
-
-QString TrainingController::questionText() const
-{
-    Q_ASSERT(started);
-    switch (languageMode)
-    {
-    case TargetLanguage:
-        return vocabulary->targetText(*currentWord);
-    case SourceLanguage:
-        return vocabulary->sourceText(*currentWord);
-    }
-
-    qFatal("invalid language mode: %d", languageMode);
-    return QString();
-}
-
-QString TrainingController::questionPhonetic() const
-{
-    Q_ASSERT(started);
-    switch (languageMode)
-    {
-    case TargetLanguage:
-        return vocabulary->targetPhonetics(*currentWord);
-    case SourceLanguage:
-        return vocabulary->sourcePhonetics(*currentWord);
-    }
-
-    qFatal("invalid language mode: %d", languageMode);
-    return QString();
-}
+QString TrainingController::questionLanguage() const { return questionSelector().language(); }
+QString TrainingController::questionText() const { return questionSelector().text(); }
+QString TrainingController::questionPhonetic() const { return questionSelector().phonetic(); }
 
 QString TrainingController::question() const
 {
@@ -139,20 +218,24 @@ QString TrainingController::question() const
     return text;
 }
 
+QString TrainingController::answerLanguage() const { return answerSelector().language(); }
+QString TrainingController::answerText() const { return answerSelector().text(); }
+QString TrainingController::answerPhonetic() const { return answerSelector().phonetic(); }
+QStringList TrainingController::answerOptions() const { return answerSelector().options(); }
+
 QString TrainingController::answer() const
 {
     Q_ASSERT(started);
-    switch (languageMode)
-    {
-    case TargetLanguage:
-        return vocabulary->sourceText(*currentWord);
-    case SourceLanguage:
-        return vocabulary->targetText(*currentWord);
-    }
+    QString text = answerText();
+    QString phonetic = answerPhonetic();
 
-    qFatal("invalid language mode: %d", languageMode);
-    return QString();
+    if (!phonetic.isEmpty())
+        return QString("%0 (%1)").arg(text, phonetic);
+    return text;
 }
+
+QString TrainingController::hint() const { return answerSelector().hint(); }
+void TrainingController::rotateHints() { answerSelector().rotateHints(); }
 
 bool TrainingController::hasHint() const
 {
@@ -160,45 +243,11 @@ bool TrainingController::hasHint() const
     return !hint().isEmpty();
 }
 
-QString TrainingController::hint() const
+bool TrainingController::hasRetries() const
 {
-    Q_ASSERT(started);
-    switch (languageMode)
-    {
-    case TargetLanguage:
-        return vocabulary->targetHint(*currentWord);
-    case SourceLanguage:
-        return vocabulary->sourceHint(*currentWord);
-    }
-
-    qFatal("invalid language mode: %d", languageMode);
-    return QString();
-}
-
-void TrainingController::rotateHints()
-{
-    Q_ASSERT(started);
-    switch (languageMode)
-    {
-    case TargetLanguage:
-        return vocabulary->rotateTargetHints(*currentWord);
-    case SourceLanguage:
-        return vocabulary->rotateSourceHints(*currentWord);
-    }
-}
-
-bool TrainingController::correct(QString answer) const
-{
-    Q_ASSERT(started);
-    switch (languageMode)
-    {
-    case TargetLanguage:
-        return vocabulary->matchesSourceText(*currentWord, answer);
-    case SourceLanguage:
-        return vocabulary->matchesTargetText(*currentWord, answer);
-    }
-
-    qFatal("invalid language mode: %d", languageMode);
+    foreach (int value, retries.values())
+        if (value > 0)
+            return true;
     return false;
 }
 
@@ -234,12 +283,15 @@ void TrainingController::skip()
 }
 
 void TrainingController::giveAnswer(QString answer)
-{
+{    
     Q_ASSERT(started);
-    if (correct(answer))
+    answer = answer.simplified();
+
+    if (answerSelector().matches(answer))
     {
         status.correct++;
         statusChanged(status);
+        retries[*currentWord]--;
         nextWord();
     }
     else

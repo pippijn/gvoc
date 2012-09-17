@@ -92,39 +92,40 @@
 1,	有,             yǒu,            have; own
 
 # (3)
-1,	看,             kàn,            see
-1,	听,             tīng,           listen; hear
-1,	说话,           shuōhuà,        speak; speak with; talk to
-1,	读,             dú,             read aloud; read
-1,	写,             xiě,            write
-1,	看见,           kànjiàn,        see someone; see
-1,	叫,             jiào,           be called; call
-1,	来,             lái,            come
-1,	回,             huí,            return
-1,	去,             qù,             go; go to
-1,	吃,             chī,            eat
-1,	喝,             hē,             drink
-1,	睡觉,           shuìjiào,       sleep
-1,	打电话,         dǎ diànhuà,     make a phone call; phone; phone call; call
-1,	做,             zuò,            make
-1,	买,             mǎi,            buy
-1,	卖,             mài,            sell
-1,	开,             kāi,            drive; open; turn on
-1,	坐,             zuò,            sit
-1,	住,             zhù,            reside; dwell; live
-1,	学习,           xuéxí,          learn; study
-1,	工作,           gōngzuò,        work
-1,	下雨,           xià yǔ,         rain
+1,	看,             kàn,            to see
+1,	听,             tīng,           to listen; to hear
+1,	说话,           shuōhuà,        to speak; to speak with; to talk to
+1,	读,             dú,             to read aloud; to read
+1,	写,             xiě,            to write
+1,	看见,           kànjiàn,        to see someone; to see
+1,	叫,             jiào,           to be called; to call
+1,	来,             lái,            to come
+1,	回,             huí,            to return
+1,	去,             qù,             to go; to go to
+1,	吃,             chī,            to eat
+1,	喝,             hē,             to drink
+1,	睡觉,           shuìjiào,       to sleep
+1,	打电话,         dǎ diànhuà,     to make a phone call; to phone; phone call; to call
+1,	电话,           diànhuà,        phone
+1,	做,             zuò,            to make
+1,	买,             mǎi,            to buy
+1,	卖,             mài,            to sell
+1,	开,             kāi,            to drive; to open; to turn on
+1,	坐,             zuò,            to sit
+1,	住,             zhù,            to reside; to dwell; to live
+1,	学习,           xuéxí,          to learn; to study
+1,	工作,           gōngzuò,        to work
+1,	下雨,           xià yǔ,         to rain; rain
 
 # (4)
-1,	爱,             ài,             love
-1,	喜欢,           xǐhuan,         like
-1,	想,             xiǎng,          miss; want; wish; would like; feel like; hope
-1,	认识,           rènshi,         know someone; know
+1,	爱,             ài,             to love
+1,	喜欢,           xǐhuan,         to like
+1,	想,             xiǎng,          to miss; to want; to wish; would like; to feel like; to hope
+1,	认识,           rènshi,         to know someone; to know
 
 # (5)
-1,	会,             huì,            be able to; can
-1,	能,             néng,           be good at; can
+1,	会,             huì,            to be able to; can
+1,	能,             néng,           to be good at; can
 
 # 3. ... (28)
 1,	好,             hǎo,            good
@@ -187,7 +188,7 @@
 1,	和,             hé,             and; both; with
 
 # 9. .. (6)
-1,	在,             zài,            be at; at
+1,	在,             zài,            to be at; at
 
 # 10. .. (8)
 1,	的,             de,             possessive particle; of

@@ -1,5 +1,5 @@
-3,	阿姨,		a1 yi2,				maternal aunt; step-mother; childcare worker; nursemaid; woman of similar age to one's parents (term of address used by child)
-3,	啊,		a5,				modal particle ending sentence, showing affirmation, approval, or consent
+3,	阿姨,		a1 yi2,				maternal aunt; aunt; step-mother; childcare worker; nursemaid; woman of similar age to one's parents (term of address used by child)
+3,	啊,		a5,				approval particle; modal particle ending sentence, showing affirmation, approval, or consent; affirmation; approval; consent
 5,	唉,		ai1,				interjection or grunt of agreement or recognition (e.g. yes, it's me!); to sigh
 6,	哎哟,		ai1 yo1,			hey; ow; ouch; interjection of pain or surprise
 6,	挨,		ai2,				to suffer from; to endure; to tide over (a difficult period); to delay
@@ -92,7 +92,7 @@
 6,	包装,		bao1 zhuang1,			pack; package
 5,	包子,		bao1 zi5,			steamed stuffed bun
 5,	薄,		bao2,				thin; cold in manner; indifferent; weak; light; infertile
-3,	饱,		bao3,				to eat till full; satisfied
+3,	饱,		bao3,				to eat till full; satisfied; full (of food)
 5,	宝贝,		bao3 bei4,			treasured object; treasure; darling; baby; cowry; good-for-nothing or queer character
 5,	保持,		bao3 chi2,			to keep; to maintain; to hold; to preserve
 5,	保存,		bao3 cun2,			to conserve; to preserve; to keep; to save (a file etc) (computing)
@@ -125,7 +125,7 @@
 6,	暴力,		bao4 li4,			violence; (use) force; violent
 6,	暴露,		bao4 lu4,			to expose; to reveal; to lay bare
 4,	报名,		bao4 ming2,			to sign up; to enter one's name; to apply; to register; to enroll; to enlist
-4,	抱歉,		bao4 qian4,			sorry; We apologize!; to feel apologetic; to regret
+4,	抱歉,		bao4 qian4,			sorry; We apologise!; to feel apologetic; to regret
 6,	报社,		bao4 she4,			general office of a newspaper; newspaper office
 6,	报销,		bao4 xiao1,			submit an expense account; apply for reimbursement; write-off; wipe out
 6,	抱怨,		bao4 yuan4,			to complain; to grumble
@@ -141,7 +141,7 @@
 1,	北京,		Bei3 jing1,			Beijing, capital of People's Republic of China; Peking; PRC government
 5,	倍,		bei4,				(two, three etc) -fold; times (multiplier); double; to increase or multiply
 4,	被,		bei4,				by (indicates passive-voice sentences or clauses); quilt; to cover (literary)
-3,	背,		bei4,				the back of a body or object; to turn one's back; to hide something from; to learn by heart; to recite from memory
+3,	背,		bei4,				the back of a body or object; the back of a body; the back of an object; to turn one's back; to hide something from; to learn by heart; to recite from memory
 6,	被动,		bei4 dong4,			passive
 6,	备份,		bei4 fen4,			backup
 6,	被告,		bei4 gao4,			defendant
@@ -217,7 +217,7 @@
 6,	便利,		bian4 li4,			convenient; easy; facilitate
 5,	辩论,		bian4 lun4,			debate; argument; to argue over
 6,	变迁,		bian4 qian1,			changes; vicissitudes
-6,	辨认,		bian4 ren4,			to recognize; to identify
+6,	辨认,		bian4 ren4,			to recognise; to identify
 6,	便条,		bian4 tiao2,			(informal) note
 6,	便于,		bian4 yu2,			easy to; convenient for
 6,	辩证,		bian4 zheng4,			investigate; dialectical
@@ -228,7 +228,7 @@
 6,	标记,		biao1 ji4,			sign; mark; symbol; to mark up
 6,	飙升,		biao1 sheng1,			to rise rapidly; to soar
 6,	标题,		biao1 ti2,			title; heading; headline; caption; subject
-5,	标志,		biao1 zhi4,			sign; mark; symbol; symbolize; to indicate; to mark
+5,	标志,		biao1 zhi4,			sign; mark; symbol; symbolise; to indicate; to mark
 4,	标准,		biao1 zhun3,			(an official) standard; norm; criterion
 4,	表达,		biao3 da2,			to voice (an opinion); to express; to convey
 4,	表格,		biao3 ge2,			form; table
@@ -251,7 +251,7 @@
 3,	宾馆,		bin1 guan3,			guesthouse
 6,	濒临,		bin1 lin2,			on the verge of; close to
 6,	冰雹,		bing1 bao2,			hail; hailstone
-3,	冰箱,		bing1 xiang1,			icebox; freezer cabinet; refrigerator
+3,	冰箱,		bing1 xiang1,			fridge; icebox; freezer cabinet; refrigerator
 5,	丙,		bing3,				third of 10 heavenly stems 十天干; third in order; letter "C" or roman "III" in list "A, B, C", or "I, II, III" etc; propyl
 4,	饼干,		bing3 gan1,			biscuit; cracker; cookie
 6,	并存,		bing4 cun2,			to exist at the same time; to coexist
@@ -278,7 +278,7 @@
 5,	补充,		bu3 chong1,			to replenish; to supplement; to complement; additional; supplementary
 6,	补救,		bu3 jiu4,			remedy
 6,	哺乳,		bu3 ru3,			breast feeding; to suckle; to nurse
-6,	补贴,		bu3 tie1,			to subsidize; subsidy; allowance
+6,	补贴,		bu3 tie1,			to subsidise; subsidy; allowance
 6,	捕捉,		bu3 zhuo1,			to catch; to seize; to capture
 1,	不,		bu4,				(negative prefix); not; no
 5,	布,		bu4,				cloth; to declare; to announce; to spread; to make known
@@ -381,7 +381,7 @@
 6,	测量,		ce4 liang2,			survey; to measure; to gauge; to determine
 6,	策略,		ce4 lve4,			tactics; to be tactful
 6,	侧面,		ce4 mian4,			lateral side; side; aspect; profile
-5,	厕所,		ce4 suo3,			toilet; lavatory
+5,	厕所,		ce4 suo3,			toilet; lavatory; WC
 5,	测验,		ce4 yan4,			test; to test
 3,	层,		ceng2,				layer; stratum; laminated; floor (of a building); storey; classifier for layers; repeated; sheaf (math.)
 6,	层出不穷,	ceng2 chu1 bu4 qiong2,		more and more emerge; innumerable succession; breeding like flies (idiom)
@@ -394,7 +394,7 @@
 1,	茶,		cha2,				tea; tea plant
 6,	查获,		cha2 huo4,			to investigate and capture (a criminal); to ferret out; to hunt down and arrest
 6,	岔,		cha4,				fork in road; bifurcation; branch in road, river, mountain range etc; to branch off; to turn off; to diverge; to stray (from the path); to change the subject; to interrupt; to stagger (times)
-3,	差,		cha4,				differ from; short of; to lack; poor
+3,	差,		cha4,				differ (from); short of; to lack; poor
 4,	差不多,		cha4 bu5 duo1,			almost; nearly; more or less
 6,	刹那,		cha4 na4,			an instant (Sanskrit: ksana); split second; the twinkling of an eye
 6,	诧异,		cha4 yi4,			flabbergasted; astonished
@@ -430,7 +430,7 @@
 6,	畅通,		chang4 tong1,			unimpeded; free-flowing; straight path; unclogged; move without obstruction
 6,	畅销,		chang4 xiao1,			best seller; chart-topping
 6,	倡议,		chang4 yi4,			to suggest; to initiate; proposal; initiative
-5,	抄,		chao1,				to copy; to plagiarize; to search and seize; to go; to transcribe; to take a shortcut; to search and confiscate
+5,	抄,		chao1,				to copy; to plagiarise; to search and seize; to go; to transcribe; to take a shortcut; to search and confiscate
 4,	超过,		chao1 guo4,			to surpass; to exceed; to outstrip
 6,	超级,		chao1 ji2,			transcending; high grade; super-; ultra-
 6,	钞票,		chao1 piao4,			paper money; a bill (e.g. 100 yuan)
@@ -466,7 +466,7 @@
 5,	称呼,		cheng1 hu5,			to call; to address as; appellation
 5,	称赞,		cheng1 zan4,			to praise; to acclaim; to commend; to compliment
 5,	乘,		cheng2,				to ride; to mount; to make use of; to avail oneself of; to take advantage of; to multiply (mathematics); Buddhist sect or creed
-6,	橙,		cheng2,				orange tree; orange (color)
+6,	橙,		cheng2,				orange tree; orange (colour)
 6,	盛,		cheng2,				to hold; contain; to ladle; pick up with a utensil
 6,	承办,		cheng2 ban4,			to undertake; to accept a contract
 6,	承包,		cheng2 bao1,			to contract; to undertake (a job)
@@ -485,7 +485,7 @@
 5,	成立,		cheng2 li4,			to establish; to set up; to be tenable; to hold water
 6,	承诺,		cheng2 nuo4,			to promise; to undertake to do something; commitment
 6,	澄清,		cheng2 qing1,			clear (of liquid); limpid; to clarify; to make sth clear; to be clear (about the facts)
-5,	承认,		cheng2 ren4,			to admit; to concede; to recognize; recognition (diplomatic, artistic etc); to acknowledge
+5,	承认,		cheng2 ren4,			to admit; to concede; to recognise; recognition (diplomatic, artistic etc); to acknowledge
 4,	诚实,		cheng2 shi2,			honest; honesty; honorable; truthful
 3,	城市,		cheng2 shi4,			city; town
 5,	承受,		cheng2 shou4,			to bear; to support; to inherit
@@ -726,7 +726,7 @@
 5,	单元,		dan1 yuan2,			unit; entrance number; staircase (for residential buildings)
 6,	胆怯,		dan3 qie4,			timid; cowardly
 5,	胆小鬼,		dan3 xiao3 gui3,		coward
-5,	淡,		dan4,				insipid; diluted; weak; mild; light in color; tasteless; fresh; indifferent; nitrogen
+5,	淡,		dan4,				insipid; diluted; weak; mild; light in colour; tasteless; fresh; indifferent; nitrogen
 6,	蛋白质,		dan4 bai2 zhi4,			protein
 6,	诞辰,		dan4 chen2,			birthday
 3,	蛋糕,		dan4 gao1,			cake
@@ -771,7 +771,7 @@
 4,	到底,		dao4 di3,			finally; in the end; when all is said and done; after all; to the end; to the last
 6,	稻谷,		dao4 gu3,			rice crops
 5,	道理,		dao4 li3,			reason; argument; sense; principle; basis; justification
-4,	道歉,		dao4 qian4,			to apologize; to make an apology
+4,	道歉,		dao4 qian4,			to apologise; to make an apology
 6,	盗窃,		dao4 qie4,			to steal
 6,	得不偿失,	de2 bu4 chang2 shi1,		(saying) the gains do not make up for the losses
 6,	得力,		de2 li4,			able; capable; competent; efficient
@@ -883,7 +883,7 @@
 6,	动态,		dong4 tai4,			development; trend; dynamic state; movement; moving
 3,	动物,		dong4 wu4,			animal
 6,	洞穴,		dong4 xue2,			cave; cavern
-6,	动员,		dong4 yuan2,			mobilize; arouse
+6,	动员,		dong4 yuan2,			mobilise; arouse
 4,	动作,		dong4 zuo4,			movement; motion; action
 6,	兜,		dou1,				pocket; bag; to wrap up or hold in a bag; to move in a circle; to canvas or solicit; to take responsibility for; to disclose in detail; combat armor (old)
 1,	都,		dou1,				all, both; entirely (due to) each; even; already
@@ -907,7 +907,7 @@
 6,	端,		duan1,				end; extremity; item; port; to hold sth level with both hands; to carry; regular
 6,	端午节,		duan1 wu3 jie2,			The Dragon Boat Festival (the 5th day of the 5th lunar month)
 6,	端正,		duan1 zheng4,			upright; regular; proper; correct
-3,	短,		duan3,				short or brief; to lack; weak point; fault
+3,	短,		duan3,				short; brief; to lack; weak point; fault
 6,	短促,		duan3 cu4,			short in time; fleeting; brief
 5,	短信,		duan3 xin4,			text message; SMS
 4,	断,		duan4,				to break; to snap; to cut off; to give up or abstain from sth; to judge; (usu. used in the negative) absolutely, definitely,decidedly
@@ -915,7 +915,7 @@
 6,	断定,		duan4 ding4,			to conclude; to determine; to come to a judgment
 6,	断断续续,	duan4 duan4 xu4 xu4,		intermittent; off and on; discontinuous; stop-go; stammering; disjointed; inarticulate
 6,	断绝,		duan4 jue2,			to sever; to break off
-3,	锻炼,		duan4 lian4,			to engage in physical exercise; to toughen; to temper
+3,	锻炼,		duan4 lian4,			to engage in physical exercise; to toughen; to temper; to exercise
 5,	堆,		dui1,				a pile; a mass; heap; stack
 6,	堆积,		dui1 ji1,			to pile up; to heap; accumulation
 2,	对,		dui4,				for; to
@@ -977,14 +977,14 @@
 5,	发愁,		fa1 chou2,			to worry; to fret; to be anxious; to become sad
 5,	发达,		fa1 da2,			developed (country etc); flourishing; to develop
 6,	发呆,		fa1 dai1,			to daydream; lost in thought
-6,	发动,		fa1 dong4,			to start; to launch; to unleash; to mobilize; to arouse
+6,	发动,		fa1 dong4,			to start; to launch; to unleash; to mobilise; to arouse
 5,	发抖,		fa1 dou3,			shiver; shudder; tremble; tremulous
 5,	发挥,		fa1 hui1,			to display; to exhibit; to bring out implicit or innate qualities; to express (a thought or moral); to develop (an idea); to elaborate (on a theme)
 6,	发火,		fa1 huo3,			to catch fire; to ignite; to detonate; to get angry
 6,	发觉,		fa1 jue2,			to find; to detect; to discover
 5,	发明,		fa1 ming2,			to invent; invention
 5,	发票,		fa1 piao4,			invoice; receipt or bill for purchase
-3,	发烧,		fa1 shao1,			have a high temperature (from illness); have a fever
+3,	发烧,		fa1 shao1,			have a high temperature (from illness); (have a) fever; (have a) headache
 6,	发射,		fa1 she4,			to shoot (a projectile); to fire (a rocket); to launch; to emit (a particle); to discharge; emanation; emission
 4,	发生,		fa1 sheng1,			to happen; to occur; to take place; to break out
 6,	发誓,		fa1 shi4,			to vow; to pledge; to swear
@@ -1004,7 +1004,7 @@
 4,	翻译,		fan1 yi4,			to translate; to interpret; translator; interpreter; translation; interpretation
 6,	繁华,		fan2 hua2,			flourishing; bustling
 6,	繁忙,		fan2 mang2,			busy; bustling
-4,	烦恼,		fan2 nao3,			agonize; agony; annoyance; upset; vexation; worries
+4,	烦恼,		fan2 nao3,			agonise; agony; annoyance; upset; vexation; worries
 5,	繁荣,		fan2 rong2,			prosperous; booming (economy)
 5,	凡是,		fan2 shi4,			every; all
 6,	繁体字,		fan2 ti3 zi4,			traditional Chinese character
@@ -1126,7 +1126,7 @@
 6,	风味,		feng1 wei4,			local flavor; local style
 5,	风险,		feng1 xian3,			risk; venture; hazard
 6,	逢,		feng2,				to meet by chance; to come across; to fawn upon
-5,	讽刺,		feng3 ci4,			to satirize; to mock; irony; satire; sarcasm
+5,	讽刺,		feng3 ci4,			to satirise; to mock; irony; satire; sarcasm
 6,	奉献,		feng4 xian4,			to consecrate; to dedicate; to devote
 5,	否定,		fou3 ding4,			to negate; negative (answer)
 6,	否决,		fou3 jue2,			veto; to overrule; to veto; to reject
@@ -1163,7 +1163,7 @@
 6,	附和,		fu4 he4,			to parrot; to crib; to copy sb's action or words; to trail sb's footsteps; copy-cat
 6,	复活,		fu4 huo2,			to bring back to life; to revive; resurrection
 6,	附件,		fu4 jian4,			enclosure; attachment (email); appendix
-3,	附近,		fu4 jin4,			(in the) vicinity; nearby; neighboring; next to
+3,	附近,		fu4 jin4,			(in the) vicinity; nearby; neighbouring; next to
 5,	付款,		fu4 kuan3,			pay; payment
 5,	妇女,		fu4 nv3,			woman
 4,	父亲,		fu4 qin1,			father; also pr. with light tone [fu4 qin5]
@@ -1185,7 +1185,7 @@
 5,	改善,		gai3 shan4,			to make better; to improve
 5,	改正,		gai3 zheng4,			to correct; to amend; to put right; correction
 5,	盖,		gai4,				lid; top; cover; canopy; to build
-5,	概括,		gai4 kuo4,			to summarize; to generalize; briefly
+5,	概括,		gai4 kuo4,			to summarise; to generalise; briefly
 5,	概念,		gai4 nian4,			concept; idea
 6,	盖章,		gai4 zhang1,			to affix a seal (to sth)
 4,	干杯,		gan1 bei1,			to drink a toast; Cheers! (proposing a toast); Here's to you!; Bottoms up!; lit. dry cup
@@ -1246,7 +1246,7 @@
 5,	胳膊,		ge1 bo5,			arm
 6,	疙瘩,		ge1 da5,			swelling or lump on skin; pimple; knot; preoccupation; problem
 2,	哥哥,		ge1 ge5,			older brother
-6,	歌颂,		ge1 song4,			sing the praises of; extol; eulogize
+6,	歌颂,		ge1 song4,			sing the praises of; extol; eulogise
 5,	鸽子,		ge1 zi5,			pigeon; dove; various birds of the species Columbidae
 5,	隔壁,		ge2 bi4,			next door
 6,	隔阂,		ge2 he2,			estrangement
@@ -1316,9 +1316,9 @@
 6,	工艺品,		gong1 yi4 pin3,			handicraft article; handiwork
 5,	公寓,		gong1 yu4,			apartment building; block of flats
 5,	公元,		gong1 yuan2,			(year) AD; Christian era
-3,	公园,		gong1 yuan2,			public park
+3,	公园,		gong1 yuan2,			public park; park
 6,	公正,		gong1 zheng4,			just; fair; equitable
-6,	公证,		gong1 zheng4,			notarization; notarized; acknowledgement
+6,	公证,		gong1 zheng4,			notarisation; notarised; acknowledgement
 5,	公主,		gong1 zhu3,			princess
 4,	工资,		gong1 zi1,			wages; pay
 1,	工作,		gong1 zuo4,			job; work; construction; task
@@ -1339,7 +1339,7 @@
 4,	孤单,		gu1 dan1,			lone; lonely; loneliness
 6,	孤独,		gu1 du2,			lonely; solitary
 6,	辜负,		gu1 fu4,			to fail to live up (to expectations); unworthy (of trust); to let down; to betray (hopes); to disappoint
-5,	姑姑,		gu1 gu5,			paternal aunt
+5,	姑姑,		gu1 gu5,			paternal aunt; aunt
 4,	估计,		gu1 ji4,			to estimate; to reckon
 6,	孤立,		gu1 li4,			isolate; isolated
 5,	姑娘,		gu1 niang5,			girl; young woman; young lady; daughter
@@ -1371,7 +1371,7 @@
 6,	固有,		gu4 you3,			intrinsic to sth; inherent; native
 6,	故障,		gu4 zhang4,			malfunction; breakdown; defect; shortcoming; fault; failure; impediment; error; bug (in software)
 6,	固执,		gu4 zhi5,			persistent; stubborn
-3,	刮风,		gua1 feng1,			to be windy
+3,	刮风,		gua1 feng1,			to be windy; windy
 4,	挂,		gua4,				to hang or suspend (from a hook etc); (of a telephone call) to hang up; to be worried or concerned; to make a phone call (topolect); to register or record; to hitch; classifier for sets or clusters of objects
 5,	挂号,		gua4 hao4,			to register (a letter etc)
 5,	乖,		guai1,				(of a child) obedient, well-behaved; clever; shrewd; alert; perverse; contrary to reason; irregular; abnormal
@@ -1389,7 +1389,7 @@
 4,	关键,		guan1 jian4,			crucial point; crux
 5,	观念,		guan1 nian4,			notion; thought; concept; sense; views; ideology; general impressions
 3,	关系,		guan1 xi4,			relation; relationship; to concern; to affect; to have to do with; guanxi
-3,	关心,		guan1 xin1,			to care for sth; caring; concerned
+3,	关心,		guan1 xin1,			to care for sth; to care; caring; concerned
 3,	关于,		guan1 yu2,			pertaining to; concerning; regarding; with regards to; about; a matter of
 6,	关照,		guan1 zhao4,			to take care; to keep an eye on; to look after; to tell; to remind
 4,	观众,		guan1 zhong4,			spectators; audience; visitors (to an exhibition etc)
@@ -1427,7 +1427,7 @@
 5,	规矩,		gui1 ju5,			lit. compass and set square; fig. established standard; rule; customs; practices; fig. upright and honest; well-behaved
 5,	规律,		gui1 lv4,			rule (e.g. of science); law of behavior; regular pattern; rhythm; discipline
 5,	规模,		gui1 mo2,			scale; scope; extent
-6,	归纳,		gui1 na4,			to sum up; to summarize; to conclude from facts; induction (method of deduction in logic)
+6,	归纳,		gui1 na4,			to sum up; to summarise; to conclude from facts; induction (method of deduction in logic)
 5,	规则,		gui1 ze2,			rule; regulation; rules and regulations
 6,	规章,		gui1 zhang1,			rule; regulation
 6,	轨道,		gui3 dao4,			orbit; railway or tram line; fig. conventional way of thinking
@@ -1447,7 +1447,7 @@
 6,	果断,		guo3 duan4,			firm; decisive
 4,	果然,		guo3 ran2,			really; sure enough; as expected
 5,	果实,		guo3 shi2,			fruit; gains
-3,	果汁,		guo3 zhi1,			fruit juice
+3,	果汁,		guo3 zhi1,			fruit juice; juice
 2,	过,		guo4,				to pass (time); to celebrate (a holiday); to live; to get along
 4,	过程,		guo4 cheng2,			course of events; process
 6,	过度,		guo4 du4,			excessive; over-; excess; going too far; extravagant; intemperate; overdue
@@ -1588,7 +1588,7 @@
 6,	华侨,		hua2 qiao2,			overseas Chinese
 5,	华裔,		hua2 yi4,			ethnic Chinese; non-Chinese citizen of Chinese ancestry
 3,	画,		hua4,				to draw; picture; painting
-6,	化肥,		hua4 fei2,			fertilizer
+6,	化肥,		hua4 fei2,			fertiliser
 6,	划分,		hua4 fen1,			to divide
 6,	画蛇添足,	hua4 she2 tian1 zu2,		lit. draw legs on a snake (idiom); fig. to ruin the effect by adding sth superfluous; to overdo it
 6,	化石,		hua4 shi2,			fossil
@@ -1623,7 +1623,7 @@
 5,	皇后,		huang2 hou4,			empress; imperial consort
 6,	黄昏,		huang2 hun1,			dusk; evening; nightfall
 5,	黄金,		huang2 jin1,			gold
-6,	恍然大悟,	huang3 ran2 da4 wu4,		to suddenly realize; to suddenly see the light
+6,	恍然大悟,	huang3 ran2 da4 wu4,		to suddenly realise; to suddenly see the light
 5,	挥,		hui1,				to wave; to brandish; to wipe away; to command; to conduct; to scatter; to disperse
 5,	灰,		hui1,				ash; dust; lime; gray; discouraged; dejected
 5,	灰尘,		hui1 chen2,			dust
@@ -1676,11 +1676,11 @@
 2,	鸡蛋,		ji1 dan4,			(chicken) egg; hen's egg
 6,	基地,		ji1 di4,			base (of operations); industrial or military base; al-Qaeda
 4,	激动,		ji1 dong4,			to excite; to agitate; exciting
-6,	机动,		ji1 dong4,			locomotive; motorized; power-driven; adaptable; flexible (use, treatment, timing etc)
+6,	机动,		ji1 dong4,			locomotive; motorised; power-driven; adaptable; flexible (use, treatment, timing etc)
 6,	饥饿,		ji1 e4,				hunger; starvation; famine
 6,	激发,		ji1 fa1,			to arouse; to excite
-6,	机构,		ji1 gou4,			mechanism; structure; organization; agency; institution
-6,	机关,		ji1 guan1,			mechanism; gear; machine-operated; office; agency; organ; organization; establishment; institution; body; strategum; scheme; intrigue; plot; trick
+6,	机构,		ji1 gou4,			mechanism; structure; organisation; agency; institution
+6,	机关,		ji1 guan1,			mechanism; gear; machine-operated; office; agency; organ; organisation; establishment; institution; body; strategum; scheme; intrigue; plot; trick
 3,	几乎,		ji1 hu1,			almost; nearly; practically
 3,	机会,		ji1 hui4,			opportunity; chance; occasion
 4,	积极,		ji1 ji2,			active; energetic; vigorous; positive (outlook); proactive
@@ -1722,7 +1722,7 @@
 6,	急于求成,	ji2 yu2 qiu2 cheng2,		anxious for quick results (idiom); to demand instant success; impatient for result; impetuous
 6,	及早,		ji2 zao3,			at the earliest possible time; as soon as possible
 6,	急躁,		ji2 zao4,			irritable; irascible; impetuous
-5,	集中,		ji2 zhong1,			to concentrate; to centralize; to focus; centralized; concentrated; to put together
+5,	集中,		ji2 zhong1,			to concentrate; to centralise; to focus; centralised; concentrated; to put together
 3,	几,		ji3,				how much; how many; several; a few
 6,	给予,		ji3 yu3,			to accord; to give; to show (respect)
 4,	寄,		ji4,				to live (in a house); to lodge; to mail; to send; to entrust; to depend
@@ -1849,7 +1849,7 @@
 4,	奖金,		jiang3 jin1,			premium; award money; a bonus
 5,	讲究,		jiang3 jiu5,			to pay particular attention to; exquisite; aesthetic
 6,	奖励,		jiang3 li4,			reward (as encouragement)
-6,	奖赏,		jiang3 shang3,			reward; prize; an award
+6,	奖赏,		jiang3 shang3,			reward; prise; an award
 5,	讲座,		jiang3 zuo4,			a course of lectures
 4,	降低,		jiang4 di1,			to reduce; to lower; to bring down
 6,	降临,		jiang4 lin2,			to descend to
@@ -1904,14 +1904,14 @@
 5,	结实,		jie1 shi5,			rugged; sturdy
 4,	接受,		jie1 shou4,			to accept; to receive
 5,	接着,		jie1 zhe5,			to catch and hold on; to continue; to go on to do sth; to follow; to carry on; then; after that; subsequently; to proceed; to ensue; in turn; in one's turn
-5,	节,		jie2,				festival; holiday; node; joint; section; segment; part; to economize; to save; to abridge; moral integrity; classifier for segments, e.g. lessons, train wagons, biblical verses
+5,	节,		jie2,				festival; holiday; node; joint; section; segment; part; to economise; to save; to abridge; moral integrity; classifier for segments, e.g. lessons, train wagons, biblical verses
 6,	杰出,		jie2 chu1,			outstanding; distinguished; remarkable; prominent; illustrious
 5,	结构,		jie2 gou4,			structure; composition; makeup; architecture
 6,	结果,		jie2 guo3,			result; outcome; effect; in the event; so that
 5,	结合,		jie2 he2,			to combine; to link; to integrate; binding
 3,	结婚,		jie2 hun1,			to marry; to get married
 6,	竭尽全力,	jie2 jin4 quan2 li4,		to spare no effort (idiom); to do one's utmost
-6,	结晶,		jie2 jing1,			crystallization; crystalline; crystal
+6,	结晶,		jie2 jing1,			crystallisation; crystalline; crystal
 6,	结局,		jie2 ju2,			conclusion; ending
 5,	结论,		jie2 lun4,			conclusion; verdict
 3,	节目,		jie2 mu4,			program; item (on a program)
@@ -1919,7 +1919,7 @@
 5,	节省,		jie2 sheng3,			saving; to save; to use sparingly; to cut down on
 3,	结束,		jie2 shu4,			termination; to finish; to end; to conclude; to close
 6,	结算,		jie2 suan4,			to settle a bill; to close an account
-4,	节约,		jie2 yue1,			to economize; to conserve (resources); economy; frugal
+4,	节约,		jie2 yue1,			to economise; to conserve (resources); economy; frugal
 5,	结账,		jie2 zhang4,			to pay the bill; to settle accounts; also written 結帳|结帐
 6,	截至,		jie2 zhi4,			up to (a time); by (a time)
 6,	节奏,		jie2 zou4,			rhythm; tempo; musical pulse; cadence; beat
@@ -2031,8 +2031,8 @@
 3,	旧,		jiu4,				old; opposite: new 新; former; worn (with age)
 5,	救护车,		jiu4 hu4 che1,			ambulance
 6,	救济,		jiu4 ji4,			emergency relief; to help the needy with cash or goods
-6,	就近,		jiu4 jin4,			nearby; in a close neighborhood
-5,	舅舅,		jiu4 jiu5,			mother's brother; maternal uncle (informal)
+6,	就近,		jiu4 jin4,			nearby; in a close neighbourhood
+5,	舅舅,		jiu4 jiu5,			mother's brother; maternal uncle (informal); uncle
 6,	就业,		jiu4 ye4,			looking for employment; getting a job; to start a career
 6,	就职,		jiu4 zhi2,			take office; assume a post
 6,	鞠躬,		ju1 gong1,			to bow
@@ -2060,7 +2060,7 @@
 5,	聚会,		ju4 hui4,			party; gathering; to meet; to get together
 6,	聚精会神,	ju4 jing1 hui4 shen2,		to concentrate one's attention (idiom)
 4,	拒绝,		ju4 jue2,			to refuse; to decline; to reject
-5,	俱乐部,		ju4 le4 bu4,			club (i.e. a group or organization)
+5,	俱乐部,		ju4 le4 bu4,			club (i.e. a group or organisation)
 4,	距离,		ju4 li2,			distance; to be apart
 6,	剧烈,		ju4 lie4,			violent; acute; severe; fierce
 5,	据说,		ju4 shuo1,			it is said that; reportedly
@@ -2078,7 +2078,7 @@
 6,	绝望,		jue2 wang4,			desperation; forlorn; hopeless
 6,	觉悟,		jue2 wu4,			consciousness; awareness; Buddhist enlightenment (Sanskrit: cittotpāda)
 5,	决心,		jue2 xin1,			determination; resolution; determined; firm and resolute; to make up one's mind
-6,	觉醒,		jue2 xing3,			to awaken; to come to realize; awakened to the truth; the truth dawns upon one; scales fall from the eyes; to become aware
+6,	觉醒,		jue2 xing3,			to awaken; to come to realise; awakened to the truth; the truth dawns upon one; scales fall from the eyes; to become aware
 6,	军队,		jun1 dui4,			army troops
 5,	军事,		jun1 shi4,			military affairs; military matters; military
 5,	均匀,		jun1 yun2,			even; well-distributed; homogeneous
@@ -2166,8 +2166,8 @@
 5,	空间,		kong1 jian1,			space
 4,	空气,		kong1 qi4,			air; atmosphere
 6,	空前绝后,	kong1 qian2 jue2 hou4,		unprecedented and never to be duplicated; the first and the last; unmatched; unique
-3,	空调,		kong1 tiao2,			air conditioning
-6,	空想,		kong1 xiang3,			daydream; fantasy; to fantasize
+3,	空调,		kong1 tiao2,			air conditioning; ac
+6,	空想,		kong1 xiang3,			daydream; fantasy; to fantasise
 6,	空虚,		kong1 xu1,			hollow; emptiness; meaningless
 6,	孔,		kong3,				aperture; opening; hole
 5,	恐怖,		kong3 bu4,			terrible; frightful; frightening; terror; terrorist
@@ -2178,7 +2178,7 @@
 6,	空隙,		kong4 xi4,			crack; gap between two objects; gap in time between two events
 5,	空闲,		kong4 xian2,			idle; free time; leisure
 5,	控制,		kong4 zhi4,			control; to exercise control over; to contain
-3,	口,		kou3,				mouth; classifier for things with mouths (people, domestic animals, cannons, wells etc)
+3,	口,		kou3,				mouth; opening; orifice; os; spoken (adj.); classifier for things with mouths (people, domestic animals, cannons, wells etc)
 6,	口气,		kou3 qi4,			tone of voice; the way one speaks; manner of expression; tone
 6,	口腔,		kou3 qiang1,			oral cavity
 6,	口头,		kou3 tou2,			oral; verbal
@@ -2252,7 +2252,7 @@
 5,	老百姓,		lao3 bai3 xing4,		ordinary people; the "person in the street"
 5,	老板,		lao3 ban3,			boss; keeper
 4,	老虎,		lao3 hu3,			tiger
-5,	姥姥,		lao3 lao5,			(informal) mother's mother; maternal grandmother
+5,	姥姥,		lao3 lao5,			(informal) mother's mother; maternal grandmother; grandmother; grandma
 1,	老师,		lao3 shi1,			teacher
 5,	老实,		lao3 shi5,			honest; sincere; open and guileless; naive
 5,	老鼠,		lao3 shu3,			rat; mouse
@@ -2314,7 +2314,7 @@
 6,	例外,		li4 wai4,			(make an) exception
 5,	利息,		li4 xi1,			interest (on a loan)
 5,	利益,		li4 yi4,			benefit; (in sb's) interest
-5,	利用,		li4 yong4,			exploit; make use of; to use; to take advantage of; to utilize
+5,	利用,		li4 yong4,			exploit; make use of; to use; to take advantage of; to utilise
 6,	力争,		li4 zheng1,			to work hard for; to do all one can; to contend strongly
 6,	立足,		li4 zu2,			to stand; to have a footing; to be established; to base oneself on
 4,	俩,		lia3,				two (colloquial equivalent of 兩個|两个); both; some
@@ -2330,7 +2330,7 @@
 6,	连同,		lian2 tong2,			together with; along with
 4,	联系,		lian2 xi4,			connection; contact; relation; in touch with; to integrate; to link; to touch
 6,	联想,		lian2 xiang3,			to associate with something in thinking; abbr. for 聯想集團|联想集团[Lian2 xiang3 Ji2 tuan2]
-5,	连续剧,		lian2 xu4 ju4,			serialized drama; dramatic series; show in parts
+5,	连续剧,		lian2 xu4 ju4,			serialised drama; dramatic series; show in parts
 3,	脸,		lian3,				face
 5,	恋爱,		lian4 ai4,			(romantic) love; in love; to have an affair
 3,	练习,		lian4 xi2,			exercise; drill; practice
@@ -2340,17 +2340,17 @@
 6,	良心,		liang2 xin1,			conscience
 2,	两,		liang3,				both; two; ounce; some; a few; tael; weight equal to 50 grams
 4,	亮,		liang4,				bright; clear; resonant; to shine; to show; to reveal
-3,	辆,		liang4,				classifier for vehicles
+3,	辆,		liang4,				classifier for vehicles; vehicles
 6,	晾,		liang4,				to dry in the air
 6,	谅解,		liang4 jie3,			(reach) an understanding
 6,	辽阔,		liao2 kuo4,			vast; extensive
 4,	聊天,		liao2 tian1,			to chat; to gossip
 5,	了不起,		liao3 bu5 qi3,			amazing; terrific; extraordinary
-3,	了解,		liao3 jie3,			to understand; to realize; to find out
+3,	了解,		liao3 jie3,			to understand; to realise; to find out
 6,	列举,		lie4 ju3,			a list; to list; to enumerate
 6,	淋,		lin2,				to drain; to drench; to drip; diseases of the bladder
 6,	临床,		lin2 chuang2,			clinical
-3,	邻居,		lin2 ju1,			neighbor; next door
+3,	邻居,		lin2 ju1,			neighbour; next door
 5,	临时,		lin2 shi2,			at the instant sth happens; temporary; interim; ad hoc
 6,	吝啬,		lin4 se4,			stingy; mean; miserly
 5,	铃,		ling2,				(small) bell
@@ -2393,9 +2393,9 @@
 5,	龙,		long2,				dragon
 6,	聋哑,		long2 ya3,			deaf and dumb; deaf-mute; surdimutism
 6,	隆重,		long2 zhong4,			grand; prosperous; ceremonious; solemn
-6,	垄断,		long3 duan4,			enjoy market dominance; monopolize
+6,	垄断,		long3 duan4,			enjoy market dominance; monopolise
 6,	笼罩,		long3 zhao4,			to envelop; to shroud
-3,	楼,		lou2,				house with more than 1 story; storied building; floor
+3,	楼,		lou2,				storied building; house with more than 1 story; floor
 6,	搂,		lou3,				to hold or embrace in one's arms
 5,	漏,		lou4,				to leak; to divulge; to leave out by mistake; waterclock or hourglass (old)
 6,	炉灶,		lu2 zao4,			stove
@@ -2434,7 +2434,7 @@
 6,	麻醉,		ma2 zui4,			anesthesia; fig. to poison (sb's mind)
 3,	马,		ma3,				horse; abbr. for Malaysia 馬來西亞|马来西亚
 4,	马虎,		ma3 hu5,			careless; sloppy; negligent; skimpy
-2,	马上,		ma3 shang4,			at once, right away, immediately; lit. on horseback
+2,	马上,		ma3 shang4,			at once; right away; immediately; lit. on horseback
 6,	码头,		ma3 tou2,			dock; pier; wharf
 5,	骂,		ma4,				to scold; abuse
 1,	吗,		ma5,				(question tag)
@@ -2540,7 +2540,7 @@
 6,	敏感,		min3 gan3,			sensitive; susceptible; politically sensitive (pretext for censorship)
 6,	敏捷,		min3 jie2,			nimble; quick; shrewd
 6,	敏锐,		min3 rui4,			keen; sharp; acute
-3,	明白,		ming2 bai5,			clear; obvious; unequivocal; to understand; to realize
+3,	明白,		ming2 bai5,			clear; obvious; unequivocal; to understand; to realise
 6,	名次,		ming2 ci4,			position in a ranking of names
 6,	名额,		ming2 e2,			fixed number of people; quota
 6,	名副其实,	ming2 fu4 qi2 shi2,		not just in name only, but also in reality (idiom)
@@ -2597,7 +2597,7 @@
 1,	那,		na4,				that; those; then (in that case); commonly pr. nei4 before a classifier, esp. in Beijing
 6,	纳闷儿,		na4 men4 r5,			puzzled; bewildered
 1,	那儿,		na4 r5,				there
-3,	奶奶,		nai3 nai5,			(informal) father's mother; paternal grandmother
+3,	奶奶,		nai3 nai5,			(informal) father's mother; paternal grandmother; grandmother; grandma
 4,	耐心,		nai4 xin1,			patient (adjective)
 6,	耐用,		nai4 yong4,			durable
 3,	南,		nan2,				south
@@ -2621,7 +2621,7 @@
 6,	内幕,		nei4 mu4,			inside story; non-public information; behind the scenes; internal
 4,	内容,		nei4 rong2,			content; substance; details
 6,	内在,		nei4 zai4,			intrinsic; innate
-5,	嫩,		nen4,				tender; soft; delicate; light (color); inexperienced; unskilled
+5,	嫩,		nen4,				tender; soft; delicate; light (colour); inexperienced; unskilled
 1,	能,		neng2,				to be able to; to be capable of; ability; capability; able; capable; can possibly; (usually used in the negative) to have the possibility of
 5,	能干,		neng2 gan4,			capable; competent
 4,	能力,		neng2 li4,			capability; capable; able; ability
@@ -2654,13 +2654,13 @@
 6,	扭转,		niu3 zhuan3,			to reverse; to turn around (an undesirable situation)
 5,	浓,		nong2,				concentrated; dense
 4,	农村,		nong2 cun1,			rural area; village
-6,	浓厚,		nong2 hou4,			dense; thick (fog, clouds etc); to have a strong interest in; deep; fully saturated (color)
+6,	浓厚,		nong2 hou4,			dense; thick (fog, clouds etc); to have a strong interest in; deep; fully saturated (colour)
 6,	农历,		nong2 li4,			the traditional Chinese calendar; the lunar calendar
 5,	农民,		nong2 min2,			peasant
 5,	农业,		nong2 ye4,			agriculture; farming
 4,	弄,		nong4,				to do; to manage; to handle; to play with; to fool with; to mess with; to fix; to toy with
 6,	奴隶,		nu2 li4,			slave
-3,	努力,		nu3 li4,			great effort; to strive; to try hard
+3,	努力,		nu3 li4,			great effort; effort; to strive; to try hard
 4,	暖和,		nuan3 huo5,			warm; nice and warm
 6,	挪,		nuo2,				to shift; to move
 1,	女儿,		nv3 er2,			daughter
@@ -2715,12 +2715,12 @@
 1,	朋友,		peng2 you5,			friend
 6,	捧,		peng3,				to clasp; to cup the hands; to hold up with both hands; to offer (esp. in cupped hands); to praise; to flatter
 5,	碰见,		peng4 jian4,			to run into; to meet (unexpectedly); to bump into
-5,	批,		pi1,				to ascertain; to act on; to criticize; to pass on; classifier for batches, lots, military flights; tier (for the ranking of universities and colleges)
+5,	批,		pi1,				to ascertain; to act on; to criticise; to pass on; classifier for batches, lots, military flights; tier (for the ranking of universities and colleges)
 5,	披,		pi1,				to drape over one's shoulders; to open; to unroll; to split open; to spread out
 6,	劈,		pi1,				to hack; to chop; to split open; see 噼啪|劈啪, onomat. for crack, slap, clap, clatter etc
 6,	批发,		pi1 fa1,			wholesale; bulk trade; distribution
-6,	批判,		pi1 pan4,			criticize
-4,	批评,		pi1 ping2,			to criticize; criticism
+6,	批判,		pi1 pan4,			criticise
+4,	批评,		pi1 ping2,			to criticise; criticism
 5,	批准,		pi1 zhun3,			to approve; to ratify
 6,	疲惫,		pi2 bei4,			beaten; exhausted; tired
 4,	皮肤,		pi2 fu1,			skin
@@ -2797,7 +2797,7 @@
 6,	铺,		pu1,				to spread; to extend; to pave; to lay
 3,	葡萄,		pu2 tao5,			grape
 4,	普遍,		pu3 bian4,			universal; general; widespread; common
-6,	普及,		pu3 ji2,			popular; to popularize; universal; ubiquitous; pervasive
+6,	普及,		pu3 ji2,			popular; to popularise; universal; ubiquitous; pervasive
 6,	朴实,		pu3 shi2,			plain; simple; guileless; down-to-earth; sincere and honest
 5,	朴素,		pu3 su4,			plain and simple; unadorned; simple living; not frivolous
 3,	普通话,		pu3 tong1 hua4,			Mandarin (common language); Putonghua (common speech of the Chinese language); ordinary speech
@@ -2818,7 +2818,7 @@
 6,	奇妙,		qi2 miao4,			fantastic; wonderful
 6,	旗袍,		qi2 pao2,			Chinese-style dress; cheongsam
 6,	齐全,		qi2 quan2,			complete
-3,	其实,		qi2 shi2,			actually, in fact, really
+3,	其实,		qi2 shi2,			actually; in fact; really
 6,	歧视,		qi2 shi4,			to discriminate against; discrimination
 3,	其他,		qi2 ta1,			other; the others; else; other than (that person); in addition to the person mentioned above
 6,	齐心协力,	qi2 xin1 xie2 li4,		to work with a common purpose (idiom); to make concerted efforts; to pull together; to work as one
@@ -2886,12 +2886,12 @@
 5,	前途,		qian2 tu2,			prospects; future outlook; journey
 6,	潜移默化,	qian2 yi2 mo4 hua4,		imperceptible influence; to influence secretly
 5,	浅,		qian3,				shallow, not deep; superficial
-6,	谴责,		qian3 ze2,			to denounce; to condemn; to criticize; condemnation; criticism
+6,	谴责,		qian3 ze2,			to denounce; to condemn; to criticise; condemnation; criticism
 5,	欠,		qian4,				deficient; owe; to lack; yawn
 5,	枪,		qiang1,				gun; firearm; rifle; spear
 6,	抢劫,		qiang1 jie2,			to rob; looting
 4,	墙,		qiang2,				wall
-5,	强调,		qiang2 diao4,			to emphasize (a statement); to stress
+5,	强调,		qiang2 diao4,			to emphasise (a statement); to stress
 5,	强烈,		qiang2 lie4,			intense; (violently) strong
 6,	强制,		qiang2 zhi4,			to enforce; enforcement; forcibly; compulsory
 5,	抢,		qiang3,				fight over; to rush; to scramble; to grab; to rob; to snatch
@@ -2921,7 +2921,7 @@
 6,	勤俭,		qin2 jian3,			hardworking and frugal
 6,	勤恳,		qin2 ken3,			diligent and attentive; assiduous; sincere
 5,	勤劳,		qin2 lao2,			hardworking; industrious; diligent
-5,	青,		qing1,				nature's color; green or blue; greenish black; youth; young (of people); abbr. for Qinghai province 青海
+5,	青,		qing1,				nature's colour; green or blue; greenish black; youth; young (of people); abbr. for Qinghai province 青海
 6,	氢,		qing1,				hydrogen (chemistry)
 4,	轻,		qing1,				light; easy; gentle; soft; reckless; unimportant; frivolous; small in number; unstressed; neutral
 6,	清澈,		qing1 che4,			clear; limpid
@@ -3004,7 +3004,7 @@
 6,	瘸,		que2,				lame
 4,	却,		que4,				but; yet; however; while; to go back; to decline; to retreat; nevertheless; even though
 6,	确保,		que4 bao3,			to ensure; to guarantee
-5,	确定,		que4 ding4,			definite; certain; fixed; to fix (on sth); to determine; to be sure; to ensure; to make certain; to ascertain; to clinch; to recognize; to confirm; OK (on computer dialog box)
+5,	确定,		que4 ding4,			definite; certain; fixed; to fix (on sth); to determine; to be sure; to ensure; to make certain; to ascertain; to clinch; to recognise; to confirm; OK (on computer dialog box)
 6,	确立,		que4 li4,			to establish; to institute
 6,	确切,		que4 qie4,			definite; exact; precise
 5,	确认,		que4 ren4,			to confirm; to verify; confirmation
@@ -3058,7 +3058,7 @@
 4,	任何,		ren4 he2,			any; whatever; whichever; whatsoever
 6,	认可,		ren4 ke3,			to approve; approval; acknowledgment; OK
 6,	任命,		ren4 ming4,			to appoint and nominate
-1,	认识,		ren4 shi5,			to know; to recognize; to be familiar with; acquainted with sth; knowledge; understanding; awareness; cognition
+1,	认识,		ren4 shi5,			to know; to recognise; to be familiar with; acquainted with sth; knowledge; understanding; awareness; cognition
 3,	认为,		ren4 wei2,			to believe; to think; to consider; to feel
 4,	任务,		ren4 wu5,			mission; assignment; task; duty; role
 6,	任性,		ren4 xing4,			willful; headstrong; uninhibited
@@ -3110,7 +3110,7 @@
 5,	嗓子,		sang3 zi5,			throat; voice
 6,	丧失,		sang4 shi1,			to lose; to forfeit
 6,	嫂子,		sao3 zi5,			(informal) older brother's wife; sister-in-law
-6,	色彩,		se4 cai3,			tint; coloring; coloration; character
+6,	色彩,		se4 cai3,			tint; colouring; colouration; character
 4,	森林,		sen1 lin2,			forest
 5,	杀,		sha1,				to kill; to murder; to fight; to weaken or reduce; to smart (topolect); to counteract; (used after a verb) extremely
 6,	刹车,		sha1 che1,			to brake (when driving); to stop; to switch off; to check (bad habits); a brake
@@ -3143,7 +3143,7 @@
 6,	上级,		shang4 ji2,			higher authorities; superiors
 6,	上进心,		shang4 jin4 xin1,		aggressiveness; gumption; enterprising spirit
 6,	上任,		shang4 ren4,			take office
-3,	上网,		shang4 wang3,			to be on the internet; to stretch a net (in a sports game or for covering sth); to be netted (of fish)
+3,	上网,		shang4 wang3,			to be on the internet; to be online; to stretch a net (in a sports game or for covering sth); to be netted (of fish)
 1,	上午,		shang4 wu3,			morning
 6,	上瘾,		shang4 yin3,			to get into a habit; to become addicted
 6,	上游,		shang4 you2,			upper reaches; advanced position
@@ -3172,7 +3172,7 @@
 6,	设置,		she4 zhi4,			to set up; to install
 1,	谁,		shei2,				who; also pronounced shui2
 5,	伸,		shen1,				to stretch; to extend
-4,	深,		shen1,				close; deep; late; profound; dark (of color, water etc)
+4,	深,		shen1,				close; deep; late; profound; dark (of colour, water etc)
 6,	深奥,		shen1 ao4,			profound; abstruse; recondite; profoundly
 6,	申报,		shen1 bao4,			to report (to the authorities); to declare (to customs)
 5,	身材,		shen1 cai2,			stature; build (height and weight); figure
@@ -3221,12 +3221,12 @@
 6,	生态,		sheng1 tai4,			way of life; ecology
 6,	生物,		sheng1 wu4,			organism; living creature; life form; biological
 6,	生效,		sheng1 xiao4,			to take effect; to go into effect
-6,	生锈,		sheng1 xiu4,			to rust; to grow rusty; to corrode; oxidization
+6,	生锈,		sheng1 xiu4,			to rust; to grow rusty; to corrode; oxidisation
 3,	声音,		sheng1 yin1,			voice; sound
 6,	生育,		sheng1 yu4,			to bear; to give birth; to grow; to rear; to bring up (children)
 6,	声誉,		sheng1 yu4,			reputation; fame
 5,	绳子,		sheng2 zi5,			cord; string; rope
-4,	省,		sheng3,				to save; to economize; to do without; to omit; to leave out; province
+4,	省,		sheng3,				to save; to economise; to do without; to omit; to leave out; province
 6,	省会,		sheng3 hui4,			provincial capital
 5,	省略,		sheng3 lve4,			to leave out; an omission
 4,	剩,		sheng4,				to remain; to be left; to have as remainder
@@ -3279,7 +3279,7 @@
 5,	石头,		shi2 tou5,			stone
 5,	食物,		shi2 wu4,			food
 5,	实习,		shi2 xi2,			to practice; field work
-5,	实现,		shi2 xian4,			to achieve; to implement; to realize; to bring about
+5,	实现,		shi2 xian4,			to achieve; to implement; to realise; to bring about
 5,	实行,		shi2 xing2,			to implement; to carry out; to put into practice
 5,	实验,		shi2 yan4,			to experiment; experiments
 5,	实用,		shi2 yong4,			practical; functional; pragmatic; applied (science)
@@ -3287,7 +3287,7 @@
 4,	实在,		shi2 zai4,			in reality; honestly; really; verily; concrete
 6,	实质,		shi2 zhi4,			substance; essence
 6,	时装,		shi2 zhuang1,			the latest fashion in clothes; fashionable
-6,	十足,		shi2 zu2,			ample; complete; hundred percent; a pure shade (of some color)
+6,	十足,		shi2 zu2,			ample; complete; hundred percent; a pure shade (of some colour)
 3,	使,		shi3,				to make; to cause; to enable; to use; to employ; to send; to instruct sb to do sth; envoy; messenger
 5,	使劲儿,		shi3 jin4 r5,			to exert all one's strength
 6,	使命,		shi3 ming4,			mission (diplomatic or other); set task
@@ -3354,7 +3354,7 @@
 6,	首要,		shou3 yao4,			the most important; of chief importance
 6,	手艺,		shou3 yi4,			craftmanship; workmanship; handicraft; trade
 5,	手指,		shou3 zhi3,			finger
-3,	瘦,		shou4,				tight; thin; lean
+3,	瘦,		shou4,				tight; thin; lean; slim
 4,	受不了,		shou4 bu4 liao3,		unbearable; unable to endure; can't stand
 5,	受到,		shou4 dao4,			to receive; to suffer; obtained; given
 4,	售货员,		shou4 huo4 yuan2,		salesperson
@@ -3379,7 +3379,7 @@
 5,	梳子,		shu1 zi5,			comb
 5,	熟练,		shu2 lian4,			practiced; proficient; skilled; skillful
 4,	熟悉,		shu2 xi1,			to be familiar with; to know well
-6,	数,		shu3,				to count; to enumerate; to criticize (i.e. enumerate shortcomings)
+6,	数,		shu3,				to count; to enumerate; to criticise (i.e. enumerate shortcomings)
 5,	鼠标,		shu3 biao1,			mouse (computing)
 5,	属于,		shu3 yu2,			classified as; to belong to; to be part of
 6,	竖,		shu4,				to erect; vertical; vertical stroke (in Chinese characters)
@@ -3392,7 +3392,7 @@
 4,	数量,		shu4 liang4,			amount; quantity
 5,	数码,		shu4 ma3,			number; numerals; figures; digital; amount; numerical code
 6,	数目,		shu4 mu4,			amount; number
-3,	数学,		shu4 xue2,			mathematics; mathematical
+3,	数学,		shu4 xue2,			mathematics; mathematical; maths; math
 4,	数字,		shu4 zi4,			numeral; digit; number; figure; amount; digital (electronics etc)
 3,	刷牙,		shua1 ya2,			to brush teeth
 6,	耍,		shua3,				to play with; to juggle
@@ -3403,7 +3403,7 @@
 4,	帅,		shuai4,				handsome; graceful; smart; commander in chief
 6,	率领,		shuai4 ling3,			lead; command; head
 6,	涮火锅,		shuan4 huo3 guo1,		to instant-boil (mutton, beef, vegetables, etc.)
-3,	双,		shuang1,			two; double; pair; both
+3,	双,		shuang1,			pair; two; double; both
 6,	双胞胎,		shuang1 bao1 tai1,		twin
 5,	双方,		shuang1 fang1,			bilateral; both sides; both parties involved
 6,	爽快,		shuang3 kuai4,			refreshed; rejuvenated; frank and straightforward
@@ -3565,7 +3565,7 @@
 6,	提议,		ti2 yi4,			proposal; suggestion; to propose; to suggest
 5,	体会,		ti3 hui4,			know (through learning or by experience)
 5,	体积,		ti3 ji1,			volume; bulk
-6,	体谅,		ti3 liang4,			to empathize; to allow (for something); to show understanding; to appreciate
+6,	体谅,		ti3 liang4,			to empathise; to allow (for something); to show understanding; to appreciate
 6,	体面,		ti3 mian4,			dignity; face (as in "losing face"); honorable; creditable; pretty
 5,	体贴,		ti3 tie1,			considerate (of other people's needs)
 6,	体系,		ti3 xi4,			system; setup
@@ -3591,7 +3591,7 @@
 6,	调和,		tiao2 he2,			harmonious; harmony
 6,	调剂,		tiao2 ji4,			to adjust; to balance; to make up a medical prescription
 4,	条件,		tiao2 jian4,			condition; circumstances; term; factor; requirement; prerequisite; qualification
-6,	调节,		tiao2 jie2,			to adjust; to regulate; to harmonize; to reconcile (accountancy etc)
+6,	调节,		tiao2 jie2,			to adjust; to regulate; to harmonise; to reconcile (accountancy etc)
 6,	调解,		tiao2 jie3,			to mediate; to bring parties to an agreement
 6,	条款,		tiao2 kuan3,			clause (of contract or law)
 6,	条理,		tiao2 li3,			arrangement; order; tidiness
@@ -3623,7 +3623,7 @@
 6,	同胞,		tong2 bao1,			born of the same parents; fellow citizen or countryman
 6,	童话,		tong2 hua4,			children's fairy tales
 6,	铜矿,		tong2 kuang4,			copper mine
-4,	同情,		tong2 qing2,			compassion; relent; sympathize; sympathy
+4,	同情,		tong2 qing2,			compassion; relent; sympathise; sympathy
 5,	同时,		tong2 shi2,			at the same time; simultaneously
 3,	同事,		tong2 shi4,			colleague; co-worker
 1,	同学,		tong2 xue2,			(fellow) classmate
@@ -3659,14 +3659,14 @@
 5,	兔子,		tu4 zi5,			hare; rabbit
 5,	团,		tuan2,				regiment; round; circular; group; society
 6,	团结,		tuan2 jie2,			a rally; to hold a rally; to join forces
-6,	团体,		tuan2 ti3,			group; organization; team
+6,	团体,		tuan2 ti3,			group; organisation; team
 6,	团员,		tuan2 yuan2,			member; group member
 4,	推,		tui1,				to push; to cut; to refuse; to reject; to decline; to shirk (responsibility); to put off; to delay; to push forward; to nominate; to elect
 6,	推测,		tui1 ce4,			speculation; to conjecture; to surmise; to speculate
 4,	推迟,		tui1 chi2,			to postpone; to put off; to defer
 5,	推辞,		tui1 ci2,			to decline (an appointment, invitation etc)
 6,	推翻,		tui1 fan1,			overthrow
-5,	推广,		tui1 guang3,			to extend; to spread; to popularize
+5,	推广,		tui1 guang3,			to extend; to spread; to popularise
 5,	推荐,		tui1 jian4,			to recommend; recommendation
 6,	推理,		tui1 li3,			reasoning; speculative; inference
 6,	推论,		tui1 lun4,			to infer; a deduction; a corollary; a reasoned conclusion
@@ -3719,7 +3719,7 @@
 6,	挽救,		wan3 jiu4,			to save; to remedy; to rescue
 2,	晚上,		wan3 shang5,			in the evening
 6,	惋惜,		wan3 xi1,			to feel sorry for a person over sth that should have happened
-3,	万,		wan4,				ten thousand; a great number
+3,	万,		wan4,				ten thousand; 10,000; a great number
 6,	万分,		wan4 fen1,			very much; extremely; one ten thousandth part
 5,	万一,		wan4 yi1,			just in case; if by any chance; contingency
 5,	王子,		wang2 zi3,			prince; son of a king
@@ -3736,7 +3736,7 @@
 6,	微不足道,	wei1 bu4 zu2 dao4,		negligible; insignificant
 6,	威风,		wei1 feng1,			might; awe-inspiring authority; impressive
 6,	微观,		wei1 guan1,			micro-; sub-atomic
-5,	危害,		wei1 hai4,			to jeopardize; to harm; to endanger
+5,	危害,		wei1 hai4,			to jeopardise; to harm; to endanger
 6,	危机,		wei1 ji1,			crisis
 6,	威力,		wei1 li4,			might; formidable power
 6,	威望,		wei1 wang4,			prestige
@@ -3763,7 +3763,7 @@
 5,	委托,		wei3 tuo1,			to entrust; to trust; to commission
 6,	委员,		wei3 yuan2,			committee member; committee; council
 6,	伪造,		wei3 zao4,			to forge; to fake; to counterfeit
-3,	为,		wei4,				because of; for; to
+3,	为,		wei4,				because of; for; to; due to
 3,	位,		wei4,				position; location; place; seat; classifier for people (honorific); classifier for binary bits (e.g. 十六位 16-bit or 2 bytes)
 1,	喂,		wei4,				hello (interj., esp. on telephone); hey; to feed (sb or some animal)
 5,	畏,		wei4,				to fear
@@ -3787,10 +3787,10 @@
 5,	温暖,		wen1 nuan3,			warm
 5,	温柔,		wen1 rou2,			gentle and soft; tender
 5,	闻,		wen2,				to hear; news; well-known; famous; reputation; fame; to smell; to sniff at; surname Wen
-3,	文化,		wen2 hua4,			culture; civilization; cultural
+3,	文化,		wen2 hua4,			culture; civilisation; cultural
 5,	文件,		wen2 jian4,			document; file
 5,	文具,		wen2 ju4,			stationery; item of stationery (pen, pencil, eraser, pencil sharpener etc)
-5,	文明,		wen2 ming2,			civilized; civilization; culture
+5,	文明,		wen2 ming2,			civilised; civilisation; culture
 6,	文凭,		wen2 ping2,			diploma
 6,	文物,		wen2 wu4,			cultural relic; historical relic
 6,	文献,		wen2 xian4,			document
@@ -3799,7 +3799,7 @@
 6,	文艺,		wen2 yi4,			literature and art
 4,	文章,		wen2 zhang1,			article; essay; literary works; writings; hidden meaning
 5,	吻,		wen3,				kiss; mouth
-5,	稳定,		wen3 ding4,			steady; stable; stability; to stabilize; to pacify
+5,	稳定,		wen3 ding4,			steady; stable; stability; to stabilise; to pacify
 2,	问,		wen4,				to ask
 5,	问候,		wen4 hou4,			to give one's respects; to send a greeting
 6,	问世,		wen4 shi4,			to be published; to come out
@@ -3872,7 +3872,7 @@
 6,	习俗,		xi2 su2,			custom; tradition; local tradition; convention
 2,	洗,		xi3,				to wash; to bathe
 1,	喜欢,		xi3 huan5,			to like; to be fond of
-3,	洗手间,		xi3 shou3 jian1,		toilet; lavatory; washroom
+3,	洗手间,		xi3 shou3 jian1,		toilet; lavatory; washroom; WC
 6,	喜闻乐见,	xi3 wen2 le4 jian4,		a delight to see (idiom); an attractive spectacle
 4,	洗衣机,		xi3 yi1 ji1,			washer; washing machine
 6,	喜悦,		xi3 yue4,			happy; joyous
@@ -3905,7 +3905,7 @@
 6,	先前,		xian1 qian2,			before; previously
 1,	先生,		xian1 sheng5,			teacher; Mister (Mr.); husband; doctor (topolect)
 6,	纤维,		xian1 wei2,			fiber
-5,	鲜艳,		xian1 yan4,			bright-colored; gaily-colored
+5,	鲜艳,		xian1 yan4,			bright-coloured; gaily-coloured
 6,	弦,		xian2,				bow string; string of musical instrument; watchspring; chord (segment of curve); hypotenuse
 6,	嫌,		xian2,				to dislike; suspicion; resentment; enmity; abbr. for 嫌犯|嫌犯[xian2 fan4], criminal suspect
 4,	咸,		xian2,				salty
@@ -3947,7 +3947,7 @@
 6,	镶嵌,		xiang1 qian4,			to inlay; to embed; to set (e.g. a jewel in a ring); tiling; tesselation
 5,	相似,		xiang1 si4,			to resemble; similar; like; resemblance; similarity
 3,	相同,		xiang1 tong2,			identical; same
-3,	相信,		xiang1 xin4,			be convinced (that something is true); believe; to accept sth as true
+3,	相信,		xiang1 xin4,			to be convinced (that something is true); to believe; to accept sth as true
 6,	相应,		xiang1 ying4,			to correspond; answering (one another); to agree (among the part); corresponding; relevant; appropriate; (modify) accordingly
 6,	乡镇,		xiang1 zhen4,			village; township
 4,	详细,		xiang2 xi4,			detailed; in detail; minute
@@ -3970,9 +3970,9 @@
 5,	橡皮,		xiang4 pi2,			rubber; an eraser
 5,	象棋,		xiang4 qi2,			Chinese chess
 6,	向往,		xiang4 wang3,			to yearn for; to look forward to
-5,	象征,		xiang4 zheng1,			emblem; symbol; token; badge; to symbolize; to signify; to stand for
+5,	象征,		xiang4 zheng1,			emblem; symbol; token; badge; to symbolise; to signify; to stand for
 6,	消除,		xiao1 chu2,			to eliminate; to remove
-6,	消毒,		xiao1 du2,			to disinfect; to sterilize
+6,	消毒,		xiao1 du2,			to disinfect; to sterilise
 6,	消防,		xiao1 fang2,			fire-fighting; fire control
 5,	消费,		xiao1 fei4,			to consume
 6,	消耗,		xiao1 hao4,			to use up; to consume
@@ -3992,7 +3992,7 @@
 2,	小时,		xiao3 shi2,			hour
 4,	小说,		xiao3 shuo1,			novel; fiction
 5,	小偷,		xiao3 tou1,			thief
-3,	小心,		xiao3 xin1,			to be careful; to take care
+3,	小心,		xiao3 xin1,			to be careful; to take care; careful! (warning others)
 6,	小心翼翼,	xiao3 xin1 yi4 yi4,		cautious and solemn (idiom); very carefully; prudent; gently and cautiously
 2,	笑,		xiao4,				laugh; smile
 4,	效果,		xiao4 guo3,			result; effect; quality
@@ -4009,7 +4009,7 @@
 6,	携带,		xie2 dai4,			to carry (on one's person); to support (old); Taiwan pr. xi1 dai4
 6,	协会,		xie2 hui4,			an association; a society
 6,	协商,		xie2 shang1,			to consult with; to talk things over; agreement
-5,	协调,		xie2 tiao2,			to coordinate; to harmonize; negotiation
+5,	协调,		xie2 tiao2,			to coordinate; to harmonise; negotiation
 6,	协议,		xie2 yi4,			agreement; pact; protocol
 6,	协助,		xie2 zhu4,			provide assistance; aid
 1,	写,		xie3,				to write
@@ -4017,7 +4017,7 @@
 6,	屑,		xie4,				crumbs; filings; worthwhile
 6,	谢绝,		xie4 jue2,			to refuse politely
 6,	泄露,		xie4 lu4,			to leak (information); to divulge
-6,	泄气,		xie4 qi4,			discouraged; dejected; demoralized; despairing; to want to give up; to deflate (air from a tyre)
+6,	泄气,		xie4 qi4,			discouraged; dejected; demoralised; despairing; to want to give up; to deflate (air from a tyre)
 1,	谢谢,		xie4 xie5,			to thank; thanks
 2,	新,		xin1,				new; newly; meso- (chemistry)
 6,	新陈代谢,	xin1 chen2 dai4 xie4,		metabolism (biology); the new replaces the old (idiom)
@@ -4180,10 +4180,10 @@
 6,	严峻,		yan2 jun4,			grim; severe; rigorous
 6,	严厉,		yan2 li4,			severe; strict
 6,	言论,		yan2 lun4,			speech; expression of opinion; public opinion
-6,	严密,		yan2 mi4,			strict; tight (organization, surveillance etc)
+6,	严密,		yan2 mi4,			strict; tight (organisation, surveillance etc)
 6,	延期,		yan2 qi1,			to delay; to extend; to postpone; to defer
 6,	炎热,		yan2 re4,			blistering hot; sizzling hot (weather)
-2,	颜色,		yan2 se4,			color
+2,	颜色,		yan2 se4,			colour
 6,	延伸,		yan2 shen1,			to extend; to spread
 6,	岩石,		yan2 shi2,			rock
 5,	严肃,		yan2 su4,			solemn; solemnity
@@ -4195,7 +4195,7 @@
 6,	眼光,		yan3 guang1,			vision
 6,	掩护,		yan3 hu4,			to screen; to shield; to cover; protection; cover
 6,	演讲,		yan3 jiang3,			lecture; to make a speech
-3,	眼镜,		yan3 jing4,			spectacles; eyeglasses
+3,	眼镜,		yan3 jing4,			spectacles; eyeglasses; glasses
 2,	眼睛,		yan3 jing5,			eye
 6,	眼色,		yan3 se4,			a wink; to signal with one's eyes
 6,	眼神,		yan3 shen2,			expression or emotion showing in one's eyes; meaningful glance; wink; eyesight (topolect)
@@ -4240,9 +4240,9 @@
 4,	钥匙,		yao4 shi5,			key
 6,	要素,		yao4 su4,			essential factor; key constituent
 6,	耀眼,		yao4 yan3,			to dazzle; dazzling
-3,	爷爷,		ye2 ye5,			(informal) father's father; paternal grandfather
+3,	爷爷,		ye2 ye5,			(informal) father's father; paternal grandfather; grandfather; grandpa
 2,	也,		ye3,				also; too; (in classical Chinese) final particle serving as copula
-6,	野蛮,		ye3 man2,			barbarous; uncivilized
+6,	野蛮,		ye3 man2,			barbarous; uncivilised
 6,	野心,		ye3 xin1,			ambition; wild schemes; careerism
 4,	也许,		ye3 xu3,			perhaps; maybe
 5,	夜,		ye4,				night
@@ -4257,7 +4257,7 @@
 3,	一边,		yi1 bian1,			one side; either side; on the one hand; on the other hand; doing while
 6,	依次,		yi1 ci4,			in order; in succession
 5,	一旦,		yi1 dan4,			in case (sth happens); if; once (sth happens, then...); when; in a short time; in one day
-3,	一定,		yi1 ding4,			surely; certainly; necessarily; fixed; a certain (extent etc); given; particular; must
+3,	一定,		yi1 ding4,			surely; definitely; certainly; necessarily; fixed; a certain (extent etc); given; particular; must
 6,	一度,		yi1 du4,			for a time; at one time; one time; once
 6,	一帆风顺,	yi1 fan1 feng1 shun4,		single sail, gentle wind (idiom); plain sailing; to go smoothly
 1,	衣服,		yi1 fu5,			clothes
@@ -4340,7 +4340,7 @@
 2,	因为,		yin1 wei4,			because; owing to; on account of
 6,	音响,		yin1 xiang3,			speakers or speaker (electronic); acoustics; sound field (in a room or theater)
 3,	音乐,		yin1 yue4,			music
-5,	银,		yin2,				silver; silver-colored; relating to money or currency
+5,	银,		yin2,				silver; silver-coloured; relating to money or currency
 3,	银行,		yin2 hang2,			bank
 6,	隐蔽,		yin3 bi4,			to conceal; to hide; covert; under cover
 6,	引导,		yin3 dao3,			to guide; to lead; to conduct; introduction
@@ -4527,7 +4527,7 @@
 4,	咱们,		zan2 men5,			we or us (including both the speaker and the person(s) spoken to); I or me; you
 6,	攒,		zan3,				to accumulate; to amass; to hoard; to save
 5,	赞成,		zan4 cheng2,			approve; endorse
-5,	赞美,		zan4 mei3,			admire; applause; praise; to eulogize
+5,	赞美,		zan4 mei3,			admire; applause; praise; to eulogise
 6,	暂且,		zan4 qie3,			for now; for the time being; temporarily
 4,	暂时,		zan4 shi2,			temporary; provisional; for the time being
 6,	赞叹,		zan4 tan4,			to sigh or gasp in admiration; high praise
@@ -4546,7 +4546,7 @@
 6,	造型,		zao4 xing2,			modeling; mold-making; model or mold; molding
 6,	噪音,		zao4 yin1,			rumble; noise; static
 5,	则,		ze2,				conjunction used to express contrast with a previous sentence or clause; standard; norm; rule; to imitate; to follow; then; principle; classifier for written items (such as an official statement)
-5,	责备,		ze2 bei4,			to blame; to criticize sb
+5,	责备,		ze2 bei4,			to blame; to criticise sb
 6,	责怪,		ze2 guai4,			to blame; to rebuke
 4,	责任,		ze2 ren4,			responsibility; blame; duty
 6,	贼,		zei2,				thief; wily; deceitful; evil; extremely; disagreeably
@@ -4661,7 +4661,7 @@
 6,	争议,		zheng1 yi4,			controversy; dispute
 6,	正月,		zheng1 yue4,			first month of the lunar year
 6,	挣扎,		zheng1 zha2,			to struggle; struggling
-6,	整顿,		zheng3 dun4,			to tidy up; to reorganize; to consolidate; to rectify
+6,	整顿,		zheng3 dun4,			to tidy up; to reorganise; to consolidate; to rectify
 5,	整个,		zheng3 ge4,			whole; entire; total
 4,	整理,		zheng3 li3,			to arrange; to tidy up; to sort out; to straighten out; to list systematically; to collate (data, files); to pack (luggage)
 4,	整齐,		zheng3 qi2,			orderly; neat; even; tidy
@@ -4733,7 +4733,7 @@
 6,	指示,		zhi3 shi4,			to point out; to indicate; to instruct; directives; instructions
 6,	指望,		zhi3 wang4,			to hope for sth; to count on; hope
 4,	只要,		zhi3 yao4,			if only; so long as
-6,	指责,		zhi3 ze2,			to criticize; to find fault with; to denounce
+6,	指责,		zhi3 ze2,			to criticise; to find fault with; to denounce
 6,	治安,		zhi4 an1,			law and order; public security
 6,	制裁,		zhi4 cai2,			to punish; punishment; sanctions (incl. economic)
 6,	致辞,		zhi4 ci2,			to express in words or writing; to make a speech (esp. short introduction, vote of thanks, afterword, funeral homily etc); to address (an audience); same as 致詞|致词
@@ -4781,7 +4781,7 @@
 6,	中央,		zhong1 yang1,			central; middle; center; central authorities (of a state)
 3,	终于,		zhong1 yu2,			at last; in the end; finally; eventually
 6,	终止,		zhong1 zhi3,			to stop; to terminate (law)
-3,	种,		zhong3,				abbr. for 物種|物种, genus; race; seed; breed; species; strain; kind; type; has guts (i.e. courage); nerve; classifier for types: kind, sort; classifier for languages
+3,	种,		zhong3,				genus; abbr. for 物種|物种; race; seed; breed; species; strain; kind; type; has guts (i.e. courage); nerve; classifier for types: kind, sort; classifier for languages
 6,	肿瘤,		zhong3 liu2,			tumor
 6,	种子,		zhong3 zi5,			seed
 6,	种族,		zhong3 zu2,			race; ethnicity
@@ -4815,7 +4815,7 @@
 5,	竹子,		zhu2 zi5,			bamboo
 5,	煮,		zhu3,				to cook; to boil
 6,	拄,		zhu3,				to lean on; to prop on
-6,	主办,		zhu3 ban4,			to organize; to host (a conference or sports event)
+6,	主办,		zhu3 ban4,			to organise; to host (a conference or sports event)
 5,	主持,		zhu3 chi2,			to take charge of; to manage or direct; to preside over; to uphold; to stand for (eg justice); to host (a TV or radio program etc)
 6,	主导,		zhu3 dao3,			to lead; to manage
 4,	主动,		zhu3 dong4,			to take the initiative; to do sth of one's own accord; active; opposite: passive 被動|被动[bei4 dong4]; drive (of gears and shafts etc)
@@ -4845,20 +4845,20 @@
 6,	铸造,		zhu4 zao4,			to cast (pour metal into a mold)
 6,	驻扎,		zhu4 zha1,			to station; to garrison (troops)
 6,	住宅,		zhu4 zhai2,			residence; tenement
-6,	注重,		zhu4 zhong4,			to pay attention to; to emphasize
+6,	注重,		zhu4 zhong4,			to pay attention to; to emphasise
 6,	著作,		zhu4 zuo4,			to write; literary work; book; article; writings
 5,	抓紧,		zhua1 jin3,			to grasp firmly; to pay special attention to; to rush in; to make the most of
 6,	拽,		zhuai4,				to drag; to haul
 6,	专长,		zhuan1 chang2,			specialty; special knowledge or ability
 6,	专程,		zhuan1 cheng2,			special-purpose trip
 5,	专家,		zhuan1 jia1,			expert; specialist
-6,	专科,		zhuan1 ke1,			specialized subject; branch (of medicine); specialized training school
+6,	专科,		zhuan1 ke1,			specialised subject; branch (of medicine); specialised training school
 6,	专利,		zhuan1 li4,			patent
-4,	专门,		zhuan1 men2,			specialist; specialized; customized
+4,	专门,		zhuan1 men2,			specialist; specialised; customised
 6,	专题,		zhuan1 ti2,			special topic
 6,	砖瓦,		zhuan1 wa3,			tiles and bricks
 5,	专心,		zhuan1 xin1,			to concentrate; absorption; concentration; engrossed
-4,	专业,		zhuan1 ye4,			specialty; specialized field; main field of study (at university); major
+4,	专业,		zhuan1 ye4,			specialty; specialised field; main field of study (at university); major
 5,	转变,		zhuan3 bian4,			change; transform
 6,	转达,		zhuan3 da2,			to pass on; to convey; to communicate
 5,	转告,		zhuan3 gao4,			to pass on; to communicate; to transmit
@@ -4892,7 +4892,7 @@
 6,	着手,		zhuo2 shou3,			to put one's hand to it; to start out on a task; to set out
 6,	着想,		zhuo2 xiang3,			to give thought (to others); to consider (other people's needs)
 6,	卓越,		zhuo2 yue4,			distinction; excellence; outstanding; surpassing; distinguished; splendid
-6,	着重,		zhuo2 zhong4,			put emphasis on; to stress; to emphasize
+6,	着重,		zhuo2 zhong4,			put emphasis on; to stress; to emphasise
 6,	资本,		zi1 ben3,			capital (as in capitalism)
 6,	资产,		zi1 chan3,			property; assets
 5,	资格,		zi1 ge2,			qualifications
@@ -4905,7 +4905,7 @@
 5,	咨询,		zi1 xun2,			to consult; to seek advice; consultation; (sales) inquiry (formal)
 5,	资源,		zi1 yuan2,			natural resource (such as water or minerals); resource (such as manpower or tourism)
 6,	滋长,		zi1 zhang3,			to grow (usually of abstract things); to yield; to develop
-6,	资助,		zi1 zhu4,			to subsidize; to provide financial aid; subsidy
+6,	资助,		zi1 zhu4,			to subsidise; to provide financial aid; subsidy
 5,	紫,		zi3,				purple; violet; amethyst; Lithospermum erythrorhizon (flowering plant whose root provides red purple dye); Japanese: murasaki
 6,	子弹,		zi3 dan4,			bullet
 4,	仔细,		zi3 xi4,			careful; attentive; cautious
@@ -4929,7 +4929,7 @@
 5,	自由,		zi4 you2,			freedom; free; liberty
 5,	自愿,		zi4 yuan4,			voluntary
 6,	自主,		zi4 zhu3,			to act for oneself; autonomous
-5,	综合,		zong1 he2,			comprehensive; composite; synthesized; to sum up; to integrate; to synthesize
+5,	综合,		zong1 he2,			comprehensive; composite; synthesised; to sum up; to integrate; to synthesise
 6,	踪迹,		zong1 ji4,			tracks; trail; footprint; trace; vestige
 5,	宗教,		zong1 jiao4,			religion
 6,	棕色,		zong1 se4,			brown
@@ -4953,16 +4953,16 @@
 4,	租,		zu1,				to hire; to rent; to charter; to rent out; to lease out; rent; land tax
 6,	租赁,		zu1 lin4,			to rent; to lease; to hire
 6,	足以,		zu2 yi3,			sufficient to...; so much so that; so that
-6,	组,		zu3,				to form; to organize; class; section
+6,	组,		zu3,				to form; to organise; class; section
 6,	阻碍,		zu3 ai4,			to obstruct; to hinder; to block
 4,	组成,		zu3 cheng2,			component; part; element; constitute; make up
-6,	祖父,		zu3 fu4,			father's father; paternal grandfather
+6,	祖父,		zu3 fu4,			father's father; paternal grandfather; grandfather; grandpa
 5,	祖国,		zu3 guo2,			ancestral land CL:個|个[ge4]; homeland; used for PRC
 5,	组合,		zu3 he2,			to assemble; combination; combinatorial
 6,	阻拦,		zu3 lan2,			to stop; to obstruct
 6,	阻挠,		zu3 nao2,			to thwart; to obstruct (sth)
 5,	祖先,		zu3 xian1,			ancestor; forebears
-4,	组织,		zu3 zhi1,			to organize; organization; organized system; nerve; tissue
+4,	组织,		zu3 zhi1,			to organise; organisation; organised system; nerve; tissue
 5,	阻止,		zu3 zhi3,			to prevent; to block
 6,	钻研,		zuan1 yan2,			to study meticulously; to delve into
 6,	钻石,		zuan4 shi2,			diamond
@@ -4997,7 +4997,7 @@
 5,	作文,		zuo4 wen2,			to write an essay; composition (student essay)
 6,	作息,		zuo4 xi1,			work and rest
 3,	作业,		zuo4 ye4,			school assignment; homework; work; task; operation; to operate
-3,	作用,		zuo4 yong4,			to act on; to affect; action; function; activity; impact; result; effect; purpose; intent; to play a role; corresponds to English -ity, -ism, -ization
+3,	作用,		zuo4 yong4,			to act on; to affect; action; function; activity; impact; result; effect; purpose; intent; to play a role; corresponds to English -ity, -ism, -isation
 6,	座右铭,		zuo4 you4 ming2,		motto; maxim
 4,	作者,		zuo4 zhe3,			author; writer
 6,	做主,		zuo4 zhu3,			make the decision; take charge of; back up; support; be host

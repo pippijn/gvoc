@@ -6,18 +6,18 @@
 
 QT       += core gui network
 
-windows: {
+#windows: {
     QT += multimedia
-}
-unix: {
+#}
+#unix: {
     CONFIG += mobility
     MOBILITY += multimedia
-}
+#}
 
 TARGET = gvoc
 TEMPLATE = app
 
-INCLUDEPATH += audio cache data managers network sgml trainer utility
+INCLUDEPATH += audio cache data managers models network sgml testsuite trainer utility
 
 windows: {
     LIBS += -lqjson0
@@ -68,7 +68,11 @@ SOURCES += main.cpp\
     network/CaptchaPageDownloader.cpp \
     network/CaptchaImageDownloader.cpp \
     network/CaptchaDialog.cpp \
-    network/CaptchaReplyUploader.cpp
+    network/CaptchaReplyUploader.cpp \
+    testsuite/TestSuite.cpp \
+    LanguageManager.cpp \
+    models/WordListModel.cpp \
+    models/AbstractTreeModel.cpp
 
 HEADERS  += MainWindow.h \
     Translator.h \
@@ -110,7 +114,11 @@ HEADERS  += MainWindow.h \
     network/CaptchaPageDownloader.h \
     network/CaptchaImageDownloader.h \
     network/CaptchaDialog.h \
-    network/CaptchaReplyUploader.h
+    network/CaptchaReplyUploader.h \
+    testsuite/TestSuite.h \
+    LanguageManager.h \
+    models/WordListModel.h \
+    models/AbstractTreeModel.h
 
 FORMS    += MainWindow.ui \
     Trainer.ui \

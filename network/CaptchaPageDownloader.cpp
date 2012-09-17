@@ -1,6 +1,6 @@
 #include "CaptchaPageDownloader.h"
+#include "QSgml.h"
 
-#include <QSgml.h>
 #include <QDebug>
 
 static char const *const xlatLocation = "xlatLocation";
@@ -31,11 +31,11 @@ void CaptchaPageDownloader::downloadFailure(QNetworkReply *reply, QNetworkReply:
     QByteArray body = reply->readAll();
 
     QSgml sgml(QString::fromUtf8(body.constData(), body.size()));
-    QList<QSgmlTag*> inputs = sgml.getElementsByName("input", "name", "id");
+    QList<QSgmlTagConstPointer> inputs = sgml.getElementsByName("input", "name", "id");
     Q_ASSERT(inputs.size() == 1);
 
-    QSgmlTag *input = inputs.front();
-    QString captchaId = input->attributes["value"];
+    QSgmlTagConstPointer input = inputs.front();
+    QString captchaId = input->d.Attributes["value"];
 
     // The captcha page sends 503, but this is the page we are interested in.
     emit success(location, captchaId);

@@ -72,53 +72,53 @@
 2,	欢迎,           huānyíng,       welcome; reception; greeting; compliment
 
 # (3)
-2,	问,             wèn,            ask
-2,	走,             zǒu,            walk; go; move; run
-2,	进,             jìn,            enter; go in; come into
-2,	出,             chū,            come out; go out; out; exit
-2,	跑步,           pǎobù,          running; jogging
-2,	跑,             pǎo,            run; jog
-2,	到,             dào,            go to; reach; arrive
-2,	穿,             chuān,          wear; put on
-2,	洗,             xǐ,             wash
-2,	给,             gěi,            give; grant; allow; let; supply
-2,	找,             zhǎo,           search; look for; seek
-2,	懂,             dǒng,           understand
-2,	笑,             xiào,           laugh; smile; laughter
-2,	回答,           huídá,          answer; reply
-2,	告诉,           gàosu,          tell; inform
-2,	准备,           zhǔnbèi,        prepare; ready; plan
-2,	开始,           kāishǐ,         start; begin
-2,	介绍,           jièshào,        introduce; introduction; present; presentation
-2,	帮助,           bāngzhù,        help; assist; support; aid
-2,	玩,             wán,            play; have fun; enjoy
-2,	送,             sòng,           send; deliver
-2,	等,             děng,           wait
-2,	让,             ràng,           offer; let; allow
-2,	起床,           qǐchuáng,       get up
-2,	唱,             chàng,          sing; singing
-2,	唱歌,           chànggē,        sing a song; sing; singing
-2,	跳舞,           tiàowǔ,         dance; dancing
-2,	旅游,           lǚyóu,          travel; tourism; trip; tour
-2,	上班,           shàngbān,       go to work; start work; be on duty
+2,	问,             wèn,            to ask
+2,	走,             zǒu,            to walk; to go; to move; to run
+2,	进,             jìn,            to enter; to go in; to come into
+2,	出,             chū,            to come out; to go out; out; to exit
+2,	跑步,           pǎobù,          to running; to jogging
+2,	跑,             pǎo,            to run; to jog
+2,	到,             dào,            to go to; to reach; to arrive
+2,	穿,             chuān,          to wear; to put on
+2,	洗,             xǐ,             to wash
+2,	给,             gěi,            to give; to grant; to allow; to let; to supply
+2,	找,             zhǎo,           to search; to look for; to seek
+2,	懂,             dǒng,           to understand
+2,	笑,             xiào,           to laugh; to smile; to laughter
+2,	回答,           huídá,          to answer; to reply
+2,	告诉,           gàosu,          to tell; to inform
+2,	准备,           zhǔnbèi,        to prepare; to ready; to plan
+2,	开始,           kāishǐ,         to start; to begin
+2,	介绍,           jièshào,        to introduce; introduction; to present; presentation
+2,	帮助,           bāngzhù,        to help; to assist; to support; to aid
+2,	玩,             wán,            to play; to have fun; to enjoy
+2,	送,             sòng,           to send; to deliver
+2,	等,             děng,           to wait
+2,	让,             ràng,           to offer; to let; to allow
+2,	起床,           qǐchuáng,       to get up
+2,	唱,             chàng,          to sing; singing
+2,	唱歌,           chànggē,        to sing a song; to sing; singing
+2,	跳舞,           tiàowǔ,         to dance; dancing
+2,	旅游,           lǚyóu,          to travel; tourism; trip; tour
+2,	上班,           shàngbān,       to go to work; to start work; to be on duty
 2,	下班,           xiàbān,         after work; off duty
-2,	生病,           shēngbìng,      get ill; be ill; be sick; sick; ill
-2,	休息,           xiūxí,          rest; break; halt
-2,	运动,           yùndòng,        do sports; sports
-2,	游泳,           yóuyǒng,        go swimming; swim; bathe
-2,	踢足球,         tī zúqiú,       play football
+2,	生病,           shēngbìng,      to get ill; to be ill; to be sick; sick; ill
+2,	休息,           xiūxí,          to rest; to break; to halt
+2,	运动,           yùndòng,        to do sports; sports
+2,	游泳,           yóuyǒng,        to go swimming; to swim; to bathe
+2,	踢足球,         tī zúqiú,       to play football
 2,	足球,           zúqiú,          football
-2,	打蓝球,         dǎ lánqiú,      play basketball; basketball
-2,	完,             wán,            complete; finish
+2,	打蓝球,         dǎ lánqiú,      to play basketball; basketball
+2,	完,             wán,            to complete; to finish
 
 # (4)
-2,	觉得,           juéde,          feel; seem; think
-2,	知道,           zhīdào,         know
-2,	希望,           xīwàng,         hope
+2,	觉得,           juéde,          to feel; to seem; to think
+2,	知道,           zhīdào,         to know
+2,	希望,           xīwàng,         to hope
 
 # (5)
-2,	可以,           kěyǐ,           be possible; can
-2,	要,             yào,            want; must; wish
+2,	可以,           kěyǐ,           to be possible; can
+2,	要,             yào,            to want; must; to wish
 2,	可能,           kěnéng,         may; maybe; possible; possibility
 
 # 3. ..
@@ -189,7 +189,7 @@
 2,	距,             jù,             distance
 
 # 10. ..
-2,	吧,             ba,             rhetoric interrogative particle; question particle
-2,	得,             de,             possibility particle; must; get: gain; obtain
+2,	吧,             ba,             rhetoric interrogative particle; rhetoric question particle; question particle
+2,	得,             de,             possibility particle; must; get; gain; obtain
 2,	着,             zhe,            present continuum particle (-ing); present continuum particle; -ing
 2,	过,             guò,            past tense particle (-ed); past tense particle; -ed; pass

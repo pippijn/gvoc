@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QSettings>
 
+#include "LanguageManager.h"
 #include "TextToSpeech.h"
 #include "Translator.h"
 #include "TranslationModel.h"
@@ -33,6 +34,11 @@ private:
     void setLanguages(QString sourceLanguage, QString targetLanguage);
     void updateLanguageLabels();
 
+    int minLevel() const;
+    void setMinLevel(int minLevel);
+    int maxLevel() const;
+    void setMaxLevel(int maxLevel);
+
 private slots:
     void on_input_editingFinished();
     void on_input_returnPressed();
@@ -43,8 +49,8 @@ private slots:
     void on_action_Tools_Options_triggered();
 
     void on_listen_clicked();
-    void ttsFinished();
-    void ttsError(QString message);
+    void ttsFailure(QString language, QString text, QString message);
+    void ttsSuccess();
 
     void on_swapLanguages_clicked();
 
@@ -72,6 +78,8 @@ private:
 
     TranslationModel translationModel;
     TextToSpeech tts;
+
+    LanguageManager languageManager;
 };
 
 #endif // MAINWINDOW_H

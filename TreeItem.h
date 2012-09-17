@@ -14,6 +14,7 @@ public:
 
     int childCount() const;
     int childNumber() const;
+    int childNumber(TreeItem const *child) const;
     TreeItem const *child(int index) const;
     TreeItem const *parent() const;
 

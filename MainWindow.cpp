@@ -11,26 +11,6 @@
 #include <QDebug>
 #include <QMessageBox>
 
-static QString languageName(QString code)
-{
-    if (code == "zh-CN") return "Chinese";
-    if (code == "nl")    return "Dutch";
-    if (code == "en")    return "English";
-    if (code == "fr")    return "French";
-    if (code == "de")    return "German";
-    if (code == "it")    return "Italian";
-    if (code == "ja")    return "Japanese";
-    if (code == "no")    return "Norwegian";
-    if (code == "pt")    return "Portuguese";
-    if (code == "ru")    return "Russian";
-    if (code == "es")    return "Spanish";
-    if (code == "sw")    return "Swedish";
-    if (code == "th")    return "Thai";
-    if (code == "tr")    return "Turkish";
-
-    return "<unknown>";
-}
-
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -58,8 +38,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(&translationModel, SIGNAL(translateSuccess(Translation)), SLOT(translateSuccess(Translation)));
     connect(&translationModel, SIGNAL(translateFailure(QString)), SLOT(translateFailure(QString)));
 
-    connect(&tts, SIGNAL(synthesisFinished()), SLOT(ttsFinished()));
-    connect(&tts, SIGNAL(synthesisError(QString)), SLOT(ttsError(QString)));
+    connect(&tts, SIGNAL(synthesisSuccess()), SLOT(ttsSuccess()));
+    connect(&tts, SIGNAL(synthesisFailure(QString,QString,QString)), SLOT(ttsFailure(QString,QString,QString)));
 
     updateLanguageLabels();
 }
@@ -82,8 +62,26 @@ void MainWindow::setLanguages(QString sourceLanguage, QString targetLanguage)
 
 void MainWindow::updateLanguageLabels()
 {
-    ui->sourceLanguage->setText(languageName(translationModel.sourceLanguage()));
-    ui->targetLanguage->setText(languageName(translationModel.targetLanguage()));
+    ui->sourceLanguage->setText(languageManager.languageName(translationModel.sourceLanguage()));
+    ui->targetLanguage->setText(languageManager.languageName(translationModel.targetLanguage()));
+}
+
+int MainWindow::minLevel() const
+{
+    return settings.value("minLevel", 0).value<int>();
+}
+void MainWindow::setMinLevel(int minLevel)
+{
+    settings.setValue("minLevel", minLevel);
+}
+
+int MainWindow::maxLevel() const
+{
+    return settings.value("maxLevel", 0).value<int>();
+}
+void MainWindow::setMaxLevel(int maxLevel)
+{
+    settings.setValue("maxLevel", maxLevel);
 }
 
 void MainWindow::on_input_editingFinished()
@@ -128,7 +126,7 @@ void MainWindow::translateFailure(QString message)
 
 void MainWindow::on_action_Tools_Trainer_triggered()
 {
-    Trainer trainer(settings.value("level", 0).value<int>(),
+    Trainer trainer(minLevel(), maxLevel(),
                     translationModel.sourceLanguage(),
                     translationModel.targetLanguage(),
                     translationModel.wordList(),
@@ -141,14 +139,16 @@ void MainWindow::on_action_Tools_Trainer_triggered()
 
 void MainWindow::on_action_Tools_Options_triggered()
 {
-    OptionsDialog options(settings.value("level", 0).value<int>(),
+    OptionsDialog options(minLevel(), maxLevel(),
                           translationModel.sourceLanguage(),
-                          translationModel.targetLanguage());
+                          translationModel.targetLanguage(),
+                          languageManager);
     if (options.exec() == QDialog::Accepted)
     {
         setLanguages(options.sourceLanguage(),
                      options.targetLanguage());
-        settings.setValue("level", options.level());
+        setMinLevel(options.minLevel());
+        setMaxLevel(options.maxLevel());
     }
 }
 
@@ -158,14 +158,14 @@ void MainWindow::on_listen_clicked()
     tts.synthesise(translationModel.targetLanguage(), ui->translatedText->text());
 }
 
-void MainWindow::ttsFinished()
+void MainWindow::ttsFailure(QString language, QString text, QString message)
 {
+    ui->statusBar->showMessage(message, 10000);
     ui->listen->setEnabled(true);
 }
 
-void MainWindow::ttsError(QString message)
+void MainWindow::ttsSuccess()
 {
-    ui->statusBar->showMessage(message, 10000);
     ui->listen->setEnabled(true);
 }
 

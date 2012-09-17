@@ -3,7 +3,7 @@
 #include <cstdio>
 #include "MainWindow.h"
 
-#include "TranslationDownloader.h"
+#include "TestSuite.h"
 
 static void msgHandler(QtMsgType type, char const *message)
 {
@@ -33,6 +33,9 @@ int main(int argc, char *argv[])
     a.setApplicationName("GVoc");
 
     qInstallMsgHandler(msgHandler);
+
+    TestSuite testSuite;
+    testSuite.run();
 
     MainWindow w;
     w.show();

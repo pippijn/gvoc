@@ -31,10 +31,17 @@ int TreeItem::childCount() const
 int TreeItem::childNumber() const
 {
     if (parentItem)
-        for (int i = 0; i < parentItem->childCount(); i++)
-            if (parentItem->child(i) == this)
-                return i;
+        return parentItem->childNumber(this);
 
+    return 0;
+}
+
+int TreeItem::childNumber(TreeItem const *child) const
+{
+    for (int i = 0; i < childCount(); i++)
+        if (this->child(i) == child)
+            return i;
+    qWarning("did not find child %p in %p", child, this);
     return 0;
 }
 

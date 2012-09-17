@@ -34,10 +34,12 @@ public:
     void loadWordlist(QList<Translation> const &wordList);
     void loadHintList(QString fileName);
 
-    QStringList wordList(int maxLevel) const;
+    QStringList wordList(int minLevel, int maxLevel) const;
 
+    QStringList targetOptions(QString word) const;
     QString targetText(QString word) const;
     QString targetPhonetics(QString word) const;
+    QStringList sourceOptions(QString word) const;
     QString sourceText(QString word) const;
     QString sourcePhonetics(QString word) const;
 
@@ -53,10 +55,10 @@ public:
 private:
     void addWord(Vocable const &voc);
 
-    virtual QString processTargetText(QString targetText) const;
-    virtual QString processTargetPhonetic(QString targetPhonetic) const;
-    virtual QString processTranslation(QString translation) const;
-    virtual QString latinPhonetic(QString targetPhonetic) const;
+protected:
+    virtual QString normalisePhonetic(QString phonetic) const;
+    virtual QString phoneticToLatin(QString phonetic) const;
+    virtual bool matchTranslation(QString actual, QString expected) const;
 };
 
 #endif // VOCABULARY_H

@@ -17,7 +17,7 @@ class Trainer : public QDialog {
     Q_OBJECT
 
 public:
-    Trainer(int level, QString sourceLanguage, QString targetLanguage, QList<Translation> wordList, TextToSpeech &tts, QWidget *parent = 0);
+    Trainer(int minLevel, int maxLevel, QString sourceLanguage, QString targetLanguage, QList<Translation> wordList, TextToSpeech &tts, QWidget *parent = 0);
     ~Trainer();
 
 private slots:
@@ -33,6 +33,7 @@ private slots:
     void on_btnHint_clicked();
     void on_btnAnswer_clicked();
     void on_btnOK_clicked();
+    void on_btnTranslations_clicked();
 
 private: // data
     Ui::Trainer *ui;
