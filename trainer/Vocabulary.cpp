@@ -33,33 +33,17 @@ struct Vocabulary::Hint
 {
     QString targetPhrase;
     QString targetPhonetic;
+    QString translation;
 
     Hint()
     {
     }
 
-    Hint(QString targetPhrase, QString targetPhonetic)
+    Hint(QString targetPhrase, QString targetPhonetic, QString translation)
         : targetPhrase(targetPhrase)
         , targetPhonetic(targetPhonetic)
+        , translation(translation)
     {
-    }
-
-    QString format(QString word, QString phonetic) const
-    {
-        QString phraseText = targetPhrase;
-        QString phrasePhonetic = targetPhonetic;
-
-        phraseText.replace(word, "<font color='brown'>" + word + "</font>");
-        phrasePhonetic.replace(phonetic, "<font color='brown'>" + phonetic + "</font>");
-
-        QString hintText
-                = "<center>"
-                + QString("<h1>%0</h1>").arg(phraseText)
-                + QString("<h3>%0</h3>").arg(phrasePhonetic)
-                + "</center>"
-                ;
-
-        return hintText;
     }
 };
 
@@ -81,7 +65,7 @@ Vocabulary::~Vocabulary()
 }
 
 
-void Vocabulary::loadWordlist(QString fileName)
+void Vocabulary::loadWordList(QString fileName)
 {
     QFile wordsFile(fileName);
     if (wordsFile.open(QFile::ReadOnly))
@@ -131,7 +115,7 @@ void Vocabulary::loadWordlist(QString fileName)
     }
 }
 
-void Vocabulary::loadWordlist(QList<Translation> const &wordList)
+void Vocabulary::loadWordList(QList<Translation> const &wordList)
 {
     foreach (Translation const &word, wordList)
     {
@@ -157,6 +141,7 @@ void Vocabulary::loadHintList(QString fileName)
 
         int line = 0;
 
+        QList<Hint> hintList;
         while (in)
         {
             line++;
@@ -168,20 +153,26 @@ void Vocabulary::loadHintList(QString fileName)
                 continue;
             }
 
-            std::getline(in, item, ',');
-            QString targetText = QString::fromUtf8(item.data(), item.length()).simplified();
-
-            std::getline(in, item, ',');
+            std::getline(in, item);
             QString targetPhrase = QString::fromUtf8(item.data(), item.length()).simplified();
 
-            std::getline(in, item, '\n');
+            std::getline(in, item);
             QString targetPhonetic = QString::fromUtf8(item.data(), item.length()).simplified();
 
-            if (targetText.isEmpty() || targetPhrase.isEmpty())
+            std::getline(in, item);
+            QString translation = QString::fromUtf8(item.data(), item.length()).simplified();
+
+            if (targetPhrase.isEmpty() || translation.isEmpty())
                 continue;
 
-            hints[targetText].append(Hint(targetPhrase, targetPhonetic));
+            hintList.append(Hint(targetPhrase, targetPhonetic, translation));
         }
+
+        qDebug() << "categorising" << hintList.size() << "hints using" << vocabulary.size() << "words";
+        foreach (QString const &word, vocabulary.keys())
+            foreach (Hint const &hint, hintList)
+                if (hint.targetPhrase.contains(word))
+                    hints[word].append(hint);
     }
 }
 
@@ -307,16 +298,31 @@ bool Vocabulary::matchesTargetText(QString word, QString text) const
 }
 
 
-QString Vocabulary::targetHint(QString word) const
+QString Vocabulary::hintText(Hint const &hint) const
+{
+    return hint.targetPhrase;
+}
+
+QString Vocabulary::hintPhonetic(Hint const &hint) const
+{
+    return hint.targetPhonetic;
+}
+
+QString Vocabulary::hintTranslation(Hint const &hint) const
+{
+    return hint.translation;
+}
+
+
+Vocabulary::Hint const *Vocabulary::targetHint(QString word) const
 {
     HintMap::const_iterator found = hints.find(word);
     if (found == hints.end())
-        return QString();
+        return NULL;
     QList<Hint> const &hintList = found.value();
     Hint const &hint = hintList.front();
 
-    QString phonetic = targetPhonetics(word);
-    return hint.format(word, phonetic);
+    return &hint;
 }
 
 void Vocabulary::rotateTargetHints(QString word)
@@ -329,10 +335,10 @@ void Vocabulary::rotateTargetHints(QString word)
 }
 
 
-QString Vocabulary::sourceHint(QString word) const
+Vocabulary::Hint const *Vocabulary::sourceHint(QString word) const
 {
     // TODO: source hints
-    return QString();
+    return NULL;
 }
 
 void Vocabulary::rotateSourceHints(QString word)

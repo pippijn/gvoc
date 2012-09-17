@@ -19,9 +19,6 @@ public:
 
     QList<Translation> wordList() const;
 
-private:
-    void initialiseList();
-
 private slots:
     void on_deleteItem_clicked();
 

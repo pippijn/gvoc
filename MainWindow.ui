@@ -273,6 +273,8 @@
      <string>&amp;Tools</string>
     </property>
     <addaction name="action_Tools_Trainer"/>
+    <addaction name="action_Tools_Phonetics"/>
+    <addaction name="separator"/>
     <addaction name="action_Tools_Options"/>
    </widget>
    <widget class="QMenu" name="menu_Edit">
@@ -334,6 +336,11 @@
   <action name="action_Help_About">
    <property name="text">
     <string>&amp;About</string>
+   </property>
+  </action>
+  <action name="action_Tools_Phonetics">
+   <property name="text">
+    <string>&amp;Phonetics</string>
    </property>
   </action>
  </widget>

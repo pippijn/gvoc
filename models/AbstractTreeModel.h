@@ -17,10 +17,11 @@ public:
     int columnCount(const QModelIndex &parent) const;
     QVariant data(const QModelIndex &index, int role) const;
     QVariant headerData(int section, Qt::Orientation orientation, int role) const;
+    bool removeRows(int row, int count, QModelIndex const &parent);
 
 protected:
-    TreeItem &getItem(const QModelIndex &index);
-    const TreeItem &getItem(const QModelIndex &index) const;
+    TreeItem &getItem(QModelIndex const &index);
+    TreeItem const &getItem(QModelIndex const &index) const;
 
 signals:
     

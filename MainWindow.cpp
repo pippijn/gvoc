@@ -6,6 +6,7 @@
 #include "WordListEditor.h"
 #include "PhoneticsEditor.h"
 #include "TextToSpeechEditor.h"
+#include "PhoneticsDialog.h"
 
 #include <QSettings>
 #include <QDebug>
@@ -118,7 +119,7 @@ void MainWindow::translateSuccess(Translation translation)
 
 void MainWindow::translateFailure(QString message)
 {
-    ui->statusBar->showMessage(message, 10000);
+    ui->statusBar->showMessage(message, 5000);
     ui->input->setEnabled(true);
     ui->input->setFocus();
 }
@@ -126,15 +127,19 @@ void MainWindow::translateFailure(QString message)
 
 void MainWindow::on_action_Tools_Trainer_triggered()
 {
+    ui->statusBar->showMessage("Starting trainer...");
+
     Trainer trainer(minLevel(), maxLevel(),
                     translationModel.sourceLanguage(),
                     translationModel.targetLanguage(),
                     translationModel.wordList(),
-                    tts);
+                    tts, phoneticsManager);
 
     this->setVisible(false);
     trainer.exec();
     this->setVisible(true);
+
+    ui->statusBar->clearMessage();
 }
 
 void MainWindow::on_action_Tools_Options_triggered()
@@ -207,4 +212,10 @@ void MainWindow::on_detailed_activated(const QModelIndex &index)
 {
     if (index.parent().isValid())
         tts.synthesise(translationModel.targetLanguage(), index.sibling(index.row(), 0).data().value<QString>());
+}
+
+void MainWindow::on_action_Tools_Phonetics_triggered()
+{
+    PhoneticsDialog dialog(phoneticsManager, translationModel.targetLanguage());
+    dialog.exec();
 }

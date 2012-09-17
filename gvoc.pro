@@ -72,7 +72,9 @@ SOURCES += main.cpp\
     testsuite/TestSuite.cpp \
     LanguageManager.cpp \
     models/WordListModel.cpp \
-    models/AbstractTreeModel.cpp
+    models/AbstractTreeModel.cpp \
+    WordListView.cpp \
+    PhoneticsDialog.cpp
 
 HEADERS  += MainWindow.h \
     Translator.h \
@@ -118,7 +120,9 @@ HEADERS  += MainWindow.h \
     testsuite/TestSuite.h \
     LanguageManager.h \
     models/WordListModel.h \
-    models/AbstractTreeModel.h
+    models/AbstractTreeModel.h \
+    WordListView.h \
+    PhoneticsDialog.h
 
 FORMS    += MainWindow.ui \
     Trainer.ui \
@@ -127,14 +131,22 @@ FORMS    += MainWindow.ui \
     WordListEditor.ui \
     TextToSpeechEditor.ui \
     PhoneticsEditor.ui \
-    network/CaptchaDialog.ui
+    network/CaptchaDialog.ui \
+    WordListView.ui \
+    PhoneticsDialog.ui
 
 RESOURCES += \
     gvoc.qrc
 
 OTHER_FILES += \
-    wordlists/hints.zh-CN.txt \
     wordlists/words.en.zh-CN/hsk1.csv \
     wordlists/words.en.zh-CN/hsk2.csv \
     wordlists/words.en.zh-CN/extra.csv \
-    wordlists/words.en.zh-CN/words-hsk.csv
+    wordlists/words.en.zh-CN/words-hsk.csv \
+    wordlists/words.en.zh-CN/my-hsk2.csv \
+    wordlists/words.en.zh-CN/my-hsk1.csv \
+    wordlists/words.en.zh-CN/hsk4-simp.csv \
+    wordlists/words.en.zh-CN/hsk3-simp.csv \
+    wordlists/words.en.zh-CN/hsk2-simp.csv \
+    wordlists/hints.en.zh-CN/hsk.txt \
+    wordlists/words.en.zh-CN/simplified-hsk.csv

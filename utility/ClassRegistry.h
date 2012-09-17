@@ -75,6 +75,7 @@ public:
         typename ConstructorMap::const_iterator found = constructors().find(name);
         if (found == constructors().end())
             return NULL;
+
         return found.value()->construct();
     }
 };

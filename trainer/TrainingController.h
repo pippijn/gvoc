@@ -2,8 +2,9 @@
 #define TRAININGMANAGER_H
 
 #include "TrainingStatus.h"
-class Vocabulary;
+#include "Vocabulary.h"
 class Translation;
+class PhoneticsManager;
 
 #include <QObject>
 #include <QDir>
@@ -33,7 +34,10 @@ private:
     LanguageSelector const &answerSelector() const;
 
 public:
-    TrainingController(int minLevel, int maxLevel, QString sourceLanguage, QString targetLanguage, QObject *parent = 0);
+    TrainingController(int minLevel, int maxLevel,
+                       QString sourceLanguage, QString targetLanguage,
+                       PhoneticsManager &phoneticsManager,
+                       QObject *parent = 0);
     ~TrainingController();
 
     void loadWords(QDir location);
@@ -54,9 +58,12 @@ public:
     QString answerPhonetic() const;
     QStringList answerOptions() const;
     QString answer() const;
+
+    QString formatHint(const Vocabulary::Hint &hint, bool withTranslation) const;
     bool hasHint() const;
-    QString hint() const;
+    QString hint(bool withTranslation) const;
     void rotateHints();
+
     bool hasRetries() const;
 
     void nextWord();
@@ -81,6 +88,8 @@ private:
     int maxLevel;
     QString sourceLanguage;
     QString targetLanguage;
+
+    PhoneticsManager &phoneticsManager;
 
     Vocabulary *const vocabulary;
     QStringList wordList;

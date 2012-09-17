@@ -18,7 +18,9 @@ public:
     TreeItem const *child(int index) const;
     TreeItem const *parent() const;
 
+    TreeItem &addChild(QString data);
     TreeItem &addChild(QStringList data);
+    void removeChild(int index);
     void clear();
 
 private:

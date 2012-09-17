@@ -14,6 +14,9 @@ class PhoneticsManager : public QObject
 public:
     explicit PhoneticsManager(PhoneticsDownloader &downloader, QDir cacheDir, QObject *parent = 0);
 
+    // Get cached phonetics
+    QString cachedPhonetic(QString targetLanguage, QString targetText) const;
+
     // Asynchronously get phonetics
     void phonetic(QString targetLanguage, QString targetText, QVariant userData);
 

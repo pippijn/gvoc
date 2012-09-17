@@ -1,5 +1,7 @@
 #include "AbstractTreeModel.h"
 
+#include <QDebug>
+
 AbstractTreeModel::AbstractTreeModel(QStringList headers, QObject *parent)
     : QAbstractItemModel(parent)
     , root(headers)
@@ -64,6 +66,19 @@ QVariant AbstractTreeModel::headerData(int section, Qt::Orientation orientation,
         return root.data(section);
 
     return QVariant();
+}
+
+bool AbstractTreeModel::removeRows(int row, int count, const QModelIndex &parent)
+{
+    qDebug() << __func__ << row << count << parent;
+    TreeItem &item = getItem(parent);
+
+    beginRemoveRows(parent, row, row + count);
+    while (count--)
+        item.removeChild(row);
+    endRemoveRows();
+
+    return false;
 }
 
 

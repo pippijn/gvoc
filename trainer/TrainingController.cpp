@@ -1,5 +1,6 @@
 #include "TrainingController.h"
 #include "Vocabulary.h"
+#include "PhoneticsManager.h"
 
 
 struct TrainingController::LanguageSelector
@@ -8,7 +9,7 @@ struct TrainingController::LanguageSelector
     virtual QString text() const = 0;
     virtual QString phonetic() const = 0;
     virtual QStringList options() const = 0;
-    virtual QString hint() const = 0;
+    virtual Vocabulary::Hint const *hint() const = 0;
     virtual void rotateHints() = 0;
     virtual bool matches(QString answer) const = 0;
 
@@ -48,7 +49,7 @@ struct TargetLanguageSelector : TrainingController::LanguageSelector
     {
         return self.vocabulary->targetOptions(*self.currentWord);
     }
-    QString hint() const
+    Vocabulary::Hint const *hint() const
     {
         return self.vocabulary->targetHint(*self.currentWord);
     }
@@ -85,7 +86,7 @@ struct SourceLanguageSelector : TrainingController::LanguageSelector
     {
         return self.vocabulary->sourceOptions(*self.currentWord);
     }
-    QString hint() const
+    Vocabulary::Hint const *hint() const
     {
         return self.vocabulary->sourceHint(*self.currentWord);
     }
@@ -100,13 +101,17 @@ struct SourceLanguageSelector : TrainingController::LanguageSelector
 };
 
 
-TrainingController::TrainingController(int minLevel, int maxLevel, QString sourceLanguage, QString targetLanguage, QObject *parent)
+TrainingController::TrainingController(int minLevel, int maxLevel,
+                                       QString sourceLanguage, QString targetLanguage,
+                                       PhoneticsManager &phoneticsManager,
+                                       QObject *parent)
     : QObject(parent)
     , started(false)
     , minLevel(minLevel)
     , maxLevel(maxLevel)
     , sourceLanguage(sourceLanguage)
     , targetLanguage(targetLanguage)
+    , phoneticsManager(phoneticsManager)
     , vocabulary(Vocabulary::create(sourceLanguage, targetLanguage))
 {
     srand(time(NULL));
@@ -148,20 +153,23 @@ void TrainingController::loadWords(QDir location)
     if (!location.cd("words." + sourceLanguage + "." + targetLanguage))
         return;
     foreach (QFileInfo const &info, location.entryInfoList(QStringList("*.csv")))
-        vocabulary->loadWordlist(info.filePath());
+        vocabulary->loadWordList(info.filePath());
 }
 
 void TrainingController::loadHints(QDir location)
 {
     Q_ASSERT(!started);
-    vocabulary->loadHintList(location.filePath("hints." + targetLanguage + ".txt"));
+    if (!location.cd("hints." + sourceLanguage + "." + targetLanguage))
+        return;
+    foreach (QFileInfo const &info, location.entryInfoList(QStringList("*.txt")))
+        vocabulary->loadHintList(info.filePath());
 }
 
 
 void TrainingController::loadWords(QList<Translation> const &translations)
 {
     Q_ASSERT(!started);
-    vocabulary->loadWordlist(translations);
+    vocabulary->loadWordList(translations);
 }
 
 
@@ -234,13 +242,48 @@ QString TrainingController::answer() const
     return text;
 }
 
-QString TrainingController::hint() const { return answerSelector().hint(); }
-void TrainingController::rotateHints() { answerSelector().rotateHints(); }
+QString TrainingController::formatHint(Vocabulary::Hint const &hint, bool withTranslation) const
+{
+    QString word = questionText();
+    QString phonetic = questionPhonetic();
+
+    QString phraseText = vocabulary->hintText(hint);
+    QString phrasePhonetic = phoneticsManager.cachedPhonetic(questionLanguage(), phraseText);
+    if (phrasePhonetic.isEmpty())
+        phrasePhonetic = vocabulary->hintPhonetic(hint);
+    QString translation = withTranslation ? vocabulary->hintTranslation(hint) : QString();
+
+    phraseText.replace(word, "<font color='brown'>" + word + "</font>", Qt::CaseInsensitive);
+    phrasePhonetic.replace(phonetic, "<font color='brown'>" + phonetic + "</font>", Qt::CaseInsensitive);
+
+    QString hintText
+            = "<center>"
+            + QString("<h1>%0</h1>").arg(phraseText)
+            + QString("<h3>%0</h3>").arg(phrasePhonetic)
+            + QString("<h4>%0</h4>").arg(translation)
+            + "</center>"
+            ;
+
+    return hintText;
+}
+
+QString TrainingController::hint(bool withTranslation) const
+{
+    Vocabulary::Hint const *hint = questionSelector().hint();
+    if (hint != NULL)
+        return formatHint(*hint, withTranslation);
+    return QString();
+}
+
+void TrainingController::rotateHints()
+{
+    questionSelector().rotateHints();
+}
 
 bool TrainingController::hasHint() const
 {
     Q_ASSERT(started);
-    return !hint().isEmpty();
+    return !hint(false).isEmpty();
 }
 
 bool TrainingController::hasRetries() const

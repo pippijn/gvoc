@@ -1,10 +1,10 @@
 <RCC>
     <qresource prefix="/">
-        <file>wordlists/hints.zh-CN.txt</file>
-        <file>wordlists/words.en.zh-CN/extra.csv</file>
-        <file>wordlists/words.en.zh-CN/hsk1.csv</file>
-        <file>wordlists/words.en.zh-CN/hsk2.csv</file>
-        <file>wordlists/words.en.zh-CN/words-hsk.csv</file>
         <file>testsuite/test.html</file>
+        <file>wordlists/hints.en.zh-CN/hsk.txt</file>
+        <file>wordlists/words.en.zh-CN/extra.csv</file>
+        <file>wordlists/words.en.zh-CN/my-hsk1.csv</file>
+        <file>wordlists/words.en.zh-CN/my-hsk2.csv</file>
+        <file>wordlists/words.en.zh-CN/words-hsk.csv</file>
     </qresource>
 </RCC>

@@ -17,7 +17,12 @@ class Trainer : public QDialog {
     Q_OBJECT
 
 public:
-    Trainer(int minLevel, int maxLevel, QString sourceLanguage, QString targetLanguage, QList<Translation> wordList, TextToSpeech &tts, QWidget *parent = 0);
+    Trainer(int minLevel, int maxLevel,
+            QString sourceLanguage, QString targetLanguage,
+            QList<Translation> wordList,
+            TextToSpeech &tts,
+            PhoneticsManager &phoneticsManager,
+            QWidget *parent = 0);
     ~Trainer();
 
 private slots:
@@ -40,7 +45,7 @@ private: // data
     TextToSpeech &tts;
     QString sourceLanguage;
     QString targetLanguage;
-    TrainingController manager;
+    TrainingController trainingManager;
 };
 
 #endif // TRAINER_H

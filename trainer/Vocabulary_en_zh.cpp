@@ -73,10 +73,12 @@ QString Vocabulary_en_zh::normalisePhonetic(QString targetPhonetic) const
     QStringList list = targetPhonetic.split(' ');
     bool changed = false;
 
+    if (!list.at(0).contains(QRegExp("[0-9]")))
+        return targetPhonetic;
+
     for (int i = 0; i < list.size(); i++)
     {
         QString part = list[i].replace("v", QString::fromUtf8("ü"));
-        Q_ASSERT(!part.isEmpty());
         if (part.isEmpty())
         {
             qWarning() << "empty part:" << targetPhonetic;
@@ -118,7 +120,7 @@ QString Vocabulary_en_zh::normalisePhonetic(QString targetPhonetic) const
     if (!changed)
         return targetPhonetic;
 
-    return list.join("");
+    return list.join(" ");
 }
 
 QString Vocabulary_en_zh::phoneticToLatin(QString targetPhonetic) const

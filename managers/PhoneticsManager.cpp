@@ -11,6 +11,18 @@ PhoneticsManager::PhoneticsManager(PhoneticsDownloader &downloader, QDir cacheDi
 }
 
 
+QString PhoneticsManager::cachedPhonetic(QString targetLanguage, QString targetText) const
+{
+    Cache::Map dictionary = cache(targetLanguage).all();
+    if (dictionary.contains(targetText))
+        return dictionary[targetText];
+
+    const_cast<PhoneticsManager *>(this)->phonetic(targetLanguage, targetText, QVariant());
+
+    return QString();
+}
+
+
 void PhoneticsManager::phonetic(QString targetLanguage, QString targetText, QVariant userData)
 {
     Cache::Map dictionary = cache(targetLanguage).all();

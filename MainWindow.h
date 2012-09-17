@@ -62,6 +62,8 @@ private slots:
 
     void on_detailed_activated(const QModelIndex &index);
 
+    void on_action_Tools_Phonetics_triggered();
+
 private:
     Ui::MainWindow *ui;
     QSettings settings;

@@ -33,16 +33,16 @@ QVariant TranslationModel::data(const QModelIndex &index, int role) const
     if (role != Qt::DisplayRole)
         return QVariant();
 
-    TreeItem const *item = getItem(index);
+    TreeItem const &item = getItem(index);
 
-    if (index.column() == 0 && item->parent() && item->parent()->parent())
+    if (index.column() == 0 && item.parent() && item.parent()->parent())
     {
         if (phoneticsQueue.isEmpty())
             QTimer::singleShot(0, const_cast<TranslationModel *>(this), SLOT(updatePhonetics()));
         phoneticsQueue.append(index);
     }
 
-    return item->data(index.column());
+    return item.data(index.column());
 }
 
 
@@ -100,7 +100,7 @@ void TranslationModel::translateFailure(QString sourceLanguage, QString targetLa
 
 void TranslationModel::translateSuccess(QString sourceLanguage, QString targetLanguage, QString sourceText, QVariant userData, Translation entry)
 {
-    TreeItem &root = *getItem(QModelIndex());
+    TreeItem &root = getItem(QModelIndex());
     root.clear();
 
     foreach (Dictionary::WordType wordType, entry.dictionary.sections.keys())
@@ -130,8 +130,8 @@ void TranslationModel::updatePhonetics()
     std::reverse(phoneticsQueue.begin(), phoneticsQueue.end());
     foreach (QModelIndex index, phoneticsQueue)
     {
-        TreeItem *item = getItem(index);
-        phoneticsManager.phonetic(targetLanguage(), item->data(0), QVariant::fromValue(index));
+        TreeItem &item = getItem(index);
+        phoneticsManager.phonetic(targetLanguage(), item.data(0), QVariant::fromValue(index));
     }
     phoneticsQueue.clear();
 }

@@ -60,6 +60,10 @@ TreeItem const *TreeItem::parent() const
     return parentItem;
 }
 
+TreeItem &TreeItem::addChild(QString data)
+{
+    return addChild(QStringList(data));
+}
 
 TreeItem &TreeItem::addChild(QStringList data)
 {
@@ -68,6 +72,11 @@ TreeItem &TreeItem::addChild(QStringList data)
         item.itemData.append(QString());
     childItems.append(item);
     return childItems.back();
+}
+
+void TreeItem::removeChild(int index)
+{
+    childItems.removeAt(index);
 }
 
 void TreeItem::clear()

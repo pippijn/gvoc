@@ -9,15 +9,16 @@ class Translation;
 
 class Vocabulary : private ClassRegistry<Vocabulary>
 {
-private:
+public:
     // Words with translations
     struct Vocable;
 
-    typedef QMap<QString, Vocable> VocableMap;
-    VocableMap vocabulary;
-
     // Hints
     struct Hint;
+
+private:
+    typedef QMap<QString, Vocable> VocableMap;
+    VocableMap vocabulary;
 
     typedef QMap<QString, QList<Hint> > HintMap;
     HintMap hints;
@@ -30,8 +31,8 @@ public:
     Vocabulary();
     virtual ~Vocabulary();
 
-    void loadWordlist(QString fileName);
-    void loadWordlist(QList<Translation> const &wordList);
+    void loadWordList(QString fileName);
+    void loadWordList(QList<Translation> const &wordList);
     void loadHintList(QString fileName);
 
     QStringList wordList(int minLevel, int maxLevel) const;
@@ -46,10 +47,14 @@ public:
     bool matchesSourceText(QString word, QString text) const;
     bool matchesTargetText(QString word, QString text) const;
 
-    QString targetHint(QString word) const;
+    QString hintText(Hint const &hint) const;
+    QString hintPhonetic(Hint const &hint) const;
+    QString hintTranslation(Hint const &hint) const;
+
+    Hint const *targetHint(QString word) const;
     void rotateTargetHints(QString word);
 
-    QString sourceHint(QString word) const;
+    Hint const *sourceHint(QString word) const;
     void rotateSourceHints(QString word);
 
 private:
