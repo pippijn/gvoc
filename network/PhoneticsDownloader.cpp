@@ -38,8 +38,6 @@ void PhoneticsDownloader::downloadFailure(QNetworkReply *reply, QNetworkReply::N
     QString targetText = reply->property(xlatTargetText).value<QString>();
     QVariant userData = reply->property(xlatUserData);
 
-    qDebug() << reply->readAll();
-
     // Emit error signal
     emit failure(targetLanguage, targetText, userData,
                  QString("Network error %0 while downloading phonetics: %1")

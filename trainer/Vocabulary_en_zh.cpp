@@ -120,7 +120,7 @@ QString Vocabulary_en_zh::normalisePhonetic(QString targetPhonetic) const
     if (!changed)
         return targetPhonetic;
 
-    return list.join(" ");
+    return list.join("");
 }
 
 QString Vocabulary_en_zh::phoneticToLatin(QString targetPhonetic) const

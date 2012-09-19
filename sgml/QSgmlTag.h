@@ -85,7 +85,7 @@ public:
   QSgmlTagConstPointer getPreviousSibling() const;
   QSgmlTagConstPointer getNextElement() const;
   QSgmlTagConstPointer getPreviousElement() const;
-  QString getArgValue (QString Key) const;
+  QString attribute (QString Key) const;
   void resetLevel (void);
   bool hasAttribute (QString AtrName) const;
 

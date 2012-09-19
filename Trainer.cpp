@@ -126,8 +126,9 @@ void Trainer::on_btnListen_clicked()
 void Trainer::on_btnHint_clicked()
 {
     bool withTranslation = !ui->btnAnswer->isEnabled();
-    QMessageBox::information(this, tr("Hint for %0").arg(trainingManager.question()), trainingManager.hint(withTranslation));
+    QString hint = trainingManager.hint(withTranslation);
     trainingManager.rotateHints();
+    QMessageBox::information(this, tr("Hint for %0").arg(trainingManager.question()), hint);
 }
 
 void Trainer::on_btnAnswer_clicked()

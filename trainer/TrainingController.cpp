@@ -51,11 +51,11 @@ struct TargetLanguageSelector : TrainingController::LanguageSelector
     }
     Vocabulary::Hint const *hint() const
     {
-        return self.vocabulary->targetHint(*self.currentWord);
+        return self.vocabulary->hint(*self.currentWord, self.maxLevel);
     }
     void rotateHints()
     {
-        return self.vocabulary->rotateTargetHints(*self.currentWord);
+        return self.vocabulary->rotateHints(*self.currentWord, self.maxLevel);
     }
     bool matches(QString answer) const
     {
@@ -88,11 +88,10 @@ struct SourceLanguageSelector : TrainingController::LanguageSelector
     }
     Vocabulary::Hint const *hint() const
     {
-        return self.vocabulary->sourceHint(*self.currentWord);
+        return NULL;
     }
     void rotateHints()
     {
-        return self.vocabulary->rotateSourceHints(*self.currentWord);
     }
     bool matches(QString answer) const
     {
@@ -277,7 +276,10 @@ QString TrainingController::hint(bool withTranslation) const
 
 void TrainingController::rotateHints()
 {
+    Q_ASSERT(started);
     questionSelector().rotateHints();
+    if (!hasHint())
+        qFatal("rotating hints deleted them");
 }
 
 bool TrainingController::hasHint() const

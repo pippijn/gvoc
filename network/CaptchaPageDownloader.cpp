@@ -35,7 +35,7 @@ void CaptchaPageDownloader::downloadFailure(QNetworkReply *reply, QNetworkReply:
     Q_ASSERT(inputs.size() == 1);
 
     QSgmlTagConstPointer input = inputs.front();
-    QString captchaId = input->d.Attributes["value"];
+    QString captchaId = input->attribute("value");
 
     // The captcha page sends 503, but this is the page we are interested in.
     emit success(location, captchaId);

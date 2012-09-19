@@ -202,7 +202,7 @@ QSgmlTagConstPointer QSgmlTag::getPreviousElement() const
 }
 
 // get the value of an argument
-QString QSgmlTag::getArgValue (QString Key) const
+QString QSgmlTag::attribute (QString Key) const
 {
   return d.Attributes.value (Key);
 }

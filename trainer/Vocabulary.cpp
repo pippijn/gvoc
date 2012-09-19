@@ -31,6 +31,7 @@ struct Vocabulary::Vocable
 
 struct Vocabulary::Hint
 {
+    int level;
     QString targetPhrase;
     QString targetPhonetic;
     QString translation;
@@ -39,8 +40,9 @@ struct Vocabulary::Hint
     {
     }
 
-    Hint(QString targetPhrase, QString targetPhonetic, QString translation)
-        : targetPhrase(targetPhrase)
+    Hint(int level, QString targetPhrase, QString targetPhonetic, QString translation)
+        : level(level)
+        , targetPhrase(targetPhrase)
         , targetPhonetic(targetPhonetic)
         , translation(translation)
     {
@@ -137,11 +139,12 @@ void Vocabulary::loadHintList(QString fileName)
     QFile hintsFile(fileName);
     if (hintsFile.open(QFile::ReadOnly))
     {
+        int level = hintsFile.readLine().toInt();
         std::istringstream in(hintsFile.readAll().constData());
 
         int line = 0;
 
-        QList<Hint> hintList;
+        HintList readHints;
         while (in)
         {
             line++;
@@ -165,14 +168,11 @@ void Vocabulary::loadHintList(QString fileName)
             if (targetPhrase.isEmpty() || translation.isEmpty())
                 continue;
 
-            hintList.append(Hint(targetPhrase, targetPhonetic, translation));
+            readHints.append(Hint(level, targetPhrase, targetPhonetic, translation));
         }
 
-        qDebug() << "categorising" << hintList.size() << "hints using" << vocabulary.size() << "words";
-        foreach (QString const &word, vocabulary.keys())
-            foreach (Hint const &hint, hintList)
-                if (hint.targetPhrase.contains(word))
-                    hints[word].append(hint);
+        std::random_shuffle(readHints.begin(), readHints.end());
+        hints.append(readHints);
     }
 }
 
@@ -314,36 +314,41 @@ QString Vocabulary::hintTranslation(Hint const &hint) const
 }
 
 
-Vocabulary::Hint const *Vocabulary::targetHint(QString word) const
+Vocabulary::HintList *Vocabulary::hintList(QString word, int maxLevel) const
 {
-    HintMap::const_iterator found = hints.find(word);
-    if (found == hints.end())
-        return NULL;
-    QList<Hint> const &hintList = found.value();
-    Hint const &hint = hintList.front();
+    if (mappedHintLevel != maxLevel)
+    {
+        mappedHints.clear();
+        mappedHintLevel = maxLevel;
+    }
 
-    return &hint;
+    HintMap::iterator found = mappedHints.find(word);
+    if (found == mappedHints.end())
+    {
+        qDebug() << "categorising" << hints.size() << "hints for" << word;
+        foreach (Hint const &hint, hints)
+            if (hint.level <= maxLevel && hint.targetPhrase.contains(word))
+                mappedHints[word].append(hint);
+
+        found = mappedHints.find(word);
+        if (found == mappedHints.end())
+            return NULL;
+    }
+    return &found.value();
 }
 
-void Vocabulary::rotateTargetHints(QString word)
+Vocabulary::Hint const *Vocabulary::hint(QString word, int maxLevel) const
 {
-    HintMap::iterator found = hints.find(word);
-    if (found == hints.end())
-        return;
-    QList<Hint> &hintList = found.value();
-    std::rotate(hintList.begin(), hintList.begin() + 1, hintList.end());
-}
+    if (HintList const *list = hintList(word, maxLevel))
+        return &list->front();
 
-
-Vocabulary::Hint const *Vocabulary::sourceHint(QString word) const
-{
-    // TODO: source hints
     return NULL;
 }
 
-void Vocabulary::rotateSourceHints(QString word)
+void Vocabulary::rotateHints(QString word, int maxLevel)
 {
-    // TODO: source hints
+    if (HintList *list = hintList(word, maxLevel))
+        std::rotate(list->begin(), list->begin() + 1, list->end());
 }
 
 

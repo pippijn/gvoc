@@ -6,5 +6,10 @@
         <file>wordlists/words.en.zh-CN/my-hsk1.csv</file>
         <file>wordlists/words.en.zh-CN/my-hsk2.csv</file>
         <file>wordlists/words.en.zh-CN/words-hsk.csv</file>
+        <file>wordlists/hints.en.zh-CN/hsk1.txt</file>
+        <file>wordlists/hints.en.zh-CN/hsk2.txt</file>
+        <file>wordlists/hints.en.zh-CN/hsk3.txt</file>
+        <file>wordlists/hints.en.zh-CN/hsk4.txt</file>
+        <file>wordlists/hints.en.zh-CN/hsk5.txt</file>
     </qresource>
 </RCC>

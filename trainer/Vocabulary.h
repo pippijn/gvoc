@@ -20,8 +20,12 @@ private:
     typedef QMap<QString, Vocable> VocableMap;
     VocableMap vocabulary;
 
-    typedef QMap<QString, QList<Hint> > HintMap;
-    HintMap hints;
+    typedef QList<Hint> HintList;
+    HintList hints;
+
+    typedef QMap<QString, HintList> HintMap;
+    mutable HintMap mappedHints;
+    mutable int mappedHintLevel;
 
 public:
     static Vocabulary *create(QString sourceLanguage, QString targetLanguage);
@@ -51,11 +55,9 @@ public:
     QString hintPhonetic(Hint const &hint) const;
     QString hintTranslation(Hint const &hint) const;
 
-    Hint const *targetHint(QString word) const;
-    void rotateTargetHints(QString word);
-
-    Hint const *sourceHint(QString word) const;
-    void rotateSourceHints(QString word);
+    HintList *hintList(QString word, int maxLevel) const;
+    Hint const *hint(QString word, int maxLevel) const;
+    void rotateHints(QString word, int maxLevel);
 
 private:
     void addWord(Vocable const &voc);
