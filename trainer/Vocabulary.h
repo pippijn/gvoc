@@ -24,8 +24,8 @@ private:
     HintList hints;
 
     typedef QMap<QString, HintList> HintMap;
-    mutable HintMap mappedHints;
-    mutable int mappedHintLevel;
+    mutable HintMap hintIndex;
+    mutable int hintIndexLevel;
 
 public:
     static Vocabulary *create(QString sourceLanguage, QString targetLanguage);
@@ -55,7 +55,7 @@ public:
     QString hintPhonetic(Hint const &hint) const;
     QString hintTranslation(Hint const &hint) const;
 
-    HintList *hintList(QString word, int maxLevel) const;
+    HintList &hintList(QString word, int maxLevel) const;
     Hint const *hint(QString word, int maxLevel) const;
     void rotateHints(QString word, int maxLevel);
 

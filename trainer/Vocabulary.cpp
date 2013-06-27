@@ -144,7 +144,10 @@ void Vocabulary::loadHintList(QString fileName)
 
         int line = 0;
 
-        HintList readHints;
+        QMap<QString, Hint> readHints;
+        foreach (Hint const &hint, hints)
+            readHints.insert(hint.targetPhrase, hint);
+
         while (in)
         {
             line++;
@@ -168,11 +171,10 @@ void Vocabulary::loadHintList(QString fileName)
             if (targetPhrase.isEmpty() || translation.isEmpty())
                 continue;
 
-            readHints.append(Hint(level, targetPhrase, targetPhonetic, translation));
+            readHints.insert(targetPhrase, Hint(level, targetPhrase, targetPhonetic, translation));
         }
 
-        std::random_shuffle(readHints.begin(), readHints.end());
-        hints.append(readHints);
+        hints = readHints.values();
     }
 }
 
@@ -314,41 +316,41 @@ QString Vocabulary::hintTranslation(Hint const &hint) const
 }
 
 
-Vocabulary::HintList *Vocabulary::hintList(QString word, int maxLevel) const
+Vocabulary::HintList &Vocabulary::hintList(QString word, int maxLevel) const
 {
-    if (mappedHintLevel != maxLevel)
+    if (hintIndexLevel != maxLevel)
     {
-        mappedHints.clear();
-        mappedHintLevel = maxLevel;
+        hintIndex.clear();
+        hintIndexLevel = maxLevel;
     }
 
-    HintMap::iterator found = mappedHints.find(word);
-    if (found == mappedHints.end())
+    HintMap::iterator found = hintIndex.find(word);
+    if (found == hintIndex.end())
     {
-        qDebug() << "categorising" << hints.size() << "hints for" << word;
+        HintList &list = hintIndex[word];
         foreach (Hint const &hint, hints)
             if (hint.level <= maxLevel && hint.targetPhrase.contains(word))
-                mappedHints[word].append(hint);
+                hintIndex[word].append(hint);
 
-        found = mappedHints.find(word);
-        if (found == mappedHints.end())
-            return NULL;
+        return list;
     }
-    return &found.value();
+    return found.value();
 }
 
 Vocabulary::Hint const *Vocabulary::hint(QString word, int maxLevel) const
 {
-    if (HintList const *list = hintList(word, maxLevel))
-        return &list->front();
+    HintList const &list = hintList(word, maxLevel);
+    if (!list.isEmpty())
+        return &list.front();
 
     return NULL;
 }
 
 void Vocabulary::rotateHints(QString word, int maxLevel)
 {
-    if (HintList *list = hintList(word, maxLevel))
-        std::rotate(list->begin(), list->begin() + 1, list->end());
+    HintList &list = hintList(word, maxLevel);
+    if (!list.isEmpty())
+        std::rotate(list.begin(), list.begin() + 1, list.end());
 }
 
 

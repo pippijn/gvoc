@@ -149,4 +149,9 @@ OTHER_FILES += \
     wordlists/words.en.zh-CN/hsk3-simp.csv \
     wordlists/words.en.zh-CN/hsk2-simp.csv \
     wordlists/hints.en.zh-CN/hsk.txt \
-    wordlists/words.en.zh-CN/simplified-hsk.csv
+    wordlists/words.en.zh-CN/simplified-hsk.csv \
+    wordlists/hints.en.zh-CN/hsk5.txt \
+    wordlists/hints.en.zh-CN/hsk4.txt \
+    wordlists/hints.en.zh-CN/hsk3.txt \
+    wordlists/hints.en.zh-CN/hsk2.txt \
+    wordlists/hints.en.zh-CN/hsk1.txt

@@ -65,6 +65,8 @@ public:
     void rotateHints();
 
     bool hasRetries() const;
+    int retries(QString word) const;
+    void setRetries(QString word, int retries);
 
     void nextWord();
     void skip();
@@ -95,7 +97,7 @@ private:
     QStringList wordList;
     QStringList::const_iterator currentWord;
 
-    QMap<QString, int> retries;
+    QMap<QString, int> retriesMap;
 };
 
 #endif // TRAININGMANAGER_H

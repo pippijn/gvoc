@@ -1,0 +1,12 @@
+#!/bin/sh
+
+sort -u zh-en_sentences.xml > zh-en_sentences.txt
+
+for i in 1 2 3 4 5; do
+   echo $i > hsk$i.txt
+   grep "[1-$i]; limited $i;" zh-en_sentences.txt | grep '<item>' >> hsk$i.txt
+done
+
+rm zh-en_sentences.txt
+
+sed -i -e 's/^.*<Q>//;s|</A></item>||;s|</Q><A>\(.*\) ;; |\t\1\t|' hsk*.txt

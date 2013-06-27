@@ -117,10 +117,24 @@ TrainingController::TrainingController(int minLevel, int maxLevel,
 
     languageMode[0] = new SourceLanguageSelector(*this);
     languageMode[1] = new TargetLanguageSelector(*this);
+
+    QFile retries("retries.dat");
+    if (retries.open(QFile::ReadOnly))
+    {
+        QDataStream stream(&retries);
+        stream >> retriesMap;
+    }
 }
 
 TrainingController::~TrainingController()
 {
+    QFile retries("retries.dat");
+    if (retries.open(QFile::WriteOnly))
+    {
+        QDataStream stream(&retries);
+        stream << retriesMap;
+    }
+
     delete languageMode[1];
     delete languageMode[0];
     delete vocabulary;
@@ -181,19 +195,33 @@ QStringList const &TrainingController::words() const
 void TrainingController::start()
 {
     Q_ASSERT(!started);
-    wordList = vocabulary->wordList(minLevel, maxLevel);
+    wordList.clear();
+
+    QStringList const &vocWordList = vocabulary->wordList(minLevel, maxLevel);
+    foreach (QString word, vocWordList)
+    {
+        // Add missing words to retries map.
+        if (retries(word) == -1)
+            setRetries(word, 1);
+        // Add words with at least 1 retry to the training list.
+        if (retries(word) > 0)
+            wordList.append(word);
+    }
+
+    // If there were no words with at least 1 retry, add all words and
+    // reset their number of retries to 1.
+    if (wordList.isEmpty())
+    {
+        wordList = vocWordList;
+        foreach (QString const &word, wordList)
+            setRetries(word, 1);
+    }
+
     std::random_shuffle(wordList.begin(), wordList.end());
     currentWord = wordList.begin();
 
     if (currentWord == wordList.end())
         return;
-
-    if (!hasRetries())
-    {
-        retries.clear();
-        foreach (QString const &word, wordList)
-            retries.insert(word, 1);
-    }
 
     status = TrainingStatus();
     statusChanged(status);
@@ -278,22 +306,33 @@ void TrainingController::rotateHints()
 {
     Q_ASSERT(started);
     questionSelector().rotateHints();
-    if (!hasHint())
-        qFatal("rotating hints deleted them");
 }
 
 bool TrainingController::hasHint() const
 {
     Q_ASSERT(started);
-    return !hint(false).isEmpty();
+    return questionSelector().hint() != NULL;
 }
 
 bool TrainingController::hasRetries() const
 {
-    foreach (int value, retries.values())
-        if (value > 0)
+    foreach (QString word, wordList)
+        if (retries(word) > 0)
             return true;
     return false;
+}
+
+int TrainingController::retries(QString word) const
+{
+    if (retriesMap.contains(word))
+        return retriesMap[word];
+    return -1;
+}
+
+void TrainingController::setRetries(QString word, int retries)
+{
+    Q_ASSERT(retries >= 0);
+    retriesMap[word] = retries;
 }
 
 
@@ -305,7 +344,7 @@ void TrainingController::nextWord()
 
     do
         ++currentWord;
-    while (currentWord != wordList.end() && retries[*currentWord] == 0);
+    while (currentWord != wordList.end() && retries(*currentWord) <= 0);
 
     if (currentWord == wordList.end())
     {
@@ -323,7 +362,7 @@ void TrainingController::skip()
     Q_ASSERT(started);
     status.skipped++;
     statusChanged(status);
-    retries[*currentWord] = 3;
+    setRetries(*currentWord, 3);
     nextWord();
 }
 
@@ -336,14 +375,14 @@ void TrainingController::giveAnswer(QString answer)
     {
         status.correct++;
         statusChanged(status);
-        retries[*currentWord]--;
+        setRetries(*currentWord, retries(*currentWord) - 1);
         nextWord();
     }
     else
     {
         status.mistakes++;
         statusChanged(status);
-        retries[*currentWord] = qMax(retries[*currentWord], 2);
+        setRetries(*currentWord, qMax(retries(*currentWord), 2));
         emit mistake();
     }
 }
