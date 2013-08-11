@@ -1,0 +1,104 @@
+=head1 Qt Word Trainer
+
+QVoc is a simple word trainer written in C++/Qt.
+
+L<Git repository|https://github.com/pippijn/gvoc>
+
+It was specifically designed for learning Chinese, because I don't need any more
+than that, at the moment.  Modifying it to support other languages and word
+lists is trivial. By keeping it simple, QVoc has a neglegible startup time and
+can therefore be started anytime you want to study your foreign language.
+
+
+=head2 Using QVoc
+
+After loading the word lists, which are the Chinese word lists for the HSK level
+1 and 2 exams, the words are shuffled and you will be confronted with a Chinese
+word along with its pinyin (phonetic alphabet for Chinese characters).  The
+trainer will expect you to write the English translation. The word lists have a
+set of acceptable solutions, so for a word such as 四 (sì), acceptable solutions
+might be "4" or "four". The solution is case insensitive.
+
+=for img images/initial.png Using the word trainer
+
+You can choose to switch to English, after which point you will be presented an
+English word to be translated to Chinese. You may either enter pinyin or Chinese
+characters. Special phonetics are ignored, such that you may enter "si" instead
+of "sì" when asked about "four".
+
+=for img images/english.png English to Chinese translation
+
+After entering the correct translation, you get one point and the word will not
+be asked in the next round. If you make a mistake, the word will be asked for
+the next three rounds. If you don't know the answer, you can skip the question
+by requesting an answer using the C<Answer> button or by hitting the return key
+without entering anything. The word is then marked as "skipped" and will be
+asked again, next time. Note that you can switch to English and back to get the
+solution, as well, if you want to cheat, but do note that this harms only you
+and nobody else (I have this much discipline, so I didn't bother protecting
+myself against cheating).
+
+=for img images/mistake.png Doing it wrong (huanying means welcome)
+
+Some words also have a hint attached to them. You may click the C<Hint> button
+at no cost.
+
+=for img images/hint.png Hints in Chinese characters and pinyin
+
+There may also be more than one hint for a single word. If you still don't know
+the answer after the first hint, you may click the C<Hint> button again. Hints
+are not random, so you can cycle through them.
+
+=for img images/hint2.png Multiple hints for a single word
+
+When all words have been asked, a report will be displayed. This report will
+always be measure percentages with respect to the last cycle. Thus, the second
+cycle may have a dramatically worse score, because you will be asked the words
+you didn't know the first time.
+
+=for img images/report.png Score report after each round
+
+
+=head2 About the implementation
+
+=head3 Word and hint lists
+
+In order to keep the implementation simple, QVoc does not use a configuration
+file. Instead, the application constructor contains an array of word list file
+names, currently at C<["hsk1.txt", "hsk2.txt"]>. The word lists have the
+following format:
+
+   # comments start with #
+   # Chinese word,         pinyin,        primary translation; secondary translations
+   家,                     jiā,           home
+   上,                     shàng,         up; on; on top of
+   下,                     xià,           down; under; below
+
+The hints are stored in a single file called C<"hints.txt"> with the following
+format:
+
+   # comments again start with #
+   # Chinese word, hint text, hint text in pinyin
+   欢迎
+   ,       欢迎来上海。
+   ,       huānyíng lái shànghǎi.
+
+   # You may add more hints to a single word by repeating the word:
+   欢迎
+   ,       欢迎你们来德国。
+   ,       huānyíng nǐmen lái déguó.
+
+The files are line- and comma-based. In the current implementation, that means
+that in the word lists, the Chinese word is the text until the first comma, the
+pinyin is the text until the second comma and the English translations are the
+text after the second comma and before a newline. The hints file is read
+analogously.
+
+=head3 Mistakes and skipped words
+
+A mistake will cause the word to be asked again for the next three cycles. A
+skipped word is asked once in the next round. I decided not to weigh words with
+many mistakes more heavily. I also decided not to delete known words from the
+list, because repetition is a good thing, even for words you do know. After all
+words have been correctly entered (some of them 3 times), the word list is
+shuffled and all words are asked again.

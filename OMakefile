@@ -1,0 +1,137 @@
+TARGET = gvoc
+
+HEADERS[] =
+  audio/mp3/libc.h
+  audio/mp3/minimp3.h
+  audio/AudioPlayer.h
+  audio/TextToSpeech.h
+  cache/PersistentCache.h
+  cache/PersistentMap.h
+  cache/SerialVersion.h
+  data/Dictionary.h
+  data/DictionaryPersister.h
+  data/DictionarySection.h
+  data/PrimaryTranslation.h
+  data/Translation.h
+  LanguageChooser.h
+  LanguageManager.h
+  MainWindow.h
+  managers/AudioManager.h
+  managers/PhoneticsManager.h
+  managers/TranslationManager.h
+  models/AbstractTreeModel.h
+  models/WordListModel.h
+  network/AudioDownloader.h
+  network/CaptchaDialog.h
+  network/CaptchaHandler.h
+  network/CaptchaImageDownloader.h
+  network/CaptchaPageDownloader.h
+  network/CaptchaReplyUploader.h
+  network/Downloader.h
+  network/PhoneticsDownloader.h
+  network/TranslationDownloader.h
+  OptionsDialog.h
+  PhoneticsDialog.h
+  PhoneticsEditor.h
+  sgml/QSgml.h
+  sgml/QSgmlTag.h
+  testsuite/TestSuite.h
+  TextToSpeechEditor.h
+  Trainer.h
+  trainer/TrainingController.h
+  trainer/TrainingStatus.h
+  trainer/Vocabulary_en_zh.h
+  trainer/Vocabulary.h
+  TranslationModel.h
+  Translator.h
+  TreeItem.h
+  utility/ClassRegistry.h
+  WordListEditor.h
+  WordListView.h
+
+SOURCES[] =
+  audio/mp3/minimp3.c
+  audio/AudioPlayer.cpp
+  audio/TextToSpeech.cpp
+  cache/PersistentCache.cpp
+  cache/PersistentMap.cpp
+  cache/SerialVersion.cpp
+  data/Dictionary.cpp
+  data/DictionaryPersister.cpp
+  data/DictionarySection.cpp
+  data/PrimaryTranslation.cpp
+  data/Translation.cpp
+  LanguageChooser.cpp
+  LanguageManager.cpp
+  main.cpp
+  MainWindow.cpp
+  managers/AudioManager.cpp
+  managers/PhoneticsManager.cpp
+  managers/TranslationManager.cpp
+  models/AbstractTreeModel.cpp
+  models/WordListModel.cpp
+  network/AudioDownloader.cpp
+  network/CaptchaDialog.cpp
+  network/CaptchaHandler.cpp
+  network/CaptchaImageDownloader.cpp
+  network/CaptchaPageDownloader.cpp
+  network/CaptchaReplyUploader.cpp
+  network/Downloader.cpp
+  network/PhoneticsDownloader.cpp
+  network/TranslationDownloader.cpp
+  OptionsDialog.cpp
+  PhoneticsDialog.cpp
+  PhoneticsEditor.cpp
+  sgml/QSgml.cpp
+  sgml/QSgmlTag.cpp
+  testsuite/TestSuite.cpp
+  TextToSpeechEditor.cpp
+  Trainer.cpp
+  trainer/TrainingController.cpp
+  trainer/TrainingStatus.cpp
+  trainer/Vocabulary.cpp
+  trainer/Vocabulary_en_zh.cpp
+  TranslationModel.cpp
+  Translator.cpp
+  TreeItem.cpp
+  utility/ClassRegistry.cpp
+  WordListEditor.cpp
+  WordListView.cpp
+
+UI[] =
+  LanguageChooser.ui
+  MainWindow.ui
+  network/CaptchaDialog.ui
+  OptionsDialog.ui
+  PhoneticsDialog.ui
+  PhoneticsEditor.ui
+  TextToSpeechEditor.ui
+  Trainer.ui
+  WordListEditor.ui
+  WordListView.ui
+
+RESOURCES[] =
+  testsuite/test.html
+  wordlists/hints.en.zh-CN/hsk.txt
+  wordlists/words.en.zh-CN/extra.csv
+  wordlists/words.en.zh-CN/my-hsk1.csv
+  wordlists/words.en.zh-CN/my-hsk2.csv
+  wordlists/words.en.zh-CN/words-hsk.csv
+  wordlists/hints.en.zh-CN/hsk1.txt
+  wordlists/hints.en.zh-CN/hsk2.txt
+  wordlists/hints.en.zh-CN/hsk3.txt
+  wordlists/hints.en.zh-CN/hsk4.txt
+  wordlists/hints.en.zh-CN/hsk5.txt
+  gvoc.qrc
+
+PROFILE[] =
+  gvoc.pro
+
+
+.DEFAULT: $(TARGET)
+
+$(TARGET): Makefile $(HEADERS) $(SOURCES) $(UI) $(RESOURCES)
+  make
+
+Makefile: $(PROFILE) $(HEADERS) $(SOURCES) $(UI) $(RESOURCES)
+  qmake .

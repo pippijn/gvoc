@@ -4,8 +4,8 @@
 #include <QNetworkRequest>
 #include <QFile>
 #include <QDir>
-#include "parser.h"
-#include "serializer.h"
+#include <qjson/parser.h>
+#include <qjson/serializer.h>
 
 #include <QDebug>
 

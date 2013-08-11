@@ -6,13 +6,13 @@
 
 QT       += core gui network
 
-#windows: {
+windows: {
     QT += multimedia
-#}
-#unix: {
+}
+unix: {
     CONFIG += mobility
     MOBILITY += multimedia
-#}
+}
 
 TARGET = gvoc
 TEMPLATE = app

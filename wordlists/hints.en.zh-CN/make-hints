@@ -1,5 +1,6 @@
 #!/bin/sh
 
+#wget http://xinutec.org/~pippijn/files/up/zh-en_sentences.xml
 sort -u zh-en_sentences.xml > zh-en_sentences.txt
 
 for i in 1 2 3 4 5; do

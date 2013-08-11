@@ -1,7 +1,7 @@
 #include "DictionaryPersister.h"
 #include "Translation.h"
 
-#include <parser.h>
+#include <qjson/parser.h>
 
 #include <QDebug>
 #include <QByteArray>
