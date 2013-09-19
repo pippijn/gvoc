@@ -1,0 +1,14 @@
+language: c++
+script: dpkg-buildpackage -b -us -uc
+
+install:
+   # GitHub dependencies.
+   - sudo apt-get install devscripts equivs
+   # Package dependencies.
+   - sudo mk-build-deps -ir
+
+# whitelist
+branches:
+   only:
+      - master
+      - /.*\/staging/
