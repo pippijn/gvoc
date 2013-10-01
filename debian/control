@@ -2,14 +2,12 @@ Source: gvoc
 Section: education
 Priority: optional
 Maintainer: Pippijn van Steenhoven <pip88nl@gmail.com>
-Uploaders: 
-  Pippijn van Steenhoven <pip88nl@gmail.com>
 Build-Depends:
-  debhelper (>= 8.0.0),
-  libboost-dev,
-  libqt4-opengl-dev,
-  libqjson-dev,
-  qtmobility-dev
+ debhelper (>= 8.0.0),
+ libboost-dev,
+ libqt4-opengl-dev,
+ libqjson-dev,
+ qtmobility-dev
 Standards-Version: 3.9.2
 Homepage: https://github.com/pippijn/gvoc
 Vcs-Git: git://github.com/pippijn/gvoc
@@ -18,5 +16,6 @@ Vcs-Browser: https://github.com/pippijn/gvoc
 Package: gvoc
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: Build system on top of autotools
- TODO.
+Description: Simple Google translate client with word trainer
+ This program can be used to automatically create word lists from Google
+ translate and study the lists with a simple word trainer.
