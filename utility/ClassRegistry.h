@@ -16,7 +16,6 @@ class ClassRegistry
     template<typename DerivedClass>
     struct DerivedConstructor : BaseConstructor
     {
-        ~DerivedConstructor() { }
         DerivedClass *construct() const
         {
             return new DerivedClass;

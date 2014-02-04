@@ -15,6 +15,7 @@ QString Dictionary::wordTypeName(WordType wordType)
     case None: return "unknown";
     case Noun: return "noun";
     case Phrase: return "phrase";
+    case Prefix: return "prefix";
     case Preposition: return "preposition";
     case Pronoun: return "pronoun";
     case Verb: return "verb";

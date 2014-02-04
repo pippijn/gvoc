@@ -1,4 +1,6 @@
 #include "PhoneticsDownloader.h"
+#include "DictionaryPersister.h"
+#include "Translation.h"
 
 #include <QDebug>
 
@@ -19,11 +21,9 @@ void PhoneticsDownloader::download(QString targetLanguage, QString targetText, Q
     // Start request
     QNetworkReply *reply = get("/translate_a/t", Query()
                                << QueryItem("client", "t")
-                               << QueryItem("v", "1.0")
                                << QueryItem("text", targetText)
                                << QueryItem("sl", targetLanguage)
-                               << QueryItem("tl", "und-Latn")
-                               << QueryItem("hl", "en"));
+                               << QueryItem("tl", "en"));
 
     // Set original request properties
     reply->setProperty(xlatTargetLanguage, targetLanguage);
@@ -52,10 +52,17 @@ void PhoneticsDownloader::downloadSuccess(QNetworkReply *reply, QByteArray body)
     QString targetText = reply->property(xlatTargetText).value<QString>();
     QVariant userData = reply->property(xlatUserData);
 
-    // Parse QVariant into Translation object
-    QString phonetics = body == "[\"\"]"
-            ? "N/A"
-            : QString::fromUtf8(body.constData() + 1, body.size() - 2);
+    // Parse JSON body into Translation object
+    DictionaryPersister persister;
+    bool ok = true;
+    Translation translation = persister.fromJSON(body, ok);
+    if (!ok)
+    {
+        emit failure(targetLanguage, targetText, userData,
+                     QString("JSON error: %0")
+                     .arg(persister.errorString()));
+        return;
+    }
 
-    emit success(targetLanguage, targetText, userData, phonetics);
+    emit success(targetLanguage, targetText, userData, translation.primary.sourcePhonetic);
 }

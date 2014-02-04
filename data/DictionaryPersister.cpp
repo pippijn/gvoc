@@ -18,6 +18,7 @@ Translation DictionaryPersister::fromJSON(QByteArray data, bool &ok)
     // Replace all empty spaces with "null". Needs to be done twice.
     data.replace(",,", ",null,");
     data.replace(",,", ",null,");
+    data.replace("[,", "[null,");
 
     // Parse JSON text into QVariant.
     QJson::Parser parser;
@@ -38,6 +39,7 @@ Translation DictionaryPersister::fromJSON(QByteArray data, bool &ok)
 
 Translation DictionaryPersister::fromVariant(QVariant variant, bool &ok)
 {
+    ok = true;
     return Translation(variant.value<QVariantList>());
 }
 

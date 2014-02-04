@@ -1,3 +1,5 @@
+#include <QDebug>
+
 #include "TranslationDownloader.h"
 #include "DictionaryPersister.h"
 

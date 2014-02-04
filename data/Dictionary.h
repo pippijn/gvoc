@@ -19,6 +19,7 @@ struct Dictionary
         None,
         Noun,
         Phrase,
+        Prefix,
         Preposition,
         Pronoun,
         Verb,

@@ -1,16 +1,16 @@
 =head1 Qt Word Trainer
 
-QVoc is a simple word trainer written in C++/Qt.
+GVoc is a simple word trainer written in C++/Qt.
 
 L<Git repository|https://github.com/pippijn/gvoc>
 
 It was specifically designed for learning Chinese, because I don't need any more
 than that, at the moment.  Modifying it to support other languages and word
-lists is trivial. By keeping it simple, QVoc has a neglegible startup time and
+lists is trivial. By keeping it simple, GVoc has a neglegible startup time and
 can therefore be started anytime you want to study your foreign language.
 
 
-=head2 Using QVoc
+=head2 Using GVoc
 
 After loading the word lists, which are the Chinese word lists for the HSK level
 1 and 2 exams, the words are shuffled and you will be confronted with a Chinese
@@ -63,7 +63,7 @@ you didn't know the first time.
 
 =head3 Word and hint lists
 
-In order to keep the implementation simple, QVoc does not use a configuration
+In order to keep the implementation simple, GVoc does not use a configuration
 file. Instead, the application constructor contains an array of word list file
 names, currently at C<["hsk1.txt", "hsk2.txt"]>. The word lists have the
 following format:
